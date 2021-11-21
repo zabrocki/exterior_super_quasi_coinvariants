@@ -1,0 +1,188 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=darkblue]{hyperref}
+
+%\usepackage{addfont}
+%\addfont{OT1}{rsfs10}{\rsfs}
+
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{epstopdf}
+\usepackage{lscape}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz,caption}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=2em}
+\setlist[enumerate]{leftmargin=2em}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{mathtools}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+
+\definecolor{darkblue}{rgb}{0.0,0,0.7} % darkblue color
+\definecolor{darkred}{rgb}{0.7,0,0} % darkred color
+\definecolor{darkgreen}{rgb}{0, .6, 0} % darkgreen color
+
+% Dark red emphasis
+\newcommand{\defncolor}{\color{darkred}}
+\newcommand{\defn}[1]{{\defncolor\emph{#1}}} % emphasis of a definition
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+
+\usepackage[colorinlistoftodos]{todonotes}
+\newcommand{\idiot}[1]{\vspace{5 mm}\par \noindent
+\marginpar{\textsc{Note}}
+\framebox{\begin{minipage}[c]{0.95 \textwidth}
+#1 \end{minipage}}\vspace{5 mm}\par}
+\newcommand{\mike}[1]{\todo[size=\tiny,color=lime!30]{#1 \\ \hfill --- Mike}}
+\newcommand{\nantel}[1]{\todo[size=\tiny,color=red!30]{#1 \\ \hfill --- Nantel}}
+\newcommand{\yohana}[1]{\todo[size=\tiny,color=Cyan]{#1 \\ \hfill --- Yohana}}
+\newcommand{\farad}[2][]{\todo[size=\tiny,color=ForestGreen!30,#1]{#2 \\ \hfill --- Farad}}
+\newcommand{\kelvin}[1]{\todo[size=\tiny,color=RoyalBlue!30]{#1 \\ \hfill --- Kel}}
+
+%remove the comment from the following line to remove all the
+% extra proofs:
+%\renewcommand{\idiot}[1]{}
+
+\title{Quasi-symmetric harmonics of the exterior algebra}
+\author{Nantel Bergeron,
+Kelvin Chan,
+Yohana Solomon,
+Farhad Soltani,
+Mike Zabrocki}
+\date{Draft November 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\section{Quasisymmetric invariants on the exterior algebra}
+
+Let $R_n = {\mathbb Q}[\theta_1, \theta_2, \ldots, \theta_n]$ be the
+polynomial ring in anticommuting variables.
+The ring $R_n$ is isomorphic to the exterior algebra of a vector
+space of dimension $n$.  The variables of this ring satisfy
+\[
+\theta_i \theta_j = - \theta_j \theta_i \hbox{ if } 1 \leq i \neq j \leq n
+\qquad\hbox{and}\qquad \theta_i^2 = 0 \hbox{ for }1 \leq i \leq n~.
+\]
+Since a monomial has no repeated variables,
+the monomials in $R_n$ are in bijection with subsets of $\{1,2,\ldots, n\}$
+and the dimension is therefore equal to $2^n$.
+
+Denote $[n] := \{1,2, \ldots,n\}$ and
+let $A = \{a_1 < a_2 < \cdots < a_r \} \subseteq [n]$.
+We define $\theta_A := \theta_{a_1} \theta_{a_2} \cdots \theta_{a_r}$,
+then the set $\{ \theta_A \}_{A \subseteq [n]}$ is a basis of $R_n$.
+
+We define an action on monomials of $R_n$ and extend this action linearly.
+For each integer $1 \leq i < n$, let $\pi_i$ be an operator on $R_n$
+that is defined by
+\[
+\pi_i(\theta_A) = \begin{cases}
+\theta_{A} & \hbox{ if } i, i+1 \in A\hbox{ or }i, i+1 \notin A\\
+\theta_{A \cup \{i+1\} \backslash \{i\}} & \hbox{ if } i\in A\hbox{ and }i+1 \notin A\\
+\theta_{A \cup \{i\} \backslash \{i+1\}} & \hbox{ if } i+1\in A\hbox{ and }i \notin A
+\end{cases}~.
+\]
+These operators instead of exchanging an $i$ for an $i+1$ like the symmetric group
+action, have the effect of shifting the indices of the variables (if possible).  They
+are therefore known as quasisymmetric operators.  They were studied in depth by
+Hivert \cite{H}.  The operators are not multiplicative in general since, for example,
+\[
+\pi_1( \theta_{1} \theta_{2})
+= \theta_1 \theta_2
+= - \pi_1( \theta_{1}) \pi_1(\theta_{2})~.
+\]
+
+A polynomial that is invariant under the action of quasisymmetric operators
+is said to be quasisymmetric invaraint (or just `quasisymmetric').
+The quasisymmetric invariants of $R_n$ are
+linearly spanned by the elements:
+\[
+F_{1^r}(\theta_1, \theta_2, \ldots, \theta_n) := \sum_{\substack[1]{A \subseteq [n]\\|A|=r}} \theta_A~.
+\]
+The notation $F_{1^r}$ for the elements borrow the notation from the
+polynomial ring in commuting variable invariants known as the `fundamental
+quasisymmetric polynomials'.  The commuting polynomial quasisymmetric
+invariants are indexed by compositions.
+
+\subsection{The ideal generated by the quasisymmetric invariants}
+
+Define an ideal of $R_n$ generated by the quasisymmetric invariants as
+\[
+I_n := \left< F_{1^r}(\theta_1, \theta_2, \ldots, \theta_n) : 1 \leq r \leq n \right>
+\]
+
+\begin{remark}
+Note that since the operators $\pi_i$ are not multiplicative, it
+is unlikely to be the case that $I_n$ as an ideal is invariant
+under the action of the $\pi_i$.  Indeed, we find that for $n=4$,
+\[
+\theta_2 F_{1}(\theta_1, \theta_2, \theta_3, \theta_4) =
+-\theta_1 \theta_2 + \theta_2 \theta_3 + \theta_2 \theta_4
+\]
+and if we apply $\pi_1$ to this element, we obtain
+\[
+\pi_1(\theta_2 F_{1}(\theta_1, \theta_2, \theta_3, \theta_4)) =
+-\theta_1 \theta_2 + \theta_1 \theta_3 + \theta_1 \theta_4
+\]
+and this can be shown to not be in $I_4$.
+\end{remark}
+
+The exterior quasisymmetric coinvariants are defined to be
+\mike{I hesitated to give a three letter abbreviated name, like EQC,
+but I don't know a better way to
+capture the `anti-commuting' and the `quasisymmetric' and the
+`coinvariants' in just two letters}
+\[
+EQC_n := R_n/I_n
+\]
+
+\subsection{Differential operators on the exerior algebra}
+We can define a set of differential operators on $R_n$ which
+will permit us to define the orthogonal complement to the
+ideal and a notion of quasisymmetric harmonics.
+
+The operators $\partial_{\theta_i}$ act on monomials in $R_n$
+by
+\[
+\partial_{\theta_i}( \theta_A ) = \begin{cases}
+(-1)^{\#\{ j \in A: j<i\}}\theta_{A \backslash \{i\}}&\hbox{ if }i \in A\\
+0&\hbox{ if }i \in A
+\end{cases}~.
+\]
+
+The operators can equally be characterized by their commutation
+relations
+\[
+\partial_{\theta_i} \partial_{\theta_j}\hbox{ if } 1 \leq i \neq j \leq n\qquad
+\partial_{\theta_i}^2 = 0\hbox{ for }1 \leq i \leq n
+\]
+
+\section{The space of quasisymmetric harmonics of the exterior algebra}
+
+\section{A linear basis of the ideal}
+
+\section{A path model for the quotient}
+\end{document}
