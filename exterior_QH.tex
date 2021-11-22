@@ -86,9 +86,9 @@ space of dimension $n$.  The variables of this ring satisfy
 \theta_i \theta_j = - \theta_j \theta_i \hbox{ if } 1 \leq i \neq j \leq n
 \qquad\hbox{and}\qquad \theta_i^2 = 0 \hbox{ for }1 \leq i \leq n~.
 \]
-Since a monomial has no repeated variables,
-the monomials in $R_n$ are in bijection with subsets of $\{1,2,\ldots, n\}$
-and the dimension is therefore equal to $2^n$.
+Since these conditions impose that a monomial in $R_n$ has no repeated variables,
+the monomials are in bijection with subsets of $\{1,2,\ldots, n\}$
+and the dimension of $R_n$ is therefore equal to $2^n$.
 
 Denote $[n] := \{1,2, \ldots,n\}$ and
 let $A = \{a_1 < a_2 < \cdots < a_r \} \subseteq [n]$.
@@ -150,7 +150,7 @@ and if we apply $\pi_1$ to this element, we obtain
 and this can be shown to not be in $I_4$.
 \end{remark}
 
-The exterior quasisymmetric coinvariants are defined to be
+The \emph{exterior quasisymmetric coinvariants} are defined to be
 \mike{I hesitated to give a three letter abbreviated name, like EQC,
 but I don't know a better way to
 capture the `anti-commuting' and the `quasisymmetric' and the
@@ -176,11 +176,48 @@ by
 The operators can equally be characterized by their commutation
 relations
 \[
-\partial_{\theta_i} \partial_{\theta_j}\hbox{ if } 1 \leq i \neq j \leq n\qquad
+\partial_{\theta_i} \partial_{\theta_j}=-\partial_{\theta_j} \partial_{\theta_i}
+\hbox{ if } 1 \leq i \neq j \leq n
+\qquad\hbox{and}\qquad
 \partial_{\theta_i}^2 = 0\hbox{ for }1 \leq i \leq n
 \]
+\[
+\partial_{\theta_i} \theta_j=-\theta_j \partial_{\theta_i}
+\hbox{ if } 1 \leq i \neq j \leq n
+\qquad\hbox{and}\qquad
+\partial_{\theta_i} \theta_i = 1\hbox{ for }1 \leq i \leq n~.
+\]
 
-\section{The space of quasisymmetric harmonics of the exterior algebra}
+For a monomial $\theta_A = \theta_{a_1} \theta_{a_2} \cdots \theta_{a_r}$,
+let $\overline{\theta_A} = \theta_{a_r} \theta_{a_{r-1}} \cdots \theta_{a_1}$ represent the
+reversing the order of the variables.  Extend this notation to both
+differential operators and polynomials (and polynomials on differential operators)
+by extending the notation linearly.
+
+We can define an inner product on $R_n$ by setting for $p,q \in R_n$.
+\[
+\left< p, q \right> = \overline{p(\partial_{\theta_1}, \partial_{\theta_2}, \ldots, \partial_{\theta_n})}
+q( \theta_1, \theta_2, \ldots, \theta_n)|_{\theta_1=\theta_2 = \ldots=\theta_n=0}~.
+\]
+The monomials of $R_n$ form an orthonormal basis of the space.
+
+Define the orthogonal complement to $I_n$ with respect to the inner product as
+the set
+\[
+EQH_n := \left\{ q \in R_n : \left< p, q \right> = 0 \hbox{ for all } p \in I_n \right\}~.
+\]
+We refer to this space as the \emph{exterior quasisymmetric harmonics}.\footnote{
+The harmonics and diagonal harmonics borrows the name from the physics literature
+because the harmonic operator $\partial_1^2 + \partial_2^2 + \cdots + \partial_n^2$
+is symmetric in the differential operators.  In the case of the exterior algebra,
+this operator does not exist and yet we persist in borrowing the name from the
+analogous spaces of commuting variables.}
+
+\begin{prop} For all $n \geq 1$, as vector spaces
+\[
+EQC_n \simeq EQH_n~.
+\]\mike{is there a collection of Temperley-Lieb operators for which these spaces are modules and isomorphic?}
+\end{prop}
 
 \section{A linear basis of the ideal}
 
