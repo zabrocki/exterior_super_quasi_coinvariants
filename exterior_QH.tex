@@ -78,10 +78,11 @@ Mike Zabrocki}
 
 \section{Quasisymmetric invariants on the exterior algebra}
 
-Let $R_n = {\mathbb Q}[\theta_1, \theta_2, \ldots, \theta_n]$ be the
+Fix $n$ a positive integer and
+let $R_n = {\mathbb Q}[\theta_1, \theta_2, \ldots, \theta_n]$ be the
 polynomial ring in anticommuting variables.
 The ring $R_n$ is isomorphic to the exterior algebra of a vector
-space of dimension $n$.  The variables of this ring satisfy
+space of dimension $n$.  The variables of this ring satisfy the relations
 \[
 \theta_i \theta_j = - \theta_j \theta_i \hbox{ if } 1 \leq i \neq j \leq n
 \qquad\hbox{and}\qquad \theta_i^2 = 0 \hbox{ for }1 \leq i \leq n~.
@@ -108,19 +109,21 @@ that is defined by
 These operators instead of exchanging an $i$ for an $i+1$ like the symmetric group
 action, have the effect of shifting the indices of the variables (if possible).  They
 are therefore known as quasisymmetric operators.  They were studied in depth by
-Hivert \cite{H}.  The operators are not multiplicative in general since, for example,
+Hivert \cite{H}.  The operators are not multiplicative on $R_n$ in general since, for example,
 \[
 \pi_1( \theta_{1} \theta_{2})
 = \theta_1 \theta_2
 = - \pi_1( \theta_{1}) \pi_1(\theta_{2})~.
 \]
+They are also not multiplicative when they act on the polynomial ring
+in commuting variables.
 
 A polynomial that is invariant under the action of quasisymmetric operators
 is said to be quasisymmetric invaraint (or just `quasisymmetric').
 The quasisymmetric invariants of $R_n$ are
 linearly spanned by the elements:
 \[
-F_{1^r}(\theta_1, \theta_2, \ldots, \theta_n) := \sum_{\substack[1]{A \subseteq [n]\\|A|=r}} \theta_A~.
+F_{1^r}(\theta_1, \theta_2, \ldots, \theta_n) := \sum_{\substack{A \subseteq [n]\\|A|=r}} \theta_A~.
 \]
 The notation $F_{1^r}$ for the elements borrow the notation from the
 polynomial ring in commuting variable invariants known as the `fundamental
@@ -199,7 +202,8 @@ We can define an inner product on $R_n$ by setting for $p,q \in R_n$.
 \left< p, q \right> = \overline{p(\partial_{\theta_1}, \partial_{\theta_2}, \ldots, \partial_{\theta_n})}
 q( \theta_1, \theta_2, \ldots, \theta_n)|_{\theta_1=\theta_2 = \ldots=\theta_n=0}~.
 \]
-The monomials of $R_n$ form an orthonormal basis of the space.
+The monomials of $R_n$ form an orthonormal basis of the space with respect to this
+inner product.
 
 Define the orthogonal complement to $I_n$ with respect to the inner product as
 the set
@@ -210,7 +214,7 @@ We refer to this space as the \emph{exterior quasisymmetric harmonics}.\footnote
 The harmonics and diagonal harmonics borrows the name from the physics literature
 because the harmonic operator $\partial_1^2 + \partial_2^2 + \cdots + \partial_n^2$
 is symmetric in the differential operators.  In the case of the exterior algebra,
-this operator does not exist and yet we persist in borrowing the name from the
+this operator does not exist and yet we persist by borrowing the name from the
 analogous spaces of commuting variables.}
 
 \begin{prop} For all $n \geq 1$, as vector spaces
@@ -220,6 +224,88 @@ EQC_n \simeq EQH_n~.
 \end{prop}
 
 \section{A linear basis of the ideal}
+
+Again let $n$ be a fixed positive integer and $R_n = {\mathbb Q}[\theta_1, \theta_2, \ldots, \theta_n]$.
+We have thus far represented the basis for
+$R_n$ as the elements $\theta_A$ with $A \subseteq [n]$.  Define $\alpha(A) \in \{ 0,1\}^n$ to be
+the sequence $a_1 a_2 a_3 \cdots a_n$ with $a_i = 1$ if $i \in A$ and
+$a_i = 0$ if $i \notin A$ so that
+\[
+\theta_A = \theta_1^{a_1} \theta_2^{a_2} \cdots \theta_n^{a_n} := \theta^{\alpha(A)}~.
+\]
+For such a sequence $\alpha \in \{0,1\}^n$, let $m_1(\alpha) := \sum_{i=1}^n a_i$
+represent the number of $1$s in the string.  This will also be the degree of the monomial
+$\theta^{\alpha}$.
+
+To each sequence $\alpha \in \{0, 1\}^n$, we associate a path starting at the origin
+and extending into the first quadrant of the $x,y$-plane.  The $i^{th}$ step of this
+path will be in the $(1,0)$-direction if $a_i =1$ and it will be in the $(0,1)$-direction
+if $a_i = 0$.  We say that the sequence $\alpha$ \defn{crosses the diagonal} if
+there is a point on the path which lies at $(a,a)$ and the next step is in the $(0,1)$
+direction.  Otherwise we say that $\alpha$ \defn{stays above the diagonal}.  Note that
+$\alpha$ stays above the diagonal if $\sum_{i=1}^r a_i \leq \lfloor r/2 \rfloor$ for all $1 \leq r \leq n$
+and it crosses the diagonal otherwise.
+
+\begin{example} Let $n=6$ and $\alpha = 010110$ and $\beta = 001100$, then the corresponding
+paths are
+\begin{center}
+\begin{tikzpicture}[scale=.75]
+  \draw[dotted] (0, 0) grid (4, 4);
+  \draw[rounded corners=1, color=black, line width=2] (0, 0) -- (0, 1) -- (1, 1) -- (1, 2) -- (2, 2) -- (3, 2) -- (3, 3);
+\end{tikzpicture}
+\hskip .5in
+\begin{tikzpicture}[scale=.75]
+  \draw[dotted] (0, 0) grid (4, 4);
+  \draw[rounded corners=1, color=black, line width=2] (0, 0) -- (0, 1) -- (0, 2) -- (1, 2) -- (2, 2) -- (2, 3) -- (2, 4);
+\end{tikzpicture}
+\end{center}
+\end{example}
+
+For sequences $\alpha \in \{ 0, 1 \}^n$, define elements $G_\alpha$ by
+\[
+G_{1^s0^{n-s}} = F_{1^s}
+\]
+and if $\alpha \neq 1^s 0^{n-s}$, then $\alpha$ is of the form $u01^s0^{n-k-s}$ for some string $u$
+of length $k-1$ and we recursively define
+\[
+G_\alpha = G_{u1^s0^{n-k-s+1}} - (-1)^{m_1(u)} \theta_k G_{u1^{s-1}0^{n-k-s+2}}~.
+\]
+\mike{What is the origin of this set of elements?  Can we point to places in the literature?
+Is it based on the other bases for quotient rings and is it clear how there is a modification
+for the fact that we are working in the exterior algebra e.g. that
+sign is there because the $\theta_k$ is being multiplied on the left of the polynomial.
+Could we equally move it off to the right and introduce a sign of $(-1)^{s-1}$?}
+
+\begin{example} For $\alpha = 010110$ and $\beta = 001100$, we compute
+the elements $G_\alpha$ and $G_\beta$ using the definition.
+\begin{align*}
+G_{010110} &= G_{011100} + \theta_3 G_{011000} = (G_{111000} - \theta_1 G_{110000})
++ \theta_3(G_{110000} - \theta_1 G_{100000})\\
+&= work this out
+\end{align*}
+
+and we have that
+\begin{align*}
+G_{001100} &= G_{011000} - \theta_2 G_{010000} = (G_{110000} - \theta_1 G_{100000})
+- \theta_2 (G_{100001} - \theta_1 G_{000000})\\
+&= work this out
+\end{align*}
+\end{example}
+
+Order the monomials of $R_n$ so that we say $\theta_A < \theta_B$ if
+$\alpha(A)$ is smaller than $\alpha(B)$ in lexicographic order.
+An important property of these elements is the following statement.
+
+\begin{lemma}
+The leading term of $G_\alpha$ is $\theta^\alpha$.
+\end{lemma}
+
+These elements $G_\alpha$ are defined so that we could use them to
+identify a nice basis of the ideal $I_n$.
+
+\begin{theorem}
+If $\alpha$ crosses the diagonal, then $G_\alpha \in I_n$.
+\end{theorem}
 
 \section{A path model for the quotient}
 \end{document}
