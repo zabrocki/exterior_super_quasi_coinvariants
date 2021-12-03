@@ -268,7 +268,7 @@ G_{1^s0^{n-s}} = F_{1^s}
 and if $\alpha \neq 1^s 0^{n-s}$, then $\alpha$ is of the form $u01^s0^{n-k-s}$ for some string $u$
 of length $k-1$ and we recursively define
 \[
-G_\alpha = G_{u1^s0^{n-k-s+1}} - (-1)^{m_1(u)} \theta_k G_{u1^{s-1}0^{n-k-s+2}}~.
+G_{u01^s0^{n-k-s}} = G_{u1^s0^{n-k-s+1}} - (-1)^{m_1(u)} \theta_k G_{u1^{s-1}0^{n-k-s+2}}~.
 \]
 \mike{What is the origin of this set of elements?  Can we point to places in the literature?
 Is it based on the other bases for quotient rings and is it clear how there is a modification
@@ -281,14 +281,16 @@ the elements $G_\alpha$ and $G_\beta$ using the definition.
 \begin{align*}
 G_{010110} &= G_{011100} + \theta_3 G_{011000} = (G_{111000} - \theta_1 G_{110000})
 + \theta_3(G_{110000} - \theta_1 G_{100000})\\
-&= work this out
+&= \theta_2 \theta_4 \theta_5 + \theta_2 \theta_4 \theta_6 + \theta_2 \theta_5 \theta_6
++ 2 \theta_3 \theta_4 \theta_5 + 2 \theta_3 \theta_4 \theta_6 + 2 \theta_3 \theta_5 \theta_6
++ \theta_4 \theta_5 \theta_6
 \end{align*}
 
 and we have that
 \begin{align*}
 G_{001100} &= G_{011000} - \theta_2 G_{010000} = (G_{110000} - \theta_1 G_{100000})
-- \theta_2 (G_{100001} - \theta_1 G_{000000})\\
-&= work this out
+- \theta_2 (G_{100000} - \theta_1 G_{000000})\\
+&= \theta_3 \theta_4 + \theta_3 \theta_5 + \theta_3 \theta_6 + \theta_4 \theta_5 + \theta_4 \theta_6 + \theta_5 \theta_6
 \end{align*}
 \end{example}
 
