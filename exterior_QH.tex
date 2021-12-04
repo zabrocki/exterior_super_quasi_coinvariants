@@ -119,7 +119,7 @@ They are also not multiplicative when they act on the polynomial ring
 in commuting variables.
 
 A polynomial that is invariant under the action of quasisymmetric operators
-is said to be quasisymmetric invaraint (or just `quasisymmetric').
+is said to be quasisymmetric invariant (or just `quasisymmetric').
 The quasisymmetric invariants of $R_n$ are
 linearly spanned by the elements:
 \[
@@ -158,6 +158,7 @@ The \emph{exterior quasisymmetric coinvariants} are defined to be
 but I don't know a better way to
 capture the `anti-commuting' and the `quasisymmetric' and the
 `coinvariants' in just two letters}
+\nantel{and is it really coinvariant? (since the ideal is not invariant)}
 \[
 EQC_n := R_n/I_n
 \]
@@ -222,6 +223,8 @@ analogous spaces of commuting variables.}
 EQC_n \simeq EQH_n~.
 \]\mike{is there a collection of Temperley-Lieb operators for which these spaces are modules and isomorphic?}
 \end{prop}
+\nantel{We can find a basis of EQC that is closed under Hivert action (without the quotient). Since I don't know anymore what is EQH
+I can't tell}
 
 \section{A linear basis of the ideal}
 
@@ -275,6 +278,9 @@ Is it based on the other bases for quotient rings and is it clear how there is a
 for the fact that we are working in the exterior algebra e.g. that
 sign is there because the $\theta_k$ is being multiplied on the left of the polynomial.
 Could we equally move it off to the right and introduce a sign of $(-1)^{s-1}$?}
+\nantel{the origin from Aval-Bergeron paper where we selected a subset of the $S$-polynomials
+to understand them all (all other S-polynomial are written in term of those. The exact definition
+here is no a direct translation of the commutative case, but well adapted for the exterior case.}
 
 \begin{example} For $\alpha = 010110$ and $\beta = 001100$, we compute
 the elements $G_\alpha$ and $G_\beta$ using the definition.
