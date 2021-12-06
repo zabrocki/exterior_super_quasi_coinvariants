@@ -299,9 +299,9 @@ An important property of these elements is the following statement.
 The leading term of $G_\alpha$ is $\theta^\alpha$.
 \end{prop}
 
-In order to prove this proposition, we will first establish a lemma.
-This lemma is analogous to Lemma 3.3 of \cite{AB}.
-The recursion in this lemma is really the origin of the definition
+In order to prove this proposition, we will first establish a lemma
+that is analogous to Lemma 3.3 of \cite{AB}.
+The recursion in this result is really the origin of the definition
 of $G_\alpha$ because Equation \eqref{eq:Gdef2}
 was adapted so that this lemma holds.
 
@@ -312,24 +312,26 @@ G_{0\alpha} &= G_\alpha(\theta_2, \theta_3, \ldots, \theta_n) \hbox{ and }\label
 G_{1\alpha} &= \theta_1 G_{0\alpha} + P_{\alpha}(\theta_2, \theta_3, \ldots, \theta_n)\,. \label{eq:1start}
 \end{align}
 \end{lemma}
-\nantel{I realize we should really index $P$ with $\alpha$ only, this is more coherent with our notation}
 
 \begin{remark}\label{rem:shift}
- By convention, the length of the index for our polynomials indicate in which polynomial space we are.
+By convention, the length of the index for our polynomials indicate in which polynomial space we are.
 For example if $\beta   \in \{0,1\}^{n}$ then $G_\beta\in R_n$. For $\alpha \in \{0,1\}^{n-1}$  in Lemma~\ref{lem:LT}, when we write
-$G_\alpha(\theta_2, \theta_3, \ldots, \theta_n)$ we mean $G_\alpha\in  R_{n-1}$ inbeded in $R_n$ with the substitution  
-$\theta_i:=\theta_{i+1}$. Similarly for $P_\alpha$.
+$G_\alpha(\theta_2, \theta_3, \ldots, \theta_n)$ we mean $G_\alpha\in  R_{n-1}$
+embedded in $R_n$ with the substitution  
+$\theta_i:=\theta_{i+1}$. A similar convention will be followed for $P_\alpha$.
 \end{remark}
 
 \begin{proof}[Proof of Lemma~\ref{lem:LT}]
-The proof will be by induction on $n-i$ where $i$ is the number of trailing $0$.
+The proof will be by induction on $n-i$ where $i$ is the number of trailing $0$s in $\alpha$.
 The base case $0=n-n$ with $n$ zeros, is $0\alpha = 0^n$ and we have
 \[
-G_{0^n} = F_{1^0}(\theta_1,\theta_2 ,\ldots,\theta_n) = 1 = G_{0^{n-1}}(\theta_2, \theta_3, \ldots, \theta_n)
+G_{0^n} = F_{1^0}(\theta_1,\theta_2 ,\ldots,\theta_n) = 1
+= G_{0^{n-1}}(\theta_2, \theta_3, \ldots, \theta_n)~.
 \]
 We then consider the case  $0\alpha=01^s0^{n-s-1}$. The polynomials $F_{1^s}$ satisfy the  following identity
 \begin{equation}\label{eq:relF}
-F_{1^s}(\theta_1,\theta_2 ,\ldots,\theta_n) = \theta_1 F_{1^{s-1}}(\theta_2 ,\ldots,\theta_n) + F_{1^s}(\theta_2,\theta_3 ,\ldots,\theta_n)
+F_{1^s}(\theta_1,\theta_2 ,\ldots,\theta_n)
+= \theta_1 F_{1^{s-1}}(\theta_2 ,\ldots,\theta_n) + F_{1^s}(\theta_2,\theta_3 ,\ldots,\theta_n)
 \end{equation}
 This follows directly from the definition~\eqref{eq:defF} where we split the sum in two parts depending if $1\in A$ or not.
 The definition of $G_{01^s0^{n-s-1}}$  gives us
@@ -338,10 +340,15 @@ The definition of $G_{01^s0^{n-s-1}}$  gives us
 	  =F_{1^s}(\theta_1,\theta_2 ,\ldots,\theta_n) - \theta_1 F_{1^{s-1}}(\theta_2 ,\ldots,\theta_n) \\
 	  &= F_{1^s}(\theta_2,\theta_3 ,\ldots,\theta_n)= G_{\alpha}(\theta_2,\theta_3 ,\ldots,\theta_n)\,.
 \end{align*}
-To finish the  proof of Equation~\eqref{eq:0start} by induction, lets assume that $0\alpha\ne 01^s0^{n-s-1}$. Therefore $0\alpha=0w01^s0^{n-k-s}$ for some string $w$
-of length $k-2$. For $0\alpha=0w01^s0^{n-k-s}$,  we have $n-k-s$ trailing zeros. Remark that for $0w1^s0^{n-k-s+1}$
-and $0w1^{s-1}0^{n-k-s+2}$ we have more trailing zeros than $0\alpha$ and we will  use the Induction Hypothesis (with~\eqref{eq:0start})  in the
-equality~\eqref{eq:IH0}  below.
+
+To finish the  proof of Equation~\eqref{eq:0start} by induction,
+let us assume that $0\alpha\ne 01^s0^{n-s-1}$. Therefore $0\alpha=0w01^s0^{n-k-s}$ for some string $w$
+of length $k-2$.
+For $0\alpha=0w01^s0^{n-k-s}$, we have $n-k-s$ trailing zeros.
+Remark that for $0w1^s0^{n-k-s+1}$ and $0w1^{s-1}0^{n-k-s+2}$ 
+we have more trailing zeros than appear in $0\alpha$ and we will use the
+induction hypothesis (with~\eqref{eq:0start}) in the
+equality~\eqref{eq:IH0} below.%%%%%%%
 \begin{align}
 	G&_{0w01^s0^{n-k-s}}= G_{0w1^s0^{n-k-s+1}} -  (-1)^{m_1(0w)} \theta_k G_{0w1^{s-1}0^{n-k-s+2}} \nonumber \\ 
 	 & = G_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n) - (-1)^{m_1(0w)} \theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n) \label{eq:IH0}\\
@@ -349,16 +356,18 @@ equality~\eqref{eq:IH0}  below.
 	 & = G_{w01^s0^{n-k-s+1}} (\theta_2,\theta_3 ,\ldots,\theta_n) = G_{\alpha} (\theta_2,\theta_3 ,\ldots,\theta_n)  \label{eq:final0} 
 \end{align}
 In~\eqref{eq:detail0} the expression inside the square bracket $[\cdots]$ is as polynomials in the variables $\theta_1,\ldots,\theta_{n-1}$ in $R_{n-1}$ (see Remark~\ref{rem:shift}).
-Hence, the variable $\theta_{k}$ has to be replaced by $\theta_{k-1}$. Also, $m_1(0w)=m_1(w)$. The expression we get is exactly the definition of 
-$G_{w01^s0^{n-k-s+1}} \in R_{n-1}$ and the equation~\eqref{eq:final0} follows. This conclude the proof of \eqref{eq:0start}.
+Hence, the variable $\theta_{k}$ from \eqref{eq:IH0} must
+be replaced by $\theta_{k-1}$ in \eqref{eq:detail0}.
+Also, $m_1(0w)=m_1(w)$. The expression we get is exactly the definition of 
+$G_{w01^s0^{n-k-s+1}} \in R_{n-1}$ and Equation~\eqref{eq:final0} follows.
+This concludes the proof of \eqref{eq:0start}.
 
 We next prove Equation \eqref{eq:1start} by induction.  The base case is if $1\alpha = 1^{s+1}0^{n-s-1}$,
 then using Equation \eqref{eq:relF} we have
 \begin{align}
-G_{1^{s+1}0^{n-s-1}} &= F_{1^{s+1}}(\theta_1, \theta_3, \ldots, \theta_n) \nonumber \\
+G_{1^{s+1}0^{n-s-1}} &= F_{1^{s+1}}(\theta_1,\theta_2 ,\ldots,\theta_n) \nonumber\\
 &= \theta_1 F_{1^s} (\theta_2, \theta_3, \ldots, \theta_n)+ F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)\nonumber \\
-&= \theta_1 G_{01^s0^{n-s-1}} + F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)\label{eq:base1}\\
-&= \theta_1 G_{01^s0^{n-s-1}} + P_{1^{s}0^{n-s-1}}(\theta_2, \theta_3, \ldots, \theta_n)~. \nonumber
+&= \theta_1 G_{01^s0^{n-s-1}} + F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)~.\label{eq:base1}
 \end{align}
 In~\eqref{eq:base1}, we use \eqref{eq:0start} with  $G_{01^s0^{n-s-1}}=G_{1^s0^{n-s-1}} (\theta_2,  \ldots, \theta_n)=F_{1^s} (\theta_2, \ldots, \theta_n)$.
 We then let
@@ -371,15 +380,16 @@ of length $k-2$. We have
 	 & = \big(\theta_1G_{0w1^s0^{n-k-s+1}} +P_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n)\big) \label{eq:IH1}\\
 	 &\qquad\qquad  - (-1)^{m_1(1w)} \theta_k  \big(\theta_1G_{0w1^{s-1}0^{n-k-s+2}} +P_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n)\big) \nonumber\\
 	 & = \theta_1\big(G_{0w1^s0^{n-k-s+1}}   - (-1)^{m_1(w)}  \theta_k G_{0w1^{s-1}0^{n-k-s+2}}\big)	 \label{eq:detail1}\\
-	 &\qquad\qquad  \big[P_{w1^s0^{n-k-s+1}}  - (-1)^{m_1(1w)} \theta_{k-1} P_{w1^{s-1}0^{n-k-s+2}}\big] (\theta_2,\theta_3 ,\ldots,\theta_n)\nonumber\\
-	 & = \theta_1 G_{0\alpha} + P_\alpha(\theta_2, ,\theta_3 ,\ldots,\theta_n)  \nonumber
+	 &\qquad\qquad  + \big[P_{w1^s0^{n-k-s+1}}  - (-1)^{m_1(1w)} \theta_{k-1} P_{w1^{s-1}0^{n-k-s+2}}\big] (\theta_2,\theta_3 ,\ldots,\theta_n)\nonumber
+%	 & = \theta_1 G_{0\alpha} + P_\alpha(\theta_2, ,\theta_3 ,\ldots,\theta_n)  \nonumber
 \end{align}
 In \eqref{eq:IH1}, we have used the induction hypothesis of~\eqref{eq:1start} on both terms.
 In  \eqref{eq:detail1}, we group together the terms with $\theta_1$ in front, using the identity 
 $(-1)^{m_1(1w)} \theta_k \theta_1 = (-1)^{m_1(1w)+1} \theta_1 \theta_k  = (-1)^{m_1(w)} \theta_1 \theta_k $. 
-The term with $\theta_1$ is the definition of $G_{0\alpha}$.
+The term with $\theta_1$ in \eqref{eq:detail1} is the definition of $G_{0\alpha}$.
 The expression inside the square bracket is a polynomial in $R_{n-1}$ that we take as the definition for $P_\alpha$.
-This shows that \eqref{eq:1start} holds in all cases and conclude the  proof of the lemma.
+This shows by induction that \eqref{eq:1start}
+holds in all cases and concludes the  proof of the lemma.
 \end{proof}
 
 
