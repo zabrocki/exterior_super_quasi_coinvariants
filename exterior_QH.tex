@@ -218,17 +218,21 @@ inner product.
 
 Define the orthogonal complement to $I_n$ with respect to the inner product as
 the set
-\[
-EQH_n := \left\{ q \in R_n : \left< p, q \right> = 0 \hbox{ for all } p \in I_n \right\}~.
-\]
-We refer to this space as the \emph{exterior quasisymmetric harmonics}.\footnote{
+\begin{align*}
+EQH_n :&= \left\{ q \in R_n : \left< p, q \right> = 0 \hbox{ for all } p \in I_n \right\}\\
+  &=\left\{ q \in R_n :\overline{p(\partial_{\theta_1}, \partial_{\theta_2}, \ldots, \partial_{\theta_n})}
+q= 0 \hbox{ for all } p \in I_n \right\}~.
+\end{align*}
+The second equality follows from the fact that $I_n$ is an ideal and show that $EQH_n$ is also the solution space of 
+a system of differential equations. We refer to this space as the \emph{exterior quasisymmetric harmonics}.\footnote{
 The harmonics and diagonal harmonics borrows the name from the physics literature
 because the harmonic operator $\partial_1^2 + \partial_2^2 + \cdots + \partial_n^2$
 is symmetric in the differential operators.  In the case of the exterior algebra,
-this operator does not exist and yet we persist by borrowing the name from the
-analogous spaces of commuting variables.}
+this operator acts as zero and yet we persist by borrowing the name from the
+analogous spaces of commuting variables.
+}
 
-\begin{prop} For all $n \geq 1$, as vector spaces
+\begin{prop} For all $n \geq 1$, as graded vector spaces
 \[
 EQC_n \simeq EQH_n~.
 \]\mike{is there a collection of Temperley-Lieb operators for which these spaces are modules and isomorphic?}
@@ -259,9 +263,15 @@ of length $k-1$ and we recursively define
 \begin{equation}\label{eq:Gdef2}
 G_{u01^s0^{n-k-s}} = G_{u1^s0^{n-k-s+1}} - (-1)^{m_1(u)} \theta_k G_{u1^{s-1}0^{n-k-s+2}}~.
 \end{equation}
+
 We will show below that the recurrence for the
 $G_\alpha$ are defined so that they are $S$-polynomials \cite{CLO}
 for elements of the ideal $I_n$.
+In commutative variables, similar polynomials were defined by Aval-Bergeron-Bergeron~\cite{AB,ABB} 
+as a (complete) subset of $S$-polynomials needed to compute all possible
+$S$-polynomials in the Buchburger algorithm for Gr\"obner basis.
+It is not given that one can describe easily such a set of $S$-polynomials and here we have adapted
+the definition for working in the exterior algebra.
 
 \begin{example} For $\alpha = 010110$ and $\beta = 001100$, we compute
 the elements $G_\alpha$ and $G_\beta$ using the definition.
@@ -405,6 +415,12 @@ Adv. in Math., 2004, Jan 30, 181 (2), pp. 353--367.
 \textit{Ideals, varieties, and algorithms: an introduction to computational
 algebraic geometry and commutative algebra}.
 Springer Science \& Business Media; 2013 Mar 9.
+
+\bibitem{H} F. Hivert, 
+\textit{Hecke algebras, difference operators, and quasi-symmetric
+              functions}.
+Adv. in Math., 2000, 155 (2), pp. 181--238.
+\href{https://doi-org/10.1006/aima.1999.1901}{10.1006/aima.1999.1901}.
 
 \bibitem{L} S. X. Li,
 \textit{Ideals and quotients of diagonally quasi-symmetric functions}.
