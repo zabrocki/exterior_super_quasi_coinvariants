@@ -122,9 +122,9 @@ A polynomial that is invariant under the action of quasisymmetric operators
 is said to be quasisymmetric invariant (or just `quasisymmetric').
 The quasisymmetric invariants of $R_n$ are
 linearly spanned by the elements:
-\[
+\begin{equation}\label{eq:defF}
 F_{1^r}(\theta_1, \theta_2, \ldots, \theta_n) := \sum_{\substack{A \subseteq [n]\\|A|=r}} \theta_A~.
-\]
+\end{equation}
 The notation $F_{1^r}$ for the elements borrow the notation from the
 polynomial ring in commuting variable invariants known as the `fundamental
 quasisymmetric polynomials'.  The commuting polynomial quasisymmetric
@@ -307,21 +307,54 @@ The recursion in this lemma is really the origin of the definition
 of $G_\alpha$ because the definition in Equation \eqref{eq:Gdef2}
 was adapted so that this lemma holds.
 
-\begin{lemma} Let $\alpha \in \{0,1\}^{n-1}$, then
+\begin{lemma}\label{lem:LT}
+ Let $\alpha \in \{0,1\}^{n-1}$, then
 \begin{align*}
 G_{0\alpha} &= G_\alpha(\theta_2, \theta_3, \ldots, \theta_n)\\
-\hbox{and }G_{1\alpha} &= \theta_1 G_{0\alpha} + P_{1\alpha}(\theta_2, \theta_3, \ldots, \theta_n)
+\hbox{and }G_{1\alpha} &= \theta_1 G_{0\alpha} + P_{\alpha}(\theta_2, \theta_3, \ldots, \theta_n)\,.
 \end{align*}
-where $P_{1\alpha}(\theta_2, \theta_3, \ldots, \theta_n) \in R_n$ is a polynomial
-in the variables $\theta_2, \theta_3, \ldots, \theta_n$.
 \end{lemma}
+\nantel{I realize we should really index $P$ with $\alpha$ only, this is more coherent with our notation}
 
-\begin{proof}
-The proof will be by induction (on what) after we establish
-two initial base cases.  The first is if $\alpha = 0^n$, then
+\begin{remark}\label{rem:shift}
+ By convention, the length of the index for our polynomials indicate in which polynomial space we are.
+For example if $\beta   \in \{0,1\}^{n}$ then $G_\beta\in R_n$. For $\alpha \in \{0,1\}^{n-1}$  in Lemma~\ref{lem:LT}, when we write
+$G_\alpha(\theta_2, \theta_3, \ldots, \theta_n)$ we mean $G_\alpha\in  R_{n-1}$ inbeded in $R_n$ with the substitution  
+$\theta_i:=\theta_{i+1}$. Similarly for $P_\alpha$.
+\end{remark}
+
+\begin{proof}[Proof of Lemma~\ref{lem:LT}]
+The proof will be by induction on $n-i$ where $i$ is the number of trailing $0$.
+The base case $0=n-n$ with $n$ zeros, is $0\alpha = 0^n$ and we have
 \[
-G_{0^n} = F_{1^0} = 1 = G_{0^{n-1}}(\theta_2, \theta_3, \ldots, \theta_n)
+G_{0^n} = F_{1^0}(\theta_1,\theta_2 ,\ldots,\theta_n) = 1 = G_{0^{n-1}}(\theta_2, \theta_3, \ldots, \theta_n)
 \]
+We then consider the case  $0\alpha=01^s0^{n-s-1}$. The polynomials $F_{1^s}$ satisfy the  following identity
+\begin{equation}\label{eq:relF}
+F_{1^s}(\theta_1,\theta_2 ,\ldots,\theta_n) = \theta_1 F_{1^{s-1}}(\theta_2 ,\ldots,\theta_n) + F_{1^s}(\theta_2,\theta_3 ,\ldots,\theta_n)
+\end{equation}
+This follows directly from the definition~\eqref{eq:defF} where we split the sum in two parts depending if $1\in A$ or not.
+The definition of $G_{01^s0^{n-s-1}}$  gives us
+\begin{align*}
+	G_{01^s0^{n-s-1}}&= G_{1^s0^{n-s}} - \theta_1 G_{1^{s-1}0^{n-s+1}}
+	  =F_{1^s}(\theta_1,\theta_2 ,\ldots,\theta_n) - \theta_1 F_{1^{s-1}}(\theta_2 ,\ldots,\theta_n) \\
+	  &= F_{1^s}(\theta_2,\theta_3 ,\ldots,\theta_n)= G_{\alpha}(\theta_2,\theta_3 ,\ldots,\theta_n)\,.
+\end{align*}
+Now lets assume that $0\alpha\ne 01^s0^{n-s-1}$. Therefore $0\alpha=0w01^s0^{n-k-s}$ for some string $w$
+of length $k-2$. For $0\alpha=0w01^s0^{n-k-s}$,  we have $n-k-s$ trailing zeros and $n-n+k+s=k+s$. Remark that for $0w1^s0^{n-k-s+1}$
+and $0w1^{s-1}0^{n-k-s+2}$ we have more trailing zeros than $0\alpha$ and we will  use the Induction Hypothesis in the
+equality~\eqref{eq:IH0}  below.
+\begin{align}
+	G&_{0w01^s0^{n-k-s}}= G_{0w1^s0^{n-k-s+1}} - \theta_k G_{0w1^{s-1}0^{n-k-s+2}} \nonumber \\ 
+	 & = G_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n) - (-1)^{m_1(0w)} \theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n) \label{eq:IH0}\\
+	 & = \big[G_{w1^s0^{n-k-s+1}} -  (-1)^{m_1(w)} \theta_{k-1} G_{w1^{s-1}0^{n-k-s+2}}\big](\theta_2,\theta_3 ,\ldots,\theta_n)\label{eq:detail0}\\
+	 & = G_{w01^s0^{n-k-s+1}} (\theta_2,\theta_3 ,\ldots,\theta_n) = G_{\alpha} (\theta_2,\theta_3 ,\ldots,\theta_n)  \label{eq:final0} 
+\end{align}
+In~\eqref{eq:detail0} the expression inside the square bracket $[\cdots]$ is as polynomials in the variables $\theta_1,\ldots,\theta_{n-1}$ in $R_{n-1}$ (see Remark~\ref{rem:shift}).
+Hence, the variable $\theta_{k}$ has to be replaced by $\theta_{k-1}$. Also, $m_1(0w)=m_1(w)$. The expression we get is exactly the definition of 
+$G_{w01^s0^{n-k-s+1}} \in R_{n-1}$ and the equation~\eqref{eq:final0} follows. This conclude the proof of the first equality in the Lemma.
+
+Now we assume that we have $1\alpha=1^{s+1}0^{n-s-1}$.
 \end{proof}
 
 These elements $G_\alpha$ are defined so that we could use them to
@@ -329,6 +362,7 @@ identify a nice basis of the ideal $I_n$.
 
 \begin{theorem}
 If $\alpha$ crosses the diagonal, then $G_\alpha \in I_n$.
+\nantel{how can we talk about crossing the diagonal before we define the path?}
 \end{theorem}
 
 \section{A path model for the quotient}
