@@ -307,10 +307,10 @@ was adapted so that this lemma holds.
 
 \begin{lemma}\label{lem:LT}
  Let $\alpha \in \{0,1\}^{n-1}$, then
-\begin{align*}
-G_{0\alpha} &= G_\alpha(\theta_2, \theta_3, \ldots, \theta_n)\\
-\hbox{and }G_{1\alpha} &= \theta_1 G_{0\alpha} + P_{\alpha}(\theta_2, \theta_3, \ldots, \theta_n)\,.
-\end{align*}
+\begin{align}
+G_{0\alpha} &= G_\alpha(\theta_2, \theta_3, \ldots, \theta_n) \hbox{ and }\label{eq:0start}\\
+G_{1\alpha} &= \theta_1 G_{0\alpha} + P_{\alpha}(\theta_2, \theta_3, \ldots, \theta_n)\,. \label{eq:1start}
+\end{align}
 \end{lemma}
 \nantel{I realize we should really index $P$ with $\alpha$ only, this is more coherent with our notation}
 
@@ -338,35 +338,53 @@ The definition of $G_{01^s0^{n-s-1}}$  gives us
 	  =F_{1^s}(\theta_1,\theta_2 ,\ldots,\theta_n) - \theta_1 F_{1^{s-1}}(\theta_2 ,\ldots,\theta_n) \\
 	  &= F_{1^s}(\theta_2,\theta_3 ,\ldots,\theta_n)= G_{\alpha}(\theta_2,\theta_3 ,\ldots,\theta_n)\,.
 \end{align*}
-Now lets assume that $0\alpha\ne 01^s0^{n-s-1}$. Therefore $0\alpha=0w01^s0^{n-k-s}$ for some string $w$
-of length $k-2$. For $0\alpha=0w01^s0^{n-k-s}$,  we have $n-k-s$ trailing zeros and $n-n+k+s=k+s$. Remark that for $0w1^s0^{n-k-s+1}$
-and $0w1^{s-1}0^{n-k-s+2}$ we have more trailing zeros than $0\alpha$ and we will  use the Induction Hypothesis in the
+To finish the  proof of Equation~\eqref{eq:0start} by induction, lets assume that $0\alpha\ne 01^s0^{n-s-1}$. Therefore $0\alpha=0w01^s0^{n-k-s}$ for some string $w$
+of length $k-2$. For $0\alpha=0w01^s0^{n-k-s}$,  we have $n-k-s$ trailing zeros. Remark that for $0w1^s0^{n-k-s+1}$
+and $0w1^{s-1}0^{n-k-s+2}$ we have more trailing zeros than $0\alpha$ and we will  use the Induction Hypothesis (with~\eqref{eq:0start})  in the
 equality~\eqref{eq:IH0}  below.
 \begin{align}
-	G&_{0w01^s0^{n-k-s}}= G_{0w1^s0^{n-k-s+1}} - \theta_k G_{0w1^{s-1}0^{n-k-s+2}} \nonumber \\ 
+	G&_{0w01^s0^{n-k-s}}= G_{0w1^s0^{n-k-s+1}} -  (-1)^{m_1(0w)} \theta_k G_{0w1^{s-1}0^{n-k-s+2}} \nonumber \\ 
 	 & = G_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n) - (-1)^{m_1(0w)} \theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n) \label{eq:IH0}\\
 	 & = \big[G_{w1^s0^{n-k-s+1}} -  (-1)^{m_1(w)} \theta_{k-1} G_{w1^{s-1}0^{n-k-s+2}}\big](\theta_2,\theta_3 ,\ldots,\theta_n)\label{eq:detail0}\\
 	 & = G_{w01^s0^{n-k-s+1}} (\theta_2,\theta_3 ,\ldots,\theta_n) = G_{\alpha} (\theta_2,\theta_3 ,\ldots,\theta_n)  \label{eq:final0} 
 \end{align}
 In~\eqref{eq:detail0} the expression inside the square bracket $[\cdots]$ is as polynomials in the variables $\theta_1,\ldots,\theta_{n-1}$ in $R_{n-1}$ (see Remark~\ref{rem:shift}).
 Hence, the variable $\theta_{k}$ has to be replaced by $\theta_{k-1}$. Also, $m_1(0w)=m_1(w)$. The expression we get is exactly the definition of 
-$G_{w01^s0^{n-k-s+1}} \in R_{n-1}$ and the equation~\eqref{eq:final0} follows. This conclude the proof of the first equality in the Lemma.
+$G_{w01^s0^{n-k-s+1}} \in R_{n-1}$ and the equation~\eqref{eq:final0} follows. This conclude the proof of \eqref{eq:0start}.
 
-Now we assume that we have $1\alpha=1^{s+1}0^{n-s-1}$.
+We next prove Equation \eqref{eq:1start} by induction.  The base case is if $1\alpha = 1^{s+1}0^{n-s-1}$,
+then using Equation \eqref{eq:relF} we have
+\begin{align}
+G_{1^{s+1}0^{n-s-1}} &= F_{1^{s+1}}(\theta_1, \theta_3, \ldots, \theta_n) \nonumber \\
+&= \theta_1 F_{1^s} (\theta_2, \theta_3, \ldots, \theta_n)+ F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)\nonumber \\
+&= \theta_1 G_{01^s0^{n-s-1}} + F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)\label{eq:base1}\\
+&= \theta_1 G_{01^s0^{n-s-1}} + P_{1^{s}0^{n-s-1}}(\theta_2, \theta_3, \ldots, \theta_n)~. \nonumber
+\end{align}
+In~\eqref{eq:base1}, we use \eqref{eq:0start} with  $G_{01^s0^{n-s-1}}=G_{1^s0^{n-s-1}} (\theta_2,  \ldots, \theta_n)=F_{1^s} (\theta_2, \ldots, \theta_n)$.
+We then let
+$P_{1^{s}0^{n-s-1}} = F_{1^{s+1}}(\theta_1,\ldots,\theta_{n-1})$ and this shows that \eqref{eq:1start} holds in this case.
+
+We now assume that $1\alpha\ne 1^{s+1}0^{n-s-1}$. Therefore $1\alpha=1w01^s0^{n-k-s}$ for some string $w$
+of length $k-2$. We have
+\begin{align}
+	G&_{1w01^s0^{n-k-s}}= G_{1w1^s0^{n-k-s+1}} -  (-1)^{m_1(1w)} \theta_k G_{1w1^{s-1}0^{n-k-s+2}} \nonumber \\ 
+	 & = \big(\theta_1G_{0w1^s0^{n-k-s+1}} +P_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n)\big) \label{eq:IH1}\\
+	 &\qquad\qquad  - (-1)^{m_1(1w)} \theta_k  \big(\theta_1G_{0w1^{s-1}0^{n-k-s+2}} +P_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n)\big) \nonumber\\
+	 & = \theta_1\big(G_{0w1^s0^{n-k-s+1}}   - (-1)^{m_1(w)}  \theta_k G_{0w1^{s-1}0^{n-k-s+2}}\big)	 \label{eq:detail1}\\
+	 &\qquad\qquad  \big[P_{w1^s0^{n-k-s+1}}  - (-1)^{m_1(1w)} \theta_{k-1} P_{w1^{s-1}0^{n-k-s+2}}\big] (\theta_2,\theta_3 ,\ldots,\theta_n)\nonumber\\
+	 & = \theta_1 G_{0\alpha} + P_\alpha(\theta_2, ,\theta_3 ,\ldots,\theta_n)  \nonumber
+\end{align}
+In \eqref{eq:IH1}, we have used the induction hypothesis of~\eqref{eq:1start} on both terms.
+In  \eqref{eq:detail1}, we group together the terms with $\theta_1$ in front, using the identity 
+$(-1)^{m_1(1w)} \theta_k \theta_1 = (-1)^{m_1(1w)+1} \theta_1 \theta_k  = (-1)^{m_1(w)} \theta_1 \theta_k $. 
+The term with $\theta_1$ is the definition of $G_{0\alpha}$.
+The expression inside the square bracket is a polynomial in $R_{n-1}$ that we take as the definition for $P_\alpha$.
+This shows that \eqref{eq:1start} holds in all cases and conclude the  proof of the lemma.
 \end{proof}
 
 
 
-We next prove Equation \eqref{eq:1start} by induction.  The base case is if $\alpha = 1^s0^{n-s-1}$,
-then using Equation \eqref{eq:0start} we have
-\begin{align*}
-G_{1^{s+1}0^{n-s-1}} &= F_{1^{s+1}} = \theta_1 F_{1^s} + F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)\\
-&= \theta_1 F_{1^s}(\theta_2, \theta_3, \ldots, \theta_n) + F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)
-&= \theta_1 G_{01^s0^{n-s-1}} + F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)~.
-\end{align*}
-This shows that \eqref{eq:1start} holds in the case if we let
-$P_{1^{s+1}0^{n-s-1}}(\theta_2, \theta_3, \ldots, \theta_n)
-= F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)$.
+
 
 
 \section{A path model for the quotient}
