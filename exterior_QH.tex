@@ -228,9 +228,9 @@ a system of differential equations. We refer to this space as the \emph{exterior
 The harmonics and diagonal harmonics borrows the name from the physics literature
 because the harmonic operator $\partial_1^2 + \partial_2^2 + \cdots + \partial_n^2$
 is symmetric in the differential operators.  In the case of the exterior algebra,
-this operator does not exist and yet we persist by borrowing the name from the
+this operator acts as zero and yet we persist by borrowing the name from the
 analogous spaces of commuting variables.
-} \footnote{nantel: the operator exists... but it is zero :)}
+}
 
 \begin{prop} For all $n \geq 1$, as graded vector spaces
 \[
@@ -255,25 +255,23 @@ represent the number of $1$s in the string.  This will also be the degree of the
 $\theta^{\alpha}$.
 
 For sequences $\alpha \in \{ 0, 1 \}^n$, define elements $G_\alpha$ by
-\[
+\begin{equation}\label{eq:Gdef1}
 G_{1^s0^{n-s}} = F_{1^s}
-\]
+\end{equation}
 and if $\alpha \neq 1^s 0^{n-s}$, then $\alpha$ is of the form $u01^s0^{n-k-s}$ for some string $u$
 of length $k-1$ and we recursively define
 \begin{equation}\label{eq:Gdef2}
 G_{u01^s0^{n-k-s}} = G_{u1^s0^{n-k-s+1}} - (-1)^{m_1(u)} \theta_k G_{u1^{s-1}0^{n-k-s+2}}~.
 \end{equation}
-In commutative variables, similar polynomial were defined by  Aval-Bergeron-Bergeron~\cite{AB,ABB} 
-as a (complete) subset of $S$-polynomials needed to compute all possible $S$-polynomial in the Buchburger algorithm 
-for gr\"obner basis. It is not given that one can describe easily such set of $S$-polynomial and here we have to adapt the definition for the type of variables we have.
-%\mike{What is the origin of this set of elements?  Can we point to places in the literature?
-%Is it based on the other bases for quotient rings and is it clear how there is a modification
-%for the fact that we are working in the exterior algebra e.g. that
-%sign is there because the $\theta_k$ is being multiplied on the left of the polynomial.
-%Could we equally move it off to the right and introduce a sign of $(-1)^{s-1}$?}
-%\nantel{the origin from Aval-Bergeron paper where we selected a subset of the $S$-polynomials
-%to understand them all (all other S-polynomial are written in term of those. The exact definition
-%here is no a direct translation of the commutative case, but well adapted for the exterior case.}
+
+We will show below that the recurrence for the
+$G_\alpha$ are defined so that they are $S$-polynomials \cite{CLO}
+for elements of the ideal $I_n$.
+In commutative variables, similar polynomials were defined by Aval-Bergeron-Bergeron~\cite{AB,ABB} 
+as a (complete) subset of $S$-polynomials needed to compute all possible
+$S$-polynomials in the Buchburger algorithm for Gr\"obner basis.
+It is not given that one can describe easily such a set of $S$-polynomials and here we have adapted
+the definition for working in the exterior algebra.
 
 \begin{example} For $\alpha = 010110$ and $\beta = 001100$, we compute
 the elements $G_\alpha$ and $G_\beta$ using the definition.
@@ -304,7 +302,7 @@ The leading term of $G_\alpha$ is $\theta^\alpha$.
 In order to prove this proposition, we will first establish a lemma.
 This lemma is analogous to Lemma 3.3 of \cite{AB}.
 The recursion in this lemma is really the origin of the definition
-of $G_\alpha$ because the definition in Equation \eqref{eq:Gdef2}
+of $G_\alpha$ because Equation \eqref{eq:Gdef2}
 was adapted so that this lemma holds.
 
 \begin{lemma}\label{lem:LT}
@@ -357,13 +355,47 @@ $G_{w01^s0^{n-k-s+1}} \in R_{n-1}$ and the equation~\eqref{eq:final0} follows. T
 Now we assume that we have $1\alpha=1^{s+1}0^{n-s-1}$.
 \end{proof}
 
-These elements $G_\alpha$ are defined so that we could use them to
-identify a nice basis of the ideal $I_n$.
+The second case is when $\alpha = 01^s0^{n-s-1}$ for $s>0$, then
+\[
+G_{01^s0^{n-s-1}} = G_{1^s0^{n-s}} - \theta_1 G_{1^{s-1}0^{n-s+1}}
+\]
+Since $G_{1^s0^{n-s}} = F_{1^s}$ and $G_{1^{s-1}0^{n-s+1}} = F_{1^{s-1}}$
+by Equation \eqref{eq:Gdef1}, then since $\theta_1^2 = 0$, we have that
+$\theta_1 F_{1^{s-1}}$ is the
+sum over all monomials $\theta_A$ where $A \subseteq [n]$ with $|A| = s$ and $1 \in A$.
+The difference $F_{1^s} - \theta_1 F_{1^{s-1}}$
+is then equal to the sum over all monomials $\theta_A$ where
+$A \subseteq [n]$ with $|A| = s$ and $1 \notin A$
+and this is equal to $F_{1^s}(\theta_2, \theta_3, \ldots, \theta_n) = G_{1^s0^{n-s-1}}(\theta_2, \theta_3, \ldots, \theta_n)$ again by Equation \eqref{eq:Gdef1}.
 
-\begin{theorem}
-If $\alpha$ crosses the diagonal, then $G_\alpha \in I_n$.
-\nantel{how can we talk about crossing the diagonal before we define the path?}
-\end{theorem}
+Next we prove $G_{0\alpha} = G_\alpha(\theta_2, \theta_3, \ldots, \theta_n)$ by induction
+on $k = \ell(w)+1$ and $\alpha = w01^s0^{n-k-s-1}$ for some $s>0$.  Then by Equation
+\eqref{eq:Gdef2} and the inductive hypothesis,
+\begin{align*}
+G_{0w01^s0^{n-k-s-1}} &= G_{0w1^s0^{n-k-s+1}} - (-1)^{m_1(w)} \theta_k G_{0w1^{s-1}0^{n-k-s+2}}\\
+&= G_{w1^s0^{n-k-s+1}}(\theta_2, \theta_3, \ldots, \theta_n) -
+(-1)^{m_1(w)} \theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2, \theta_3, \ldots, \theta_n)~.
+\end{align*}
+Now we view $\theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2, \theta_3, \ldots, \theta_n)=
+(\theta_{k-1} G_{w1^{s-1}0^{n-k-s+2}})(\theta_2, \theta_3, \ldots, \theta_n)$
+and $G_{w1^s0^{n-k-s+1}} - (-1)^{m_1(w)} \theta_{k-1} G_{w1^{s-1}0^{n-k-s+2}} =
+G_{w01^s0^{n-k-s+1}}$ by Equation \eqref{eq:Gdef2}.  Therefore,
+\[
+G_{0w01^s0^{n-k-s-1}} = G_{w01^s0^{n-k-s+1}}(\theta_2, \theta_3, \ldots, \theta_n)
+\]
+and we see that Equation \eqref{eq:0start} holds by induction.
+
+We next prove Equation \eqref{eq:1start} by induction.  The base case is if $\alpha = 1^s0^{n-s-1}$,
+then using Equation \eqref{eq:0start} we have
+\begin{align*}
+G_{1^{s+1}0^{n-s-1}} &= F_{1^{s+1}} = \theta_1 F_{1^s} + F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)\\
+&= \theta_1 F_{1^s}(\theta_2, \theta_3, \ldots, \theta_n) + F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)
+&= \theta_1 G_{01^s0^{n-s-1}} + F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)~.
+\end{align*}
+This shows that \eqref{eq:1start} holds in the case if we let
+$P_{1^{s+1}0^{n-s-1}}(\theta_2, \theta_3, \ldots, \theta_n)
+= F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)$.
+
 
 \section{A path model for the quotient}
 
@@ -391,6 +423,13 @@ paths are
 \end{center}
 \end{example}
 
+The elements $G_\alpha$ are defined so that we could use them to
+identify a nice basis of the ideal $I_n$.
+
+\begin{theorem}
+If $\alpha$ crosses the diagonal, then $G_\alpha \in I_n$.
+\end{theorem}
+
 
 \begin{thebibliography}{999}
 \bibitem{AB} J. C. Aval, N. Bergeron,
@@ -403,12 +442,16 @@ Proc. of the Am. Math. Soc., 2003, 131(4), pp. 1053--1062.
 Adv. in Math., 2004, Jan 30, 181 (2), pp. 353--367.
 \href{https://doi.org/10.1016/S0001-8708(03)00068-9}{10.1016/S0001-8708(03)00068-9}.
 
+\bibitem{CLO} D. Cox, J. Little, D. OShea,
+\textit{Ideals, varieties, and algorithms: an introduction to computational
+algebraic geometry and commutative algebra}.
+Springer Science \& Business Media; 2013 Mar 9.
 
 \bibitem{H} F. Hivert, 
 \textit{Hecke algebras, difference operators, and quasi-symmetric
               functions}.
 Adv. in Math., 2000, 155 (2), pp. 181--238.
-\href{https://doi-org/10.1006/aima.1999.1901}.
+\href{https://doi-org/10.1006/aima.1999.1901}{10.1006/aima.1999.1901}.
 
 \bibitem{L} S. X. Li,
 \textit{Ideals and quotients of diagonally quasi-symmetric functions}.
