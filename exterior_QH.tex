@@ -218,17 +218,21 @@ inner product.
 
 Define the orthogonal complement to $I_n$ with respect to the inner product as
 the set
-\[
-EQH_n := \left\{ q \in R_n : \left< p, q \right> = 0 \hbox{ for all } p \in I_n \right\}~.
-\]
-We refer to this space as the \emph{exterior quasisymmetric harmonics}.\footnote{
+\begin{align*}
+EQH_n :&= \left\{ q \in R_n : \left< p, q \right> = 0 \hbox{ for all } p \in I_n \right\}\\
+  &=\left\{ q \in R_n :\overline{p(\partial_{\theta_1}, \partial_{\theta_2}, \ldots, \partial_{\theta_n})}
+q= 0 \hbox{ for all } p \in I_n \right\}~.
+\end{align*}
+The second equality follows from the fact that $I_n$ is an ideal and show that $EQH_n$ is also the solution space of 
+a system of differential equations. We refer to this space as the \emph{exterior quasisymmetric harmonics}.\footnote{
 The harmonics and diagonal harmonics borrows the name from the physics literature
 because the harmonic operator $\partial_1^2 + \partial_2^2 + \cdots + \partial_n^2$
 is symmetric in the differential operators.  In the case of the exterior algebra,
 this operator does not exist and yet we persist by borrowing the name from the
-analogous spaces of commuting variables.}
+analogous spaces of commuting variables.
+} \footnote{nantel: the operator exists... but it is zero :)}
 
-\begin{prop} For all $n \geq 1$, as vector spaces
+\begin{prop} For all $n \geq 1$, as graded vector spaces
 \[
 EQC_n \simeq EQH_n~.
 \]\mike{is there a collection of Temperley-Lieb operators for which these spaces are modules and isomorphic?}
@@ -259,14 +263,17 @@ of length $k-1$ and we recursively define
 \begin{equation}\label{eq:Gdef2}
 G_{u01^s0^{n-k-s}} = G_{u1^s0^{n-k-s+1}} - (-1)^{m_1(u)} \theta_k G_{u1^{s-1}0^{n-k-s+2}}~.
 \end{equation}
-\mike{What is the origin of this set of elements?  Can we point to places in the literature?
-Is it based on the other bases for quotient rings and is it clear how there is a modification
-for the fact that we are working in the exterior algebra e.g. that
-sign is there because the $\theta_k$ is being multiplied on the left of the polynomial.
-Could we equally move it off to the right and introduce a sign of $(-1)^{s-1}$?}
-\nantel{the origin from Aval-Bergeron paper where we selected a subset of the $S$-polynomials
-to understand them all (all other S-polynomial are written in term of those. The exact definition
-here is no a direct translation of the commutative case, but well adapted for the exterior case.}
+In commutative variables, similar polynomial were defined by  Aval-Bergeron-Bergeron~\cite{AB,ABB} 
+as a (complete) subset of $S$-polynomials needed to compute all possible $S$-polynomial in the Buchburger algorithm 
+for gr\"obner basis. It is not given that one can describe easily such set of $S$-polynomial and here we have to adapt the definition for the type of variables we have.
+%\mike{What is the origin of this set of elements?  Can we point to places in the literature?
+%Is it based on the other bases for quotient rings and is it clear how there is a modification
+%for the fact that we are working in the exterior algebra e.g. that
+%sign is there because the $\theta_k$ is being multiplied on the left of the polynomial.
+%Could we equally move it off to the right and introduce a sign of $(-1)^{s-1}$?}
+%\nantel{the origin from Aval-Bergeron paper where we selected a subset of the $S$-polynomials
+%to understand them all (all other S-polynomial are written in term of those. The exact definition
+%here is no a direct translation of the commutative case, but well adapted for the exterior case.}
 
 \begin{example} For $\alpha = 010110$ and $\beta = 001100$, we compute
 the elements $G_\alpha$ and $G_\beta$ using the definition.
@@ -361,6 +368,13 @@ Proc. of the Am. Math. Soc., 2003, 131(4), pp. 1053--1062.
 \textit{Ideals of quasi-symmetric functions and super-covariant polynomials for $S_n$}.
 Adv. in Math., 2004, Jan 30, 181 (2), pp. 353--367.
 \href{https://doi.org/10.1016/S0001-8708(03)00068-9}{10.1016/S0001-8708(03)00068-9}.
+
+
+\bibitem{H} F. Hivert, 
+\textit{Hecke algebras, difference operators, and quasi-symmetric
+              functions}.
+Adv. in Math., 2000, 155 (2), pp. 181--238.
+\href{https://doi-org/10.1006/aima.1999.1901}.
 
 \bibitem{L} S. X. Li,
 \textit{Ideals and quotients of diagonally quasi-symmetric functions}.
