@@ -355,35 +355,7 @@ $G_{w01^s0^{n-k-s+1}} \in R_{n-1}$ and the equation~\eqref{eq:final0} follows. T
 Now we assume that we have $1\alpha=1^{s+1}0^{n-s-1}$.
 \end{proof}
 
-The second case is when $\alpha = 01^s0^{n-s-1}$ for $s>0$, then
-\[
-G_{01^s0^{n-s-1}} = G_{1^s0^{n-s}} - \theta_1 G_{1^{s-1}0^{n-s+1}}
-\]
-Since $G_{1^s0^{n-s}} = F_{1^s}$ and $G_{1^{s-1}0^{n-s+1}} = F_{1^{s-1}}$
-by Equation \eqref{eq:Gdef1}, then since $\theta_1^2 = 0$, we have that
-$\theta_1 F_{1^{s-1}}$ is the
-sum over all monomials $\theta_A$ where $A \subseteq [n]$ with $|A| = s$ and $1 \in A$.
-The difference $F_{1^s} - \theta_1 F_{1^{s-1}}$
-is then equal to the sum over all monomials $\theta_A$ where
-$A \subseteq [n]$ with $|A| = s$ and $1 \notin A$
-and this is equal to $F_{1^s}(\theta_2, \theta_3, \ldots, \theta_n) = G_{1^s0^{n-s-1}}(\theta_2, \theta_3, \ldots, \theta_n)$ again by Equation \eqref{eq:Gdef1}.
 
-Next we prove $G_{0\alpha} = G_\alpha(\theta_2, \theta_3, \ldots, \theta_n)$ by induction
-on $k = \ell(w)+1$ and $\alpha = w01^s0^{n-k-s-1}$ for some $s>0$.  Then by Equation
-\eqref{eq:Gdef2} and the inductive hypothesis,
-\begin{align*}
-G_{0w01^s0^{n-k-s-1}} &= G_{0w1^s0^{n-k-s+1}} - (-1)^{m_1(w)} \theta_k G_{0w1^{s-1}0^{n-k-s+2}}\\
-&= G_{w1^s0^{n-k-s+1}}(\theta_2, \theta_3, \ldots, \theta_n) -
-(-1)^{m_1(w)} \theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2, \theta_3, \ldots, \theta_n)~.
-\end{align*}
-Now we view $\theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2, \theta_3, \ldots, \theta_n)=
-(\theta_{k-1} G_{w1^{s-1}0^{n-k-s+2}})(\theta_2, \theta_3, \ldots, \theta_n)$
-and $G_{w1^s0^{n-k-s+1}} - (-1)^{m_1(w)} \theta_{k-1} G_{w1^{s-1}0^{n-k-s+2}} =
-G_{w01^s0^{n-k-s+1}}$ by Equation \eqref{eq:Gdef2}.  Therefore,
-\[
-G_{0w01^s0^{n-k-s-1}} = G_{w01^s0^{n-k-s+1}}(\theta_2, \theta_3, \ldots, \theta_n)
-\]
-and we see that Equation \eqref{eq:0start} holds by induction.
 
 We next prove Equation \eqref{eq:1start} by induction.  The base case is if $\alpha = 1^s0^{n-s-1}$,
 then using Equation \eqref{eq:0start} we have
