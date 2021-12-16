@@ -295,15 +295,23 @@ Order the monomials of $R_n$ so that we say $\theta_A < \theta_B$ if
 $\alpha(A)$ is smaller than $\alpha(B)$ in lexicographic order.
 An important property of these elements is the following statement.
 
-\begin{prop}
+\begin{prop}\label{prop:leading}
 The leading term of $G_\alpha$ is $\theta^\alpha$.
 \end{prop}
 
-In order to prove this proposition, we will first establish a lemma
-that is analogous to Lemma 3.3 of \cite{AB}.
+The proof of Proposition \ref{prop:leading} follows by induction
+on the length of $\alpha$ and
+from a lemma that is analogous to Lemma 3.3 of \cite{AB}.
 The recursion in this result is really the origin of the definition
 of $G_\alpha$ because Equation \eqref{eq:Gdef2}
-was adapted so that this lemma holds.
+was adapted so that this lemma holds.  It follows that
+the set $\{ G_\alpha \}_{\alpha \in \{0,1\}^n}$ is a basis
+for $R_n$.
+
+The argument for the proposition is elementary
+and so we do not include it, however the proof of the
+following result comes from careful analysis of the
+terms arising the recursive definition of the $G_\alpha$.
 
 \begin{lemma}\label{lem:LT}
  Let $\alpha \in \{0,1\}^{n-1}$, then
@@ -317,7 +325,7 @@ G_{1\alpha} &= \theta_1 G_{0\alpha} + P_{\alpha}(\theta_2, \theta_3, \ldots, \th
 By convention, the length of the index for our polynomials indicate in which polynomial space we are.
 For example if $\beta   \in \{0,1\}^{n}$ then $G_\beta\in R_n$. For $\alpha \in \{0,1\}^{n-1}$  in Lemma~\ref{lem:LT}, when we write
 $G_\alpha(\theta_2, \theta_3, \ldots, \theta_n)$ we mean $G_\alpha\in  R_{n-1}$
-embedded in $R_n$ with the substitution  
+embedded in $R_n$ with the substitution
 $\theta_i:=\theta_{i+1}$. A similar convention will be followed for $P_\alpha$.
 \end{remark}
 
@@ -345,12 +353,12 @@ To finish the  proof of Equation~\eqref{eq:0start} by induction,
 let us assume that $0\alpha\ne 01^s0^{n-s-1}$. Therefore $0\alpha=0w01^s0^{n-k-s}$ for some string $w$
 of length $k-2$.
 For $0\alpha=0w01^s0^{n-k-s}$, we have $n-k-s$ trailing zeros.
-Remark that for $0w1^s0^{n-k-s+1}$ and $0w1^{s-1}0^{n-k-s+2}$ 
+Remark that for $0w1^s0^{n-k-s+1}$ and $0w1^{s-1}0^{n-k-s+2}$
 we have more trailing zeros than appear in $0\alpha$ and we will use the
 induction hypothesis (with~\eqref{eq:0start}) in the
 equality~\eqref{eq:IH0} below.%%%%%%%
 \begin{align}
-	G&_{0w01^s0^{n-k-s}}= G_{0w1^s0^{n-k-s+1}} -  (-1)^{m_1(0w)} \theta_k G_{0w1^{s-1}0^{n-k-s+2}} \nonumber \\ 
+	G&_{0w01^s0^{n-k-s}}= G_{0w1^s0^{n-k-s+1}} -  (-1)^{m_1(0w)} \theta_k G_{0w1^{s-1}0^{n-k-s+2}} \nonumber \\
 	 & = G_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n) - (-1)^{m_1(0w)} \theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n) \label{eq:IH0}\\
 	 & = \big[G_{w1^s0^{n-k-s+1}} -  (-1)^{m_1(w)} \theta_{k-1} G_{w1^{s-1}0^{n-k-s+2}}\big](\theta_2,\theta_3 ,\ldots,\theta_n)\label{eq:detail0}\\
 	 & = G_{w01^s0^{n-k-s+1}} (\theta_2,\theta_3 ,\ldots,\theta_n) = G_{\alpha} (\theta_2,\theta_3 ,\ldots,\theta_n)  \label{eq:final0} 
@@ -358,7 +366,7 @@ equality~\eqref{eq:IH0} below.%%%%%%%
 In~\eqref{eq:detail0} the expression inside the square bracket $[\cdots]$ is as polynomials in the variables $\theta_1,\ldots,\theta_{n-1}$ in $R_{n-1}$ (see Remark~\ref{rem:shift}).
 Hence, the variable $\theta_{k}$ from \eqref{eq:IH0} must
 be replaced by $\theta_{k-1}$ in \eqref{eq:detail0}.
-Also, $m_1(0w)=m_1(w)$. The expression we get is exactly the definition of 
+Also, $m_1(0w)=m_1(w)$. The expression we get is exactly the definition of
 $G_{w01^s0^{n-k-s+1}} \in R_{n-1}$ and Equation~\eqref{eq:final0} follows.
 This concludes the proof of \eqref{eq:0start}.
 
@@ -376,7 +384,7 @@ $P_{1^{s}0^{n-s-1}} = F_{1^{s+1}}(\theta_1,\ldots,\theta_{n-1})$ and this shows 
 We now assume that $1\alpha\ne 1^{s+1}0^{n-s-1}$. Therefore $1\alpha=1w01^s0^{n-k-s}$ for some string $w$
 of length $k-2$. We have
 \begin{align}
-	G&_{1w01^s0^{n-k-s}}= G_{1w1^s0^{n-k-s+1}} -  (-1)^{m_1(1w)} \theta_k G_{1w1^{s-1}0^{n-k-s+2}} \nonumber \\ 
+	G&_{1w01^s0^{n-k-s}}= G_{1w1^s0^{n-k-s+1}} -  (-1)^{m_1(1w)} \theta_k G_{1w1^{s-1}0^{n-k-s+2}} \nonumber \\
 	 & = \big(\theta_1G_{0w1^s0^{n-k-s+1}} +P_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n)\big) \label{eq:IH1}\\
 	 &\qquad\qquad  - (-1)^{m_1(1w)} \theta_k  \big(\theta_1G_{0w1^{s-1}0^{n-k-s+2}} +P_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n)\big) \nonumber\\
 	 & = \theta_1\big(G_{0w1^s0^{n-k-s+1}}   - (-1)^{m_1(w)}  \theta_k G_{0w1^{s-1}0^{n-k-s+2}}\big)	 \label{eq:detail1}\\
@@ -384,16 +392,13 @@ of length $k-2$. We have
 %	 & = \theta_1 G_{0\alpha} + P_\alpha(\theta_2, ,\theta_3 ,\ldots,\theta_n)  \nonumber
 \end{align}
 In \eqref{eq:IH1}, we have used the induction hypothesis of~\eqref{eq:1start} on both terms.
-In  \eqref{eq:detail1}, we group together the terms with $\theta_1$ in front, using the identity 
-$(-1)^{m_1(1w)} \theta_k \theta_1 = (-1)^{m_1(1w)+1} \theta_1 \theta_k  = (-1)^{m_1(w)} \theta_1 \theta_k $. 
+In  \eqref{eq:detail1}, we group together the terms with $\theta_1$ in front, using the identity
+$(-1)^{m_1(1w)} \theta_k \theta_1 = (-1)^{m_1(1w)+1} \theta_1 \theta_k  = (-1)^{m_1(w)} \theta_1 \theta_k $.
 The term with $\theta_1$ in \eqref{eq:detail1} is the definition of $G_{0\alpha}$.
 The expression inside the square bracket is a polynomial in $R_{n-1}$ that we take as the definition for $P_\alpha$.
 This shows by induction that \eqref{eq:1start}
 holds in all cases and concludes the  proof of the lemma.
 \end{proof}
-
-
-
 
 
 
@@ -424,12 +429,47 @@ paths are
 \end{example}
 
 The elements $G_\alpha$ are defined so that we could use them to
-identify a nice basis of the ideal $I_n$.
+identify a nice basis of the ideal $I_n$.  Our first result establishes
+that the $G_\alpha$ such that $\alpha$ crosses the diagonal
+are in the ideal.  The slightly more difficult step is to show
+that these elements also span the ideal.
 
-\begin{theorem}
+\begin{prop}
 If $\alpha$ crosses the diagonal, then $G_\alpha \in I_n$.
-\end{theorem}
+\end{prop}
 
+\begin{proof}
+A sequence $\alpha \in \{ 0, 1\}^n$ is either of the form
+$\alpha = 1^s0^{n-s}$ for some $s > 0$ or
+$\alpha = u01^s0^{n-s-k}$ for some $s>0$ and some $u \in \{0,1\}^{k-1}$.
+
+In the first case, $\alpha$ crosses the diagonal on the first step and
+by Equation \eqref{eq:Gdef1}, $G_{1^s0^{n-s}} = F_{1^s}$
+is in the ideal $I_n$.
+
+Now the other case is established by
+induction on the position of the last $1$ in $\alpha$.
+We assume that
+$\alpha = u01^s0^{n-s-k}$ and, by Equation \eqref{eq:Gdef2},
+$G_\alpha$ is in $I_n$ if both
+$G_{u1^s0^{n-k-s+1}}$ and $G_{u1^{s-1}0^{n-k-s+2}}$
+are elements of $I_n$.
+
+Assume that $u01^s0^{n-s-k}$
+crosses the diagonal for the first time at position $r$.
+If $r<k$, then
+$u1^s0^{n-k-s+1}$ and $u1^{s-1}0^{n-k-s+2}$
+both cross the diagonal also at position $r$.
+Since $\alpha_k=0$, $\alpha$ does not cross the diagonal for the first
+time at $r=k$, so the other possibility is that is $r>k$.
+In this case $u01^{r-k}$ with $r-k \leq s$ crosses the diagonal for the first time
+and therefore so does $u1^{r-k-1}$ and so do both
+$u1^s0^{n-k-s+1}$ and $u1^{s-1}0^{n-k-s+2}$.
+By our inductive hypothesis this implies $G_\alpha \in I_n$.
+
+Therefore by induction, $\alpha$ crosses the diagonal implies $G_\alpha \in I_n$
+for all $\alpha \in \{0,1\}^n$.
+\end{proof}
 
 \begin{thebibliography}{999}
 \bibitem{AB} J. C. Aval, N. Bergeron,
@@ -442,7 +482,7 @@ Proc. of the Am. Math. Soc., 2003, 131(4), pp. 1053--1062.
 Adv. in Math., 2004, Jan 30, 181 (2), pp. 353--367.
 \href{https://doi.org/10.1016/S0001-8708(03)00068-9}{10.1016/S0001-8708(03)00068-9}.
 
-\bibitem{CLO} D. Cox, J. Little, D. OShea,
+\bibitem{CLO} D. Cox, J. Little, D. O'Shea,
 \textit{Ideals, varieties, and algorithms: an introduction to computational
 algebraic geometry and commutative algebra}.
 Springer Science \& Business Media; 2013 Mar 9.
