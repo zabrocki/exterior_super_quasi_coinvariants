@@ -434,7 +434,7 @@ that the $G_\alpha$ such that $\alpha$ crosses the diagonal
 are in the ideal.  The slightly more difficult step is to show
 that these elements also span the ideal.
 
-\begin{prop}
+\begin{prop}\label{prop:crossimpliescontains}
 If $\alpha$ crosses the diagonal, then $G_\alpha \in I_n$.
 \end{prop}
 
@@ -470,6 +470,40 @@ By our inductive hypothesis this implies $G_\alpha \in I_n$.
 Therefore by induction, $\alpha$ crosses the diagonal implies $G_\alpha \in I_n$
 for all $\alpha \in \{0,1\}^n$.
 \end{proof}
+
+\vskip 1in
+\mike{this is roughly where the detail in my notes ends
+but I have a rough outline for a few more details.}
+We will next show that the ideal lies in the span of the $G_\alpha$ such
+that $\alpha$ crosses the diagonal.  Let $u \in \{ 0, 1\}^{k-1}$ and $s>0$, then we
+note that by rearranging the terms in Equation \eqref{eq:Gdef2}
+that if $n-k-s-1 \geq 0$ that
+\[
+\theta_k G_{u1^{s-1}0^{n-k-s+2}}
+= (-1)^{m_1(u)}( G_{u1^{s}0^{n-k-s+1}} - G_{u01^{s}0^{n-k-s}} )~.
+\]
+Moreover we have that if $u1^s0^{n-k-s+2}$ crosses the diagonal then both
+$u1^{s}$ and $u01^{s}$ cross the diagonal.
+
+\begin{lemma}
+Let $\alpha \in \{0,1\}^n$ be a sequence whose path crosses the diagonal.  Then
+\[
+\theta^\alpha \equiv \sum_\gamma c_\gamma \theta^\gamma \mod I_n
+\]
+where the sum on the right is over sequences $\gamma \in \{0,1\}^n$
+such that $\gamma$ does not cross the diagonal and
+$c_\gamma$ are coefficients in $\mathbb{Z}$.
+\end{lemma}
+
+\begin{proof}
+Assume that $\alpha \in \{0,1\}^n$ crosses the diagonal, then by Proposition
+\ref{prop:crossimpliescontains} we have that $G_\alpha \in I_n$.
+By Proposition \ref{prop:leading} we also know that
+\[
+\theta^\alpha = G_\alpha - \sum_{\substack{\gamma>\alpha\\|\gamma|=|\alpha|}} c_\gamma \theta^\gamma~.
+\]
+\end{proof}
+\vskip 1in
 
 \begin{thebibliography}{999}
 \bibitem{AB} J. C. Aval, N. Bergeron,
