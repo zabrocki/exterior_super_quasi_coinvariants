@@ -238,7 +238,7 @@ EQC_n \simeq EQH_n~.
 \]\mike{is there a collection of Temperley-Lieb operators for which these spaces are modules and isomorphic?}
 \end{prop}
 \nantel{We can find a basis of EQC that is closed under Hivert action (without the quotient). Since I don't know anymore what is EQH
-I can't tell}
+I can't tell, In fact, since the ideal is not invariant, I suspect that EQH is not a module... but this is not certain since the scalar product is not nesc. invariant}
 
 \section{A linear basis of the ring}
 
@@ -308,7 +308,7 @@ was adapted so that this lemma holds.  It follows that
 the set $\{ G_\alpha \}_{\alpha \in \{0,1\}^n}$ is a basis
 for $R_n$.
 
-The argument for the proposition is elementary
+The argument for the proposition is elementary (chasing the leading term in \eqref{eq:0start} and \eqref{eq:0start})
 and so we do not include it, however the proof of the
 following result comes from careful analysis of the
 terms arising the recursive definition of the $G_\alpha$.
@@ -406,9 +406,9 @@ holds in all cases and concludes the  proof of the lemma.
 
 To each sequence $\alpha \in \{0, 1\}^n$, we associate a path starting at the origin
 and extending into the first quadrant of the $x,y$-plane.  The $i^{th}$ step of this
-path will be in the $(1,0)$-direction if $a_i =1$ and it will be in the $(0,1)$-direction
+path will be a unit in the $(1,0)$-direction if $a_i =1$ and it will be a unit in the $(0,1)$-direction
 if $a_i = 0$.  We say that the sequence $\alpha$ \defn{crosses the diagonal} if
-there is a point on the path which lies at $(a,a)$ and the next step is in the $(0,1)$
+there is a point on the path which lies at $(a,a)$ and the next step is in the $(1,0)$
 direction.  Otherwise we say that $\alpha$ \defn{stays above the diagonal}.  Note that
 $\alpha$ stays above the diagonal if $\sum_{i=1}^r a_i \leq \lfloor r/2 \rfloor$ for all $1 \leq r \leq n$
 and it crosses the diagonal otherwise.
@@ -505,7 +505,9 @@ By Proposition \ref{prop:leading} we also know that
 \end{proof}
 \vskip 1in
 
+\nantel{we need the reference of Lapointe et al. for showing that Anti-QSym is an algebra.}
 \begin{thebibliography}{999}
+
 \bibitem{AB} J. C. Aval, N. Bergeron,
 \textit{Catalan paths and quasi-symmetric functions}.
 Proc. of the Am. Math. Soc., 2003, 131(4), pp. 1053--1062.
