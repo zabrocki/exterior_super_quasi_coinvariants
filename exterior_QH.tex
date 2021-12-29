@@ -483,20 +483,69 @@ The set $\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$ is a $
 The proof of this theorem will require a few auxiliary results and will be done in Section~\ref{ss:proofmainthm}.
 First we need to establish a spanning set for the quotient $EQC_n$.
 
-\begin{lemma}
- The set $B_n=\big\{ \theta^\beta : \beta \text{ \it stays above the diagonal}\big\}$ $\mathbb Q$--span the quotient $R_n\big/ I_n$.
+
+\subsection{Some auxiliary results} This subsection is dedicated to the technical results we will need.
+
+\begin{lemma}\label{lem:spanofquotient}
+ The set $B_n=\big\{ \theta^\beta : \beta \text{ \it stays above the diagonal}\big\}$ $\mathbb Q$--spans the quotient $R_n\big/ I_n$.
 \end{lemma}
 
 \begin{proof}
 Order the monomial lexicographically. Let  $\theta^\gamma$ be the smallest monomial that is not in the $\mathbb Q$--span of $B_n$
-(modulo  $I_n$). We must have  that $\gamma$ crosses the  diagonal, since otherwise $\theta^\gamma\in  B_n$.
+(modulo  $I_n$). We must have  that $\gamma$ crosses the  diagonal, since otherwise $\theta^\gamma\in  B_n$. Therefore, Proposition~\ref{prop:crossimpliescontains}
+tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:leading} say that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence, modulo $I_n$, we have
+ $$ \theta^\gamma \equiv \theta^\gamma - G_\gamma = - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
+ The right hand side is a linear combination of monomials strictly smaller than $\theta^\gamma$. By choice of $\theta^\gamma$, all such monomial are in the $\mathbb Q$--span of $B_n$.
+ Therefore $\theta^\gamma$ is also in the $\mathbb Q$--span of $B_n$, a contradiction. We must conclude there are no such $\theta^\gamma$ and all monomials are in the $\mathbb Q$--span of $B_n$ modulo the ideal $I_n$.
 \end{proof}
 
+\begin{lemma}\label{lem:spanofpolynomials}
+ The set ${\mathbf B}_n=\big\{ \theta^\beta F_{1^s} : \theta^\beta \in B_n,\  s\ge 0\big\}$ $\mathbb Q$--spans $R_n$.
+\end{lemma}
+
+\begin{proof} 
+We show that any monomial $\theta^\gamma$ is in the span of the set ${\mathbf B}_n$.
+We proceed by induction of the degree $d=m_1(\gamma)$. If $d=0$, then $\theta^\gamma = 1 = 1\cdot F_{1^0} \in {\mathbf B}_n$.
+if $d>0$, we use Lemma~\ref{lem:spanofquotient} to write $\theta^\gamma$ as
+$$ \theta^\gamma \equiv \sum_{\theta^\beta\in B_n}  c_\beta \theta^\beta\qquad (\text{modulo $I_n$})$$
+The difference of both side is in the ideal $I_n$ and we can write
+\begin{equation}\label{eq:expansioninB}
+ \theta^\gamma = \sum_{\theta^\beta\in B_n}  c_\beta \theta^\beta + \sum_{\delta, r>0} d_{\delta,r} \theta^\delta F_{1^r}
+ \end{equation}
+This must be an homogenious expresssion of degree $d$, and since $r>0$, we must have that $m_1(\delta)<d$. By induction hypothesis,
+$\theta^\delta$ is in the $\mathbb Q$--span of ${\mathbf B}_n$ and we have
+ $$\theta^\delta F_{1^r} = \sum_{\theta^\beta\in B_n, s\ge 0} b_{\beta,s} \theta^\beta F_{1^s} F_{1^r} =  \sum_{\theta^\beta\in B_n, s\ge 0} ab_{\beta,s} \theta^\beta F_{1^{s+r}} \,.$$
+The equality $F_{1^s} F_{1^r}  = a F_{1^{s+r}}$ comes from the fact that quasisymmetric function in $R_n$ form an algebra. It is the pure exterior component of the super-quasysimmetric 
+algebra defined in \cite{FLP}. this shows that the right hand side of~\eqref{eq:expansioninB} is in the $\mathbb Q$--span of ${\mathbf B}_n$ which conclude the proof.
+\end{proof}
+
+
+\begin{lemma}\label{lem:automorphism}
+ The algebra morphism $\phi\colon R_n\to R_n$ define by $\phi(\theta_i)=\theta_{n-i+1}$ is an automorphism of quasisymmetric functions. More specificaly
+\begin{equation}\label{eq:autoquasi}
+\phi(F_{1^s})=(-1)^{s \choose 2} F_{1^s}\,.
+\end{equation}
+\end{lemma}
+
+\begin{proof} 
+For any monomial $\theta_A = \theta_{a_1}\theta_{a_2}\cdots \theta_{a_s}$ such that $a_1<a_2<\cdots a_s$, we have
+  $$ \phi(\theta_A) =  \theta_{n-a_1+1}\theta_{n-a_2+1}\cdots \theta_{n-a_s+1} = (-1)^{s \choose 2}  \theta_{n-a_s+1}\cdots\theta_{n-a_{2}+1} \theta_{n-a_2+1}  = (-1)^{s \choose 2} \theta_{A'}$$
+  where $A'=\big\{ n-a_s+1< n-a_{2}+1<n-a_2+1\big\}$. The bijection $A\leftrightarrow A'$ induce a bijection on all set of cardinality $s$, thus
+  $$  \phi(F_{1^s})= \sum_{|A|=s} \phi(\theta_A) =  (-1)^{s \choose 2} \sum_{|A'|=s} \theta_{A'}=(-1)^{s \choose 2} F_{1^s}\,.$$
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%% 
 \subsection{Proof of Theorem~\ref{thm:basisofideal}}\label{ss:proofmainthm}
 From Proposition~\ref{prop:crossimpliescontains} we know that
 $$\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}\subseteq I_n\,.$$
 Furthermore, using Proposition~\ref{prop:leading}, it is linearly independent. We only need to show that
 it $\mathbb Q$--spans the ideal.
+
+[...]\nantel{detailes to be filled in later}
+
+
+\hfill$\square$
 
 \vskip 1in
 
@@ -531,7 +580,6 @@ By Proposition \ref{prop:leading} we also know that
 \end{proof}
 \vskip 1in
 
-\nantel{we need the reference of Lapointe et al. for showing that Anti-QSym is an algebra.}
 \begin{thebibliography}{999}
 
 \bibitem{AB} J. C. Aval, N. Bergeron,
@@ -541,13 +589,20 @@ Proc. of the Am. Math. Soc., 2003, 131(4), pp. 1053--1062.
 
 \bibitem{ABB} J. C. Aval, F. Bergeron, N. Bergeron,
 \textit{Ideals of quasi-symmetric functions and super-covariant polynomials for $S_n$}.
-Adv. in Math., 2004, Jan 30, 181 (2), pp. 353--367.
+Adv. in Math., 2004, 181 (2), pp. 353--367.
 \href{https://doi.org/10.1016/S0001-8708(03)00068-9}{10.1016/S0001-8708(03)00068-9}.
 
 \bibitem{CLO} D. Cox, J. Little, D. O'Shea,
 \textit{Ideals, varieties, and algorithms: an introduction to computational
 algebraic geometry and commutative algebra}.
 Springer Science \& Business Media; 2013 Mar 9.
+
+\bibitem{FLP}
+Susanna Fishel, Luc Lapointe and Mar\'{\i}a Elena Pinto,
+\textit{Hopf algebra structure of symmetric and quasisymmetric
+              functions in superspace}.
+ {J. Combin. Theory Ser. A}, 2019, 166, pp.  {144--170}.
+\href{https://doi-org/10.1016/j.jcta.2019.02.016}{10.1016/j.jcta.2019.02.016}.
 
 \bibitem{H} F. Hivert, 
 \textit{Hecke algebras, difference operators, and quasi-symmetric
