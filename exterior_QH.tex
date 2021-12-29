@@ -294,6 +294,8 @@ G_{001100} &= G_{011000} - \theta_2 G_{010000} = (G_{110000} - \theta_1 G_{10000
 Order the monomials of $R_n$ so that we say $\theta_A < \theta_B$ if
 $\alpha(A)$ is smaller than $\alpha(B)$ in lexicographic order.
 An important property of these elements is the following statement.
+\nantel{This bugs me, if we assume that $0<1$, lexicographic order say that $\alpha>\beta$ (opposite to what Mike say). 
+In fact  the "leading" term is the greatest lex exponant.}
 
 \begin{prop}\label{prop:leading}
 The leading term of $G_\alpha$ is $\theta^\alpha$.
@@ -471,11 +473,35 @@ Therefore by induction, $\alpha$ crosses the diagonal implies $G_\alpha \in I_n$
 for all $\alpha \in \{0,1\}^n$.
 \end{proof}
 
+We will  show that the ideal lies in the span of the $G_\alpha$ such
+that $\alpha$ crosses the diagonal therefore establishing our main theorem.
+
+\begin{theorem}\label{thm:basisofideal} 
+The set $\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$ is a $\mathbb Q$--linear basis of the ideal $I_n$
+\end{theorem}
+
+The proof of this theorem will require a few auxiliary results and will be done in Section~\ref{ss:proofmainthm}.
+First we need to establish a spanning set for the quotient $EQC_n$.
+
+\begin{lemma}
+ The set $B_n=\big\{ \theta^\beta : \beta \text{ \it stays above the diagonal}\big\}$ $\mathbb Q$--span the quotient $R_n\big/ I_n$.
+\end{lemma}
+
+\begin{proof}
+Order the monomial lexicographically. Let  $\theta^\gamma$ be the smallest monomial that is not in the $\mathbb Q$--span of $B_n$
+(modulo  $I_n$). We must have  that $\gamma$ crosses the  diagonal, since otherwise $\theta^\gamma\in  B_n$.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:basisofideal}}\label{ss:proofmainthm}
+From Proposition~\ref{prop:crossimpliescontains} we know that
+$$\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}\subseteq I_n\,.$$
+Furthermore, using Proposition~\ref{prop:leading}, it is linearly independent. We only need to show that
+it $\mathbb Q$--spans the ideal.
+
 \vskip 1in
-\mike{this is roughly where the detail in my notes ends
-but I have a rough outline for a few more details.}
-We will next show that the ideal lies in the span of the $G_\alpha$ such
-that $\alpha$ crosses the diagonal.  Let $u \in \{ 0, 1\}^{k-1}$ and $s>0$, then we
+
+\nantel{we do not need what follow yet}
+Let $u \in \{ 0, 1\}^{k-1}$ and $s>0$, then we
 note that by rearranging the terms in Equation \eqref{eq:Gdef2}
 that if $n-k-s-1 \geq 0$ that
 \[
