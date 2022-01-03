@@ -559,22 +559,39 @@ I_n = {\mathbb Q}\text{\rm -span}\big\{ \theta^\alpha F_{1^r} : \theta^\alpha \i
 \end{lemma}
 
 \begin{proof} Using Lemma~\ref{lem:spanofpolynomials} we have
-
+\begin{align*}
+ I_n &=  {\mathbb Q}\text{\rm -span}\big\{  \theta^\beta F_{1^s} F_{1^{r'}} :  \theta^\beta \in B_n,\  s\ge 0,\  r'>0\big\}\\
+       &=  {\mathbb Q}\text{\rm -span}\big\{  \theta^\beta F_{1^{r}} :  \theta^\beta \in B_n,\  r=s+r'>0\big\}\,.
+ \end{align*}
+For $\theta^\beta \in B_n$,  we have $\phi\big(\theta^\beta F_{1^r}\big)=\phi(\theta^\beta) \phi\big(F_{1^r}\big) = \pm \theta^\alpha F_{1^r}$ for $\theta^\alpha\in A_n$, and the lemma holds.
 \end{proof}
 
 
 
 %%%%%%%%%%%%%%%%% 
 \subsection{Proof of Theorem~\ref{thm:basisofideal}}\label{ss:proofmainthm}
+Let $X_n={\mathbb Q}\text{-span}\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$.
 From Proposition~\ref{prop:crossimpliescontains} we know that
-$$\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}\subseteq I_n\,.$$
-Furthermore, using Proposition~\ref{prop:leading}, it is linearly independent. 
-
-We only need to show that
-it $\mathbb Q$--spans the ideal. Usin Lemma~\ref{lem:spanofpolynomials} we have that
-\begin{equation}\label{eq:idealpres}
- I_n = {\mathbb Q}\text{-span} 
+$$X_n \subseteq I_n\,.$$
+Furthermore, using Proposition~\ref{prop:leading}, we know that $\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$ is linearly independent. 
+We must now show that $I_n\subseteq X_n$. Using Lemma~\ref{lem:idealpres} it is sufficient to show that $\theta^\alpha F_{1^r}\in X_n$ for any $ \theta^\alpha \in A_n$ and
+$r>0$. If $r+m_1(\alpha)>\frac{n}{2}$, then Lemma~\ref{lem:degree} gives us the desired results. We can therefore assume that $0<r\le \frac{n}{2}$  and $\theta^\alpha \in A_n$ such that $m_1(\alpha)\le \frac{n}{2}-r$. We have
+\begin{equation}\label{eq:thetaF}
+	\theta^\alpha F_{1^r} = \pm \theta_n^{\alpha_n} \big(\cdots  \theta_2^{\alpha_2} (\theta_1^{\alpha_1}F_{1^r})\big)\,.
 \end{equation}
+The reversal of order in Equation~\eqref{eq:thetaF} and the use of $A_n$ instead of $B_n$, will be crucial later on in the proof.
+The idea is to start with $F_{1^r}\in X_n$ since $F_{1^r}=G_{1^r0^{n-r}}$ and then show that the succession of multiplication by $\theta_i^{\alpha_i}$ in the
+order of Equation~\ref{eq:thetaF} will preserve the property of being in $X_n$. For this let  $u \in \{ 0, 1\}^{k-1}$ and $s>0$, then we
+note that by rearranging the terms in Equation \eqref{eq:Gdef2}
+that if $n-k-s-1 \geq 0$ we have
+\begin{equation}\label{eq:thetaG}
+    \theta_k G_{u1^{s-1}0^{n-k-s+2}} = (-1)^{m_1(u)}( G_{u1^{s}0^{n-k-s+1}} - G_{u01^{s}0^{n-k-s}} )\,.
+\end{equation}
+Moreover if $u1^s0^{n-k-s+2}$ crosses the diagonal then both
+$u1^{s}$ and $u01^{s}$ cross the diagonal. This ensure  that every times we can use Equation~\ref{eq:thetaG} on an element on $X_n$, we remain in $X_n$.
+Let us emphasis the requirement for Equation~\ref{eq:thetaG}. 
+
+
 
 
 [...]\nantel{More details to be filled in later}
@@ -582,37 +599,6 @@ it $\mathbb Q$--spans the ideal. Usin Lemma~\ref{lem:spanofpolynomials} we have 
 
 \hfill$\square$
 
-\vskip 1in
-
-\nantel{we do not need what follow yet}
-Let $u \in \{ 0, 1\}^{k-1}$ and $s>0$, then we
-note that by rearranging the terms in Equation \eqref{eq:Gdef2}
-that if $n-k-s-1 \geq 0$ that
-\[
-\theta_k G_{u1^{s-1}0^{n-k-s+2}}
-= (-1)^{m_1(u)}( G_{u1^{s}0^{n-k-s+1}} - G_{u01^{s}0^{n-k-s}} )~.
-\]
-Moreover we have that if $u1^s0^{n-k-s+2}$ crosses the diagonal then both
-$u1^{s}$ and $u01^{s}$ cross the diagonal.
-
-\begin{lemma}
-Let $\alpha \in \{0,1\}^n$ be a sequence whose path crosses the diagonal.  Then
-\[
-\theta^\alpha \equiv \sum_\gamma c_\gamma \theta^\gamma \mod I_n
-\]
-where the sum on the right is over sequences $\gamma \in \{0,1\}^n$
-such that $\gamma$ does not cross the diagonal and
-$c_\gamma$ are coefficients in $\mathbb{Z}$.
-\end{lemma}
-
-\begin{proof}
-Assume that $\alpha \in \{0,1\}^n$ crosses the diagonal, then by Proposition
-\ref{prop:crossimpliescontains} we have that $G_\alpha \in I_n$.
-By Proposition \ref{prop:leading} we also know that
-\[
-\theta^\alpha = G_\alpha - \sum_{\substack{\gamma>\alpha\\|\gamma|=|\alpha|}} c_\gamma \theta^\gamma~.
-\]
-\end{proof}
 \vskip 1in
 
 \begin{thebibliography}{999}
