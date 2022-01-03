@@ -583,14 +583,19 @@ The reversal of order in Equation~\eqref{eq:thetaF} and the use of $A_n$ instead
 The idea is to start with $F_{1^r}\in X_n$ since $F_{1^r}=G_{1^r0^{n-r}}$ and then show that the succession of multiplication by $\theta_i^{\alpha_i}$ in the
 order of Equation~\ref{eq:thetaF} will preserve the property of being in $X_n$. For this let  $u \in \{ 0, 1\}^{k-1}$ and $s>0$, then we
 note that by rearranging the terms in Equation \eqref{eq:Gdef2}
-that if $n-k-s-1 \geq 0$ we have
+that if $n-k-s \geq 0$ we have
 \begin{equation}\label{eq:thetaG}
     \theta_k G_{u1^{s-1}0^{n-k-s+2}} = (-1)^{m_1(u)}( G_{u1^{s}0^{n-k-s+1}} - G_{u01^{s}0^{n-k-s}} )\,.
 \end{equation}
-Moreover if $u1^s0^{n-k-s+2}$ crosses the diagonal then both
-$u1^{s}$ and $u01^{s}$ cross the diagonal. This ensure  that every times we can use Equation~\ref{eq:thetaG} on an element on $X_n$, we remain in $X_n$.
-Let us emphasis the requirement for Equation~\ref{eq:thetaG}. 
-
+Moreover if $u1^{s-1}0^{n-k-s+2}$ crosses the diagonal then both
+$u1^{s}$ and $u01^{s}$ cross the diagonal. This ensure  that every times we can use Equation~\eqref{eq:thetaG} on an element of $X_n$, we remain in $X_n$.
+Let us emphasis the requirement we need that allows us to use Equation~\eqref{eq:thetaG}. Given $\theta_k$ and $G_\gamma$ where $\gamma$ crosses the diagonal; if
+\begin{enumerate}
+	\item[(a)] $\gamma_{k}\gamma_{k+1}\cdots\gamma_n = 1^{s}0^{n-k-s+1}$ for some $s\ge 0$,
+	\item[(b)] $n-k-s-1\geq 0$,
+\end{enumerate}
+then $\theta_kG_\gamma\in X_n$. Note that we have substituted $s\leftarrow s+1$ in Equation~\eqref{eq:thetaG} to get the two conditions (a) and (b).
+The order we use in Equation~\eqref{eq:thetaF} will insure that (a) is satisfied as long as (b) is satisfied. We thus need to show that (b) is satisfied throughout.
 
 
 
