@@ -552,9 +552,9 @@ For any monomial $\theta_A = \theta_{a_1}\theta_{a_2}\cdots \theta_{a_s}$ such t
 \end{proof}
 
 \begin{lemma}\label{lem:idealpres}
-Let $A_n=\phi(B_n)$ for $B_n$ given in Lemma~\ref{lem:spanofquotient}.
+For $B_n$ given in Lemma~\ref{lem:spanofquotient}.
 \begin{equation}\label{eq:autoquasi}
-I_n = {\mathbb Q}\text{\rm -span}\big\{ \theta^\alpha F_{1^r} : \theta^\alpha \in A_n,\  r>0\big\}
+I_n = {\mathbb Q}\text{\rm -span}\big\{ \phi(\theta^\beta) F_{1^r} : \theta^\beta \in B_n,\  r>0\big\}
 \end{equation}
 \end{lemma}
 
@@ -563,7 +563,7 @@ I_n = {\mathbb Q}\text{\rm -span}\big\{ \theta^\alpha F_{1^r} : \theta^\alpha \i
  I_n &=  {\mathbb Q}\text{\rm -span}\big\{  \theta^\beta F_{1^s} F_{1^{r'}} :  \theta^\beta \in B_n,\  s\ge 0,\  r'>0\big\}\\
        &=  {\mathbb Q}\text{\rm -span}\big\{  \theta^\beta F_{1^{r}} :  \theta^\beta \in B_n,\  r=s+r'>0\big\}\,.
  \end{align*}
-For $\theta^\beta \in B_n$,  we have $\phi\big(\theta^\beta F_{1^r}\big)=\phi(\theta^\beta) \phi\big(F_{1^r}\big) = \pm \theta^\alpha F_{1^r}$ for $\theta^\alpha\in A_n$, and the lemma holds.
+We have $\phi\big(\theta^\beta F_{1^r}\big)=\phi(\theta^\beta) \phi\big(F_{1^r}\big) = \pm \phi(\theta^\beta) F_{1^r}$, and the lemma holds.
 \end{proof}
 
 
@@ -574,13 +574,13 @@ Let $X_n={\mathbb Q}\text{-span}\big\{ G_\alpha : \alpha \text{ \it crosses the 
 From Proposition~\ref{prop:crossimpliescontains} we know that
 $$X_n \subseteq I_n\,.$$
 Furthermore, using Proposition~\ref{prop:leading}, we know that $\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$ is linearly independent. 
-We must now show that $I_n\subseteq X_n$. Using Lemma~\ref{lem:idealpres} it is sufficient to show that $\theta^\alpha F_{1^r}\in X_n$ for any $ \theta^\alpha \in A_n$ and
-$r>0$. If $r+m_1(\alpha)>\frac{n}{2}$, then Lemma~\ref{lem:degree} gives us the desired results. We can therefore assume that $0<r\le \frac{n}{2}$  and $\theta^\alpha \in A_n$ such that $m_1(\alpha)\le \frac{n}{2}-r$. We have
+We must now show that $I_n\subseteq X_n$. Using Lemma~\ref{lem:idealpres} it is sufficient to show that $\phi(\theta^\beta) F_{1^r}\in X_n$ for any $ \theta^\beta \in B_n$ and
+$r>0$. If $r+m_1(\beta)>\frac{n}{2}$, then Lemma~\ref{lem:degree} gives us the desired results. We can therefore assume that $0<r\le \frac{n}{2}$  and $\theta^\beta \in B_n$ such that $m_1(\alpha)\le \frac{n}{2}-r$. We have
 \begin{equation}\label{eq:thetaF}
-	\theta^\alpha F_{1^r} = \pm \theta_n^{\alpha_n} \big(\cdots  \theta_2^{\alpha_2} (\theta_1^{\alpha_1}F_{1^r})\big)\,.
+	\phi(\theta^\beta) F_{1^r} =  \theta_n^{\beta_1} \big(\cdots  \theta_2^{\beta_{n-1}} (\theta_1^{\beta_n}F_{1^r})\big)\,.
 \end{equation}
-The reversal of order in Equation~\eqref{eq:thetaF} and the use of $A_n$ instead of $B_n$, will be crucial later on in the proof.
-The idea is to start with $F_{1^r}\in X_n$ since $F_{1^r}=G_{1^r0^{n-r}}$ and then show that the succession of multiplication by $\theta_i^{\alpha_i}$ in the
+The reversal of order in Equation~\eqref{eq:thetaF}, will be crucial in the proof.
+The idea is to start with $F_{1^r}\in X_n$ since $F_{1^r}=G_{1^r0^{n-r}}$ and then show that the succession of multiplication by $\theta_i^{\beta_{n-i+1}}$ in the
 order of Equation~\ref{eq:thetaF} will preserve the property of being in $X_n$. For this let  $u \in \{ 0, 1\}^{k-1}$ and $s>0$, then we
 note that by rearranging the terms in Equation \eqref{eq:Gdef2}
 that if $n-k-s \geq 0$ we have
@@ -592,7 +592,7 @@ $u1^{s}$ and $u01^{s}$ cross the diagonal. This ensure  that every times we can 
 Let us emphasis the requirement we need that allows us to use Equation~\eqref{eq:thetaG}. Given $\theta_k$ and $G_\gamma$ where $\gamma$ crosses the diagonal; if
 \begin{enumerate}
 	\item[(a)] $\gamma_{k}\gamma_{k+1}\cdots\gamma_n = 1^{s}0^{n-k-s+1}$ for some $s\ge 0$,
-	\item[(b)] $n-k-s-1\geq 0$,
+	\item[(b)] $k+s+1\le n$,
 \end{enumerate}
 then $\theta_kG_\gamma\in X_n$. Note that we have substituted $s\leftarrow s+1$ in Equation~\eqref{eq:thetaG} to get the two conditions (a) and (b).
 The order we use in Equation~\eqref{eq:thetaF} will insure that (a) is satisfied as long as (b) is satisfied. We thus need to show that (b) is satisfied throughout.
