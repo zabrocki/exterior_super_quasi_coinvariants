@@ -296,12 +296,15 @@ $\alpha(A)$ is smaller than $\alpha(B)$ in lexicographic order.
 An important property of these elements is the following statement.
 \nantel{This bugs me, if we assume that $0<1$, lexicographic order say that $\alpha>\beta$ (opposite to what Mike say). 
 In fact  the "leading" term is the greatest lex exponant.}
+\mike{I addressed this by changing 'leading' (which wasn't defined anyway), to largest lexicographic.
+I am open to changing this if you want to propose a different way of expressing this, but we should
+be careful that it doesn't introduce other errors}
 
-\begin{prop}\label{prop:leading}
-The leading term of $G_\alpha$ is $\theta^\alpha$.
+\begin{prop}\label{prop:largest}
+The largest lexicographic term in $G_\alpha$ is $\theta^\alpha$.
 \end{prop}
 
-The proof of Proposition \ref{prop:leading} follows by induction
+The proof of Proposition \ref{prop:largest} follows by induction
 on the length of $\alpha$ and
 from a lemma that is analogous to Lemma 3.3 of \cite{AB}.
 The recursion in this result is really the origin of the definition
@@ -310,7 +313,8 @@ was adapted so that this lemma holds.  It follows that
 the set $\{ G_\alpha \}_{\alpha \in \{0,1\}^n}$ is a basis
 for $R_n$.
 
-The argument for the proposition is elementary (chasing the leading term in \eqref{eq:0start} and \eqref{eq:0start})
+The argument for the proposition is elementary (chasing the largest lexicographic
+term in \eqref{eq:0start} and \eqref{eq:0start})
 and so we do not include it, however the proof of the
 following result comes from careful analysis of the
 terms arising the recursive definition of the $G_\alpha$.
@@ -352,7 +356,9 @@ The definition of $G_{01^s0^{n-s-1}}$  gives us
 \end{align*}
 
 To finish the  proof of Equation~\eqref{eq:0start} by induction,
-let us assume that $0\alpha\ne 01^s0^{n-s-1}$. Therefore $0\alpha=0w01^s0^{n-k-s}$ for some string $w$
+let us assume that $\alpha$ is not of the form
+$01^s0^{n-s-1}$ for some $s>0$.
+Instead we have $0\alpha=0w01^s0^{n-k-s}$ for some $s>0$ and some string $w$
 of length $k-2$.
 For $0\alpha=0w01^s0^{n-k-s}$, we have $n-k-s$ trailing zeros.
 Remark that for $0w1^s0^{n-k-s+1}$ and $0w1^{s-1}0^{n-k-s+2}$
@@ -362,15 +368,18 @@ equality~\eqref{eq:IH0} below.%%%%%%%
 \begin{align}
 	G&_{0w01^s0^{n-k-s}}= G_{0w1^s0^{n-k-s+1}} -  (-1)^{m_1(0w)} \theta_k G_{0w1^{s-1}0^{n-k-s+2}} \nonumber \\
 	 & = G_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n) - (-1)^{m_1(0w)} \theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n) \label{eq:IH0}\\
-	 & = \big[G_{w1^s0^{n-k-s+1}} -  (-1)^{m_1(w)} \theta_{k-1} G_{w1^{s-1}0^{n-k-s+2}}\big](\theta_2,\theta_3 ,\ldots,\theta_n)\label{eq:detail0}\\
-	 & = G_{w01^s0^{n-k-s+1}} (\theta_2,\theta_3 ,\ldots,\theta_n) = G_{\alpha} (\theta_2,\theta_3 ,\ldots,\theta_n)  \label{eq:final0} 
+	 & = \big[G_{w1^s0^{n-k-s+1}} - (-1)^{m_1(w)} \theta_{k-1} G_{w1^{s-1}0^{n-k-s+2}}\big](\theta_2,\theta_3 ,\ldots,\theta_n)\label{eq:detail0}\\
+	 & = G_{w01^s0^{n-k-s}} (\theta_2,\theta_3 ,\ldots,\theta_n)
+	   = G_{\alpha} (\theta_2,\theta_3 ,\ldots,\theta_n)  \label{eq:final0}
 \end{align}
 In~\eqref{eq:detail0} the expression inside the square bracket $[\cdots]$ is as polynomials in the variables $\theta_1,\ldots,\theta_{n-1}$ in $R_{n-1}$ (see Remark~\ref{rem:shift}).
 Hence, the variable $\theta_{k}$ from \eqref{eq:IH0} must
 be replaced by $\theta_{k-1}$ in \eqref{eq:detail0}.
 Also, $m_1(0w)=m_1(w)$. The expression we get is exactly the definition of
-$G_{w01^s0^{n-k-s+1}} \in R_{n-1}$ and Equation~\eqref{eq:final0} follows.
+$G_{w01^s0^{n-k-s}} \in R_{n-1}$ and Equation~\eqref{eq:final0} follows.
 This concludes the proof of \eqref{eq:0start}.
+\mike{please double check that $w01^s0^{n-k-s}$ in equation \eqref{eq:final0} is indeed correct.
+It was previously $w01^s0^{n-k-s+1}$}
 
 We next prove Equation \eqref{eq:1start} by induction.  The base case is if $1\alpha = 1^{s+1}0^{n-s-1}$,
 then using Equation \eqref{eq:relF} we have
@@ -412,8 +421,7 @@ path will be a unit in the $(1,0)$-direction if $a_i =1$ and it will be a unit i
 if $a_i = 0$.  We say that the sequence $\alpha$ \defn{crosses the diagonal} if
 there is a point on the path which lies at $(a,a)$ and the next step is in the $(1,0)$
 direction.  Otherwise we say that $\alpha$ \defn{stays above the diagonal}.  Note that
-$\alpha$ stays above the diagonal if $\sum_{i=1}^r a_i \leq \lfloor r/2 \rfloor$ 
-\nantel{do we really need the floor here? wouldn't it be true if we just say $\sum_{i=1}^r a_i \leq  \frac{r}{2} $}
+$\alpha$ stays above the diagonal if $\sum_{i=1}^r a_i \leq r/2$
 for all $1 \leq r \leq n$
 and it crosses the diagonal otherwise.
 
@@ -482,11 +490,13 @@ that $\alpha$ crosses the diagonal therefore establishing our main theorem.
 The set $\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$ is a $\mathbb Q$--linear basis of the ideal $I_n$
 \end{theorem}
 
-The proof of this theorem will require a few auxiliary results and will be done in Section~\ref{ss:proofmainthm}.
-First we need to establish a spanning set for the quotient $EQC_n$.
+The proof of this theorem will require a few auxiliary results and will be explained
+in Section~\ref{ss:proofmainthm}.
+First, we need to establish a spanning set for the quotient $EQC_n$.
 
 
-\subsection{Some auxiliary results} This subsection is dedicated to the technical results we will need.
+\subsection{Some auxiliary results} This subsection is dedicated to the technical results we will need
+to establish \ref{thm:basisofideal}.
 
 \begin{lemma}\label{lem:spanofquotient}
  The set $B_n=\big\{ \theta^\beta : \beta \text{ \it stays above the diagonal}\big\}$ $\mathbb Q$--spans the quotient $R_n\big/ I_n$.
@@ -495,7 +505,7 @@ First we need to establish a spanning set for the quotient $EQC_n$.
 \begin{proof}
 Order the monomial lexicographically. Let  $\theta^\gamma$ be the smallest monomial that is not in the $\mathbb Q$--span of $B_n$
 (modulo  $I_n$). We must have  that $\gamma$ crosses the  diagonal, since otherwise $\theta^\gamma\in  B_n$. Therefore, Proposition~\ref{prop:crossimpliescontains}
-tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:leading} say that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence, modulo $I_n$, we have
+tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:largest} say that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence, modulo $I_n$, we have
  $$ \theta^\gamma \equiv \theta^\gamma - G_\gamma = - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
  The right hand side is a linear combination of monomials strictly smaller than $\theta^\gamma$. By choice of $\theta^\gamma$, all such monomial are in the $\mathbb Q$--span of $B_n$.
  Therefore $\theta^\gamma$ is also in the $\mathbb Q$--span of $B_n$, a contradiction. We must conclude there are no such $\theta^\gamma$ and all monomials are in the $\mathbb Q$--span of $B_n$ modulo the ideal $I_n$.
@@ -532,7 +542,7 @@ algebra defined in \cite{FLP}. this shows that the right hand side of~\eqref{eq:
 Order the monomial of degree $>\frac{n}{2}$ lexicographically. 
 Let  $\theta^\gamma$ be the smallest such monomial that is not in  $\mathbb Q$-span $\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$.
 We have  that $\gamma$ crosses the  diagonal somewhere, since $m_1(\gamma)>\frac{n}{2}$.
-Proposition~\ref{prop:leading} say that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence
+Proposition~\ref{prop:largest} say that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence
  $$ \theta^\gamma = G_\gamma  - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
  The right hand side is a linear combination of monomials strictly smaller than $\theta^\gamma$. By choice of $\theta^\gamma$, all such monomial are in 
  $\mathbb Q$-span $\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$. 
@@ -575,7 +585,8 @@ We have $\phi\big(\theta^\beta F_{1^r}\big)=\phi(\theta^\beta) \phi\big(F_{1^r}\
 Let $X_n={\mathbb Q}\text{-span}\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$.
 From Proposition~\ref{prop:crossimpliescontains} we know that
 $$X_n \subseteq I_n\,.$$
-Furthermore, using Proposition~\ref{prop:leading}, we know that $\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$ is linearly independent. 
+Furthermore, using Proposition~\ref{prop:largest}, we know that
+$\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$ is linearly independent.
 We must now show that $I_n\subseteq X_n$. Using Lemma~\ref{lem:idealpres} it is sufficient to show that $\phi(\theta^\beta) F_{1^r}\in X_n$ for any $ \theta^\beta \in B_n$ and
 $r>0$. If $r+m_1(\beta)>\frac{n}{2}$, then Lemma~\ref{lem:degree} gives us the desired results. We can therefore assume that $0<r\le \lfloor\frac{n}{2}\rfloor$  and $\theta^\beta \in B_n$ such that $m=m_1(\beta)\le \lfloor\frac{n}{2}\rfloor-r$. We have
 \begin{equation}\label{eq:thetaF}
