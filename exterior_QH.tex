@@ -506,8 +506,9 @@ to establish \ref{thm:basisofideal}.
 Order the monomial lexicographically. Let  $\theta^\gamma$ be the smallest monomial that is not in the $\mathbb Q$--span of $B_n$
 (modulo  $I_n$). We must have  that $\gamma$ crosses the  diagonal, since otherwise $\theta^\gamma\in  B_n$. Therefore, Proposition~\ref{prop:crossimpliescontains}
 tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:largest} say that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence, modulo $I_n$, we have
- $$ \theta^\gamma \equiv \theta^\gamma - G_\gamma = - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
- The right hand side is a linear combination of monomials strictly smaller than $\theta^\gamma$. By choice of $\theta^\gamma$, all such monomial are in the $\mathbb Q$--span of $B_n$.
+$$ \theta^\gamma \equiv \theta^\gamma - G_\gamma = - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
+The right hand side is a linear combination of monomials strictly smaller than $\theta^\gamma$.
+By the choice of $\theta^\gamma$, all such monomials are in the $\mathbb Q$--span of $B_n$.
  Therefore $\theta^\gamma$ is also in the $\mathbb Q$--span of $B_n$, a contradiction. We must conclude there are no such $\theta^\gamma$ and all monomials are in the $\mathbb Q$--span of $B_n$ modulo the ideal $I_n$.
 \end{proof}
 
@@ -517,36 +518,45 @@ tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:largest} say that $G_\g
 
 \begin{proof} 
 We show that any monomial $\theta^\gamma$ is in the span of the set ${\mathbf B}_n$.
-We proceed by induction of the degree $d=m_1(\gamma)$. If $d=0$, then $\theta^\gamma = 1 = 1\cdot F_{1^0} \in {\mathbf B}_n$.
-if $d>0$, we use Lemma~\ref{lem:spanofquotient} to write $\theta^\gamma$ as
+We proceed by induction on the degree $d=m_1(\gamma)$. If $d=0$, then $\theta^\gamma = 1 = 1\cdot F_{1^0} \in {\mathbf B}_n$.
+If $d>0$, we use Lemma~\ref{lem:spanofquotient} to write $\theta^\gamma$ as
 $$ \theta^\gamma \equiv \sum_{\theta^\beta\in B_n}  c_\beta \theta^\beta\qquad (\text{modulo $I_n$})$$
-The difference of both side is in the ideal $I_n$ and we can write
+The difference of both sides is in the ideal $I_n$ and we can write
 \begin{equation}\label{eq:expansioninB}
- \theta^\gamma = \sum_{\theta^\beta\in B_n}  c_\beta \theta^\beta + \sum_{\delta, r>0} d_{\delta,r} \theta^\delta F_{1^r}
- \end{equation}
-This must be an homogenious expresssion of degree $d$, and since $r>0$, we must have that $m_1(\delta)<d$. By induction hypothesis,
+\theta^\gamma = \sum_{\theta^\beta\in B_n}  c_\beta \theta^\beta
++ \sum_{\delta, r>0} d_{\delta,r} \theta^\delta F_{1^r}
+\end{equation}
+for some coefficients $b_{\delta,r}$.
+This must be a homogeneous expression of degree $d$, hence $m_1(\beta) = m_1(\delta) + r = d$.
+Since $r>0$, we must have that $m_1(\delta)<d$. By the induction hypothesis,
 $\theta^\delta$ is in the $\mathbb Q$--span of ${\mathbf B}_n$ and we have
- $$\theta^\delta F_{1^r} = \sum_{\theta^\beta\in B_n, s\ge 0} b_{\beta,s} \theta^\beta F_{1^s} F_{1^r} =  \sum_{\theta^\beta\in B_n, s\ge 0} ab_{\beta,s} \theta^\beta F_{1^{s+r}} \,.$$
-The equality $F_{1^s} F_{1^r}  = a F_{1^{s+r}}$ comes from the fact that quasisymmetric function in $R_n$ form an algebra. It is the pure exterior component of the super-quasysimmetric 
-algebra defined in \cite{FLP}. this shows that the right hand side of~\eqref{eq:expansioninB} is in the $\mathbb Q$--span of ${\mathbf B}_n$ which conclude the proof.
+ $$\theta^\delta F_{1^r} = \sum_{\theta^\beta\in B_n, s\ge 0} b_{\beta,s} \theta^\beta F_{1^s} F_{1^r} =  \sum_{\theta^\beta\in B_n, s\ge 0} a b_{\beta,s} \theta^\beta F_{1^{s+r}} \,.$$
+The equality $F_{1^s} F_{1^r}  = a F_{1^{s+r}}$ comes from the fact that
+quasisymmetric functions in $R_n$ forms an algebra.\mike{this should go in a remark in the section
+where quasisymmetric functions are introduced (also to give some context to these elements)}
+It is the pure exterior component of the super-quasisysimmetric 
+algebra defined in \cite{FLP}.
+This shows that the right hand side of~\eqref{eq:expansioninB}
+is in the $\mathbb Q$--span of ${\mathbf B}_n$ which concludes the proof.
 \end{proof}
 
-
-
-
 \begin{lemma}\label{lem:degree}
-   Any $\theta^\gamma$ of degree $m_1(\gamma)>\frac{n}{2}$ is in  $\mathbb Q$-span$\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$.
+Any monomial $\theta^\gamma$ of degree $m_1(\gamma)>\frac{n}{2}$ is in  $\mathbb Q$-span of
+$A_n:=\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$.
 \end{lemma}
 
 \begin{proof} The proof is very similar  to Lemma~\ref{lem:spanofquotient}.
-Order the monomial of degree $>\frac{n}{2}$ lexicographically. 
-Let  $\theta^\gamma$ be the smallest such monomial that is not in  $\mathbb Q$-span $\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$.
+Order the monomials of degree $>\frac{n}{2}$ lexicographically. 
+Let  $\theta^\gamma$ be the smallest such monomial that is not in $\mathbb Q$-span of $A_n$.
 We have  that $\gamma$ crosses the  diagonal somewhere, since $m_1(\gamma)>\frac{n}{2}$.
 Proposition~\ref{prop:largest} say that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence
- $$ \theta^\gamma = G_\gamma  - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
- The right hand side is a linear combination of monomials strictly smaller than $\theta^\gamma$. By choice of $\theta^\gamma$, all such monomial are in 
- $\mathbb Q$-span $\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$. 
- Therefore so is $\theta^\gamma$, a contradiction. We must conclude there are no such $\theta^\gamma$ and the lemma follows.\end{proof}
+$$ \theta^\gamma = G_\gamma  - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
+The sum over $\beta$ is a linear combination of monomials that are
+strictly smaller than $\theta^\gamma$. By the choice of $\theta^\gamma$,
+all such monomials are in the $\mathbb Q$-span of $A_n$. 
+Therefore so is $\theta^\gamma$ and this is a contradiction.
+We must conclude there are no such $\theta^\gamma$ and the lemma follows.
+\end{proof}
 
 
 \begin{lemma}\label{lem:automorphism}
