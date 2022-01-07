@@ -487,7 +487,8 @@ We will  show that the ideal lies in the span of the $G_\alpha$ such
 that $\alpha$ crosses the diagonal therefore establishing our main theorem.
 
 \begin{theorem}\label{thm:basisofideal} 
-The set $\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$ is a $\mathbb Q$--linear basis of the ideal $I_n$
+The set $A_n:=\big\{ G_\alpha : \alpha \in \{0,1\}^n \text{ \it crosses the diagonal}\big\}$
+is a $\mathbb Q$--linear basis of the ideal $I_n$.
 \end{theorem}
 
 The proof of this theorem will require a few auxiliary results and will be explained
@@ -499,7 +500,8 @@ First, we need to establish a spanning set for the quotient $EQC_n$.
 to establish \ref{thm:basisofideal}.
 
 \begin{lemma}\label{lem:spanofquotient}
- The set $B_n=\big\{ \theta^\beta : \beta \text{ \it stays above the diagonal}\big\}$ $\mathbb Q$--spans the quotient $R_n\big/ I_n$.
+The set $B_n=\big\{ \theta^\beta : \beta \in \{0,1\}^n \text{ \it stays above the diagonal}\big\}$
+$\mathbb Q$--spans the quotient $R_n\big/I_n$.
 \end{lemma}
 
 \begin{proof}
@@ -526,13 +528,14 @@ The difference of both sides is in the ideal $I_n$ and we can write
 \theta^\gamma = \sum_{\theta^\beta\in B_n}  c_\beta \theta^\beta
 + \sum_{\delta, r>0} d_{\delta,r} \theta^\delta F_{1^r}
 \end{equation}
-for some coefficients $b_{\delta,r}$.
+for some coefficients $d_{\delta,r}$.\mike{todo: $d$ is used up above, we should pick another letter for the coefficients}
 This must be a homogeneous expression of degree $d$, hence $m_1(\beta) = m_1(\delta) + r = d$.
 Since $r>0$, we must have that $m_1(\delta)<d$. By the induction hypothesis,
 $\theta^\delta$ is in the $\mathbb Q$--span of ${\mathbf B}_n$ and we have
- $$\theta^\delta F_{1^r} = \sum_{\theta^\beta\in B_n, s\ge 0} b_{\beta,s} \theta^\beta F_{1^s} F_{1^r} =  \sum_{\theta^\beta\in B_n, s\ge 0} a b_{\beta,s} \theta^\beta F_{1^{s+r}} \,.$$
-The equality $F_{1^s} F_{1^r}  = a F_{1^{s+r}}$ comes from the fact that
-quasisymmetric functions in $R_n$ forms an algebra.\mike{this should go in a remark in the section
+for some coefficients $b_{\beta,s}$,
+$$\theta^\delta F_{1^r} = \sum_{\theta^\beta\in B_n, s\ge 0} b_{\beta,s} \theta^\beta F_{1^s} F_{1^r} =  \sum_{\theta^\beta\in B_n, s\ge 0} a b_{\beta,s} \theta^\beta F_{1^{s+r}} \,.$$
+The equality $F_{1^s} F_{1^r}  = a F_{1^{s+r}}$\mike{todo: $a$ depends on $r$ and $s$} comes from the fact that
+quasisymmetric functions in $R_n$ forms an algebra.\mike{todo: this should go in a remark in the section
 where quasisymmetric functions are introduced (also to give some context to these elements)}
 It is the pure exterior component of the super-quasisysimmetric 
 algebra defined in \cite{FLP}.
@@ -542,25 +545,27 @@ is in the $\mathbb Q$--span of ${\mathbf B}_n$ which concludes the proof.
 
 \begin{lemma}\label{lem:degree}
 Any monomial $\theta^\gamma$ of degree $m_1(\gamma)>\frac{n}{2}$ is in  $\mathbb Q$-span of
-$A_n:=\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$.
+$A_n:=\big\{ G_\alpha : \alpha \in \{0,1\}^n \text{ \it crosses the diagonal}\big\}$.
 \end{lemma}
 
 \begin{proof} The proof is very similar  to Lemma~\ref{lem:spanofquotient}.
-Order the monomials of degree $>\frac{n}{2}$ lexicographically. 
+Order the monomials in $R_n$ of degree $>\frac{n}{2}$ lexicographically.
 Let  $\theta^\gamma$ be the smallest such monomial that is not in $\mathbb Q$-span of $A_n$.
 We have  that $\gamma$ crosses the  diagonal somewhere, since $m_1(\gamma)>\frac{n}{2}$.
-Proposition~\ref{prop:largest} say that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence
+Proposition~\ref{prop:largest} says that
+$G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence
 $$ \theta^\gamma = G_\gamma  - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
 The sum over $\beta$ is a linear combination of monomials that are
 strictly smaller than $\theta^\gamma$. By the choice of $\theta^\gamma$,
 all such monomials are in the $\mathbb Q$-span of $A_n$. 
-Therefore so is $\theta^\gamma$ and this is a contradiction.
+Therefore $\theta^\gamma$ is also and this is a contradiction.
 We must conclude there are no such $\theta^\gamma$ and the lemma follows.
 \end{proof}
 
 
 \begin{lemma}\label{lem:automorphism}
- The algebra morphism $\phi\colon R_n\to R_n$ define by $\phi(\theta_i)=\theta_{n-i+1}$ is an automorphism of quasisymmetric functions. More specificaly
+The algebra morphism $\phi\colon R_n\to R_n$ define by $\phi(\theta_i)=\theta_{n-i+1}$
+is an automorphism of quasisymmetric functions. More specifically,
 \begin{equation}\label{eq:autoquasi}
 \phi(F_{1^s})=(-1)^{s \choose 2} F_{1^s}\,.
 \end{equation}
@@ -568,15 +573,18 @@ We must conclude there are no such $\theta^\gamma$ and the lemma follows.
 
 \begin{proof} 
 For any monomial $\theta_A = \theta_{a_1}\theta_{a_2}\cdots \theta_{a_s}$ such that $a_1<a_2<\cdots a_s$, we have
-  $$ \phi(\theta_A) =  \theta_{n-a_1+1}\theta_{n-a_2+1}\cdots \theta_{n-a_s+1} = (-1)^{s \choose 2}  \theta_{n-a_s+1}\cdots\theta_{n-a_{2}+1} \theta_{n-a_2+1}  = (-1)^{s \choose 2} \theta_{A'}$$
-  where $A'=\big\{ n-a_s+1< n-a_{2}+1<n-a_2+1\big\}$. The bijection $A\leftrightarrow A'$ induce a bijection on all set of cardinality $s$, thus
-  $$  \phi(F_{1^s})= \sum_{|A|=s} \phi(\theta_A) =  (-1)^{s \choose 2} \sum_{|A'|=s} \theta_{A'}=(-1)^{s \choose 2} F_{1^s}\,.$$
+$$\phi(\theta_A) =  \theta_{n-a_1+1}\theta_{n-a_2+1}\cdots \theta_{n-a_s+1}
+= (-1)^{s \choose 2}  \theta_{n-a_s+1}\cdots\theta_{n-a_{2}+1} \theta_{n-a_1+1}
+= (-1)^{s \choose 2} \theta_{A'}$$
+where $A'=\big\{ n-a_s+1< n-a_{2}+1<n-a_1+1\big\}$.
+The bijection $A\leftrightarrow A'$ induces a bijection on all sets of cardinality $s$, thus
+$$\phi(F_{1^s})= \sum_{|A|=s} \phi(\theta_A) =  (-1)^{s \choose 2} \sum_{|A'|=s} \theta_{A'}=(-1)^{s \choose 2} F_{1^s}\,.$$
 \end{proof}
 
 \begin{lemma}\label{lem:idealpres}
-For $B_n$ given in Lemma~\ref{lem:spanofquotient}.
+For $B_n$ given in Lemma~\ref{lem:spanofquotient}, $I_n$ is the ${\mathbb Q}$-span of the set
 \begin{equation}\label{eq:autoquasi}
-I_n = {\mathbb Q}\text{\rm -span}\big\{ \phi(\theta^\beta) F_{1^r} : \theta^\beta \in B_n,\  r>0\big\}
+\big\{ \phi(\theta^\beta) F_{1^r} : \theta^\beta \in B_n,\ r>0\big\}\,.
 \end{equation}
 \end{lemma}
 
@@ -592,7 +600,7 @@ We have $\phi\big(\theta^\beta F_{1^r}\big)=\phi(\theta^\beta) \phi\big(F_{1^r}\
 
 %%%%%%%%%%%%%%%%% 
 \subsection{Proof of Theorem~\ref{thm:basisofideal}}\label{ss:proofmainthm}
-Let $X_n={\mathbb Q}\text{-span}\big\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$.
+Let $X_n$ be the ${\mathbb Q}\text{-span}$ of the elements of $A_n$.
 From Proposition~\ref{prop:crossimpliescontains} we know that
 $$X_n \subseteq I_n\,.$$
 Furthermore, using Proposition~\ref{prop:largest}, we know that
