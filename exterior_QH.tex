@@ -606,22 +606,22 @@ We have $\phi\big(\theta^\beta F_{1^r}\big)=\phi(\theta^\beta) \phi\big(F_{1^r}\
 
 %%%%%%%%%%%%%%%%% 
 \subsection{Proof of Theorem~\ref{thm:basisofideal}}\label{ss:proofmainthm}
-Let $X_n$ be the ${\mathbb Q}\text{-span}$ of the elements of $A_n$.
+Let ${\mathbb Q}A_n$ be the ${\mathbb Q}\text{-span}$ of the elements of $A_n$.
 From Proposition~\ref{prop:crossimpliescontains} we know that
-$$X_n \subseteq I_n\,.$$
+$${\mathbb Q}A_n \subseteq I_n\,.$$
 Furthermore, using Proposition~\ref{prop:largest}, we know that
 the elements of $A_n$ are linearly independent.
-We must now show that $I_n\subseteq X_n$. Using Lemma~\ref{lem:idealpres} it is sufficient to show that $\phi(\theta^\beta) F_{1^r}\in X_n$ for any $ \theta^\beta \in B_n$ and
+We must now show that $I_n\subseteq {\mathbb Q}A_n$. Using Lemma~\ref{lem:idealpres} it is sufficient to show that $\phi(\theta^\beta) F_{1^r}\in {\mathbb Q}A_n$ for any $ \theta^\beta \in B_n$ and
 $r>0$. If $r+m_1(\beta)>\frac{n}{2}$, then Lemma~\ref{lem:degree} gives us the desired result.
-We can therefore assume that $0<r\le \lfloor\frac{n}{2}\rfloor$  and $\theta^\beta \in B_n$
-such that $m=m_1(\beta)\le \lfloor\frac{n}{2}\rfloor-r$.  We have
+We can therefore assume that $0<r\le \frac{n}{2}$  and $\theta^\beta \in B_n$
+such that $m=m_1(\beta)\le \frac{n}{2}-r$.  We have
 \begin{equation}\label{eq:thetaF}
 	\phi(\theta^\beta) F_{1^r} =  \theta_n^{\beta_1} \Big(\!\!\cdots\!  \big(\theta_2^{\beta_{n-1}} (\theta_1^{\beta_n}F_{1^r})\big)\!\cdots\!\Big)\,.
 \end{equation}
 The reversal of order in Equation~\eqref{eq:thetaF}, will be crucial in the proof.
-The idea is to start with $F_{1^r}\in X_n$ since $F_{1^r}=G_{1^r0^{n-r}}$ and then show that
+The idea is to start with $F_{1^r}\in {\mathbb Q}A_n$ since $F_{1^r}=G_{1^r0^{n-r}}$ and then show that
 the succession of multiplications by $\theta_{n-i+1}^{\beta_{i}}$ in the
-order of Equation~\eqref{eq:thetaF} will preserve the property of being in $X_n$.
+order of Equation~\eqref{eq:thetaF} will preserve the property of being in ${\mathbb Q}A_n$.
 
 For this let  $u \in \{ 0, 1\}^{k-1}$ and $s>0$, then we
 note that by rearranging the terms in Equation \eqref{eq:Gdef2}
@@ -631,14 +631,14 @@ when $n-k-s \geq 0$ we have
 \end{equation}
 Moreover, if $u1^{s-1}0^{n-k-s+2}$ crosses the diagonal then both
 $u1^{s}$ and $u01^{s}$ cross the diagonal.
-This ensures that every times we can use Equation~\eqref{eq:thetaG} on an element of $X_n$,
-that the terms on the right hand side will also be in $X_n$.
+This ensures that every times we can use Equation~\eqref{eq:thetaG} on an element of ${\mathbb Q}A_n$,
+that the terms on the right hand side will also be in ${\mathbb Q}A_n$.
 Let us emphasize the requirement we need that allows us to use Equation~\eqref{eq:thetaG}. Given $\theta_k$ and $G_\gamma$ where $\gamma$ crosses the diagonal; if
 \begin{enumerate}
 	\item[(a)] $\gamma_{k}\gamma_{k+1}\cdots\gamma_n = 1^{s}0^{n-k-s+1}$ for some $s\ge 0$,
 	\item[(b)] the position of the rightmost $1$ is at $k+s+1\le n$,
 \end{enumerate}
-then $\theta_kG_\gamma\in X_n$. Note that we have made the substitution $s\rightarrow s+1$
+then $\theta_kG_\gamma\in {\mathbb Q}A_n$. Note that we have made the substitution $s\rightarrow s+1$
 in Equation~\eqref{eq:thetaG} to get the two conditions (a) and (b).
 The order we use in Equation~\eqref{eq:thetaF} will ensure that (a) is satisfied as long as (b) is satisfied. We thus need to show that (b) is satisfied throughout.
 For this, we need to keep track of $k+s+1$ in the sequence of multiplications.
@@ -651,7 +651,7 @@ For $\phi(\theta^\beta)=\theta_{n-j_1+1} \theta_{n-j_2+1}\cdots \theta_{n-j_m+1}
  $$  k_i = n-j_{m-i+1}+1 \le n-2(m-i+1)+1 = n-2m+2i-1.
  $$
 We start with $\gamma^{(0)}=1^r0^{n-r}$ and assume $m\ge 1$.
-If $k_1\le r$, then $r+2\le 2(r+m)\le 2\lfloor\frac{n}{2}\rfloor\le n$
+If $k_1\le r$, then $r+2\le 2(r+m)\le 2\big(\frac{n}{2}\big)\le n$
 and the indices we obtain in Equation~\eqref{eq:thetaG} are either
 $1^{r+1}0^{n-r-1}$ or $1^{k_1-1}01^{r-k_1+1}0^{n-r-2}$.
 If $k_1>r$, then $k_1+1\le (n-2m+2-1)+1\le (n-1)+1=n$
@@ -662,7 +662,7 @@ $1^a0^{n-k_1-a}$ for some $a> 0$ and the position of the last $1$ is at most $\m
 For $m\ge 2$, either ($k_2< r+2$) or ($k_1+1<k_2=r+2$) or ($r+1<k_1+1=k_2$) or ($r+1<k_1+1<k_2$). In all cases, we can use Equation~\eqref{eq:thetaG},  the entries of all results in positions $k_2+1,k_2+2,\ldots, n$ are of  the form $1^a0^{n-k_2-a}$ for some $a> 0$ and the position of the last $1$ is at most $\max(r+4,k_1+3, k_2+1)\le n$. 
 To see this last inequality, for all $1\le i<j\le m$, we have
 \begin{align}
- r+2j&\le  2(r+m)\le 2\lfloor\frac{n}{2}\rfloor\le n \label{eq:rplus}\\
+ r+2j&\le  2(r+m)\le 2\big({\textstyle \frac{n}{2}}\big)\le n \label{eq:rplus}\\
  k_i+2(j-i)+1&\le (n-2m+2i-1)+2j-2i+1=n-2m+2j\le n\,. \label{eq:kplus}
  \end{align}
 So we get $r+4\le n$ for $j=2$ in \eqref{eq:rplus}; $k_1+3\le n$ with $i=1,j=2$ and $k_2+1\le n$ with $i=j=2$ in \eqref{eq:kplus}. As we continue up to $j=m$
