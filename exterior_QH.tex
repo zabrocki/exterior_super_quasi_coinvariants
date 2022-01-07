@@ -130,6 +130,17 @@ polynomial ring in commuting variable invariants known as the `fundamental
 quasisymmetric polynomials'.  The commuting polynomial quasisymmetric
 invariants are indexed by compositions.
 
+In \cite{FLP}, the authors showed that the quasisymmetric functions in
+one set of commuting variables and one set of anti-commuting variables
+forms a graded Hopf algebra.  This implies that the quasisymmetric functions
+in one set of anti-commuting variables are closed under multiplication
+and there is one element in this algebra at each non-negative degree.
+It follows that for $r, s \geq0$ that there exists a (possibly $0$)
+coefficient $a_{r,s}$ such that
+\begin{equation}\label{eq:qsalg}
+F_{1^r} F_{1^s} = a_{r,s} F_{1^{r+s}}\,.
+\end{equation}
+
 \begin{remark}
 As expressing polynomials with listing the variables
 (e.g. $p(\theta_1, \theta_2, \ldots, \theta_n)$) can be notational cumbersome
@@ -526,26 +537,21 @@ $$ \theta^\gamma \equiv \sum_{\theta^\beta\in B_n}  c_\beta \theta^\beta\qquad (
 The difference of both sides is in the ideal $I_n$ and we can write
 \begin{equation}\label{eq:expansioninB}
 \theta^\gamma = \sum_{\theta^\beta\in B_n}  c_\beta \theta^\beta
-+ \sum_{\delta, r>0} d_{\delta,r} \theta^\delta F_{1^r}
++ \sum_{\delta, r>0} k_{\delta,r} \theta^\delta F_{1^r}
 \end{equation}
-for some coefficients $d_{\delta,r}$.\mike{todo: $d$ is used up above, we should pick another letter for the coefficients}
+for some coefficients $k_{\delta,r}$.
 This must be a homogeneous expression of degree $d$, hence $m_1(\beta) = m_1(\delta) + r = d$.
 Since $r>0$, we must have that $m_1(\delta)<d$. By the induction hypothesis,
 $\theta^\delta$ is in the $\mathbb Q$--span of ${\mathbf B}_n$ and we have
-for some coefficients $b_{\beta,s}$,
-$$\theta^\delta F_{1^r} = \sum_{\theta^\beta\in B_n, s\ge 0} b_{\beta,s} \theta^\beta F_{1^s} F_{1^r} =  \sum_{\theta^\beta\in B_n, s\ge 0} a b_{\beta,s} \theta^\beta F_{1^{s+r}} \,.$$
-The equality $F_{1^s} F_{1^r}  = a F_{1^{s+r}}$\mike{todo: $a$ depends on $r$ and $s$} comes from the fact that
-quasisymmetric functions in $R_n$ forms an algebra.\mike{todo: this should go in a remark in the section
-where quasisymmetric functions are introduced (also to give some context to these elements)}
-It is the pure exterior component of the super-quasisysimmetric 
-algebra defined in \cite{FLP}.
+for some coefficients $b_{\beta,s}$ and $a_{r,s}$ from Equation~\eqref{eq:qsalg},
+$$\theta^\delta F_{1^r} = \sum_{\theta^\beta\in B_n, s\ge 0} b_{\beta,s} \theta^\beta F_{1^s} F_{1^r} =  \sum_{\theta^\beta\in B_n, s\ge 0} a_{r,s} b_{\beta,s} \theta^\beta F_{1^{s+r}} \,.$$
 This shows that the right hand side of~\eqref{eq:expansioninB}
 is in the $\mathbb Q$--span of ${\mathbf B}_n$ which concludes the proof.
 \end{proof}
 
 \begin{lemma}\label{lem:degree}
 Any monomial $\theta^\gamma$ of degree $m_1(\gamma)>\frac{n}{2}$ is in  $\mathbb Q$-span of
-$A_n:=\big\{ G_\alpha : \alpha \in \{0,1\}^n \text{ \it crosses the diagonal}\big\}$.
+$A_n$ (defined in the statement of Theorem \ref{thm:basisofideal}).
 \end{lemma}
 
 \begin{proof} The proof is very similar  to Lemma~\ref{lem:spanofquotient}.
@@ -604,39 +610,54 @@ Let $X_n$ be the ${\mathbb Q}\text{-span}$ of the elements of $A_n$.
 From Proposition~\ref{prop:crossimpliescontains} we know that
 $$X_n \subseteq I_n\,.$$
 Furthermore, using Proposition~\ref{prop:largest}, we know that
-$\{ G_\alpha : \alpha \text{ \it crosses the diagonal}\big\}$ is linearly independent.
+the elements of $A_n$ are linearly independent.
 We must now show that $I_n\subseteq X_n$. Using Lemma~\ref{lem:idealpres} it is sufficient to show that $\phi(\theta^\beta) F_{1^r}\in X_n$ for any $ \theta^\beta \in B_n$ and
-$r>0$. If $r+m_1(\beta)>\frac{n}{2}$, then Lemma~\ref{lem:degree} gives us the desired results. We can therefore assume that $0<r\le \lfloor\frac{n}{2}\rfloor$  and $\theta^\beta \in B_n$ such that $m=m_1(\beta)\le \lfloor\frac{n}{2}\rfloor-r$. We have
+$r>0$. If $r+m_1(\beta)>\frac{n}{2}$, then Lemma~\ref{lem:degree} gives us the desired result.
+We can therefore assume that $0<r\le \lfloor\frac{n}{2}\rfloor$  and $\theta^\beta \in B_n$
+such that $m=m_1(\beta)\le \lfloor\frac{n}{2}\rfloor-r$.  We have
 \begin{equation}\label{eq:thetaF}
 	\phi(\theta^\beta) F_{1^r} =  \theta_n^{\beta_1} \Big(\!\!\cdots\!  \big(\theta_2^{\beta_{n-1}} (\theta_1^{\beta_n}F_{1^r})\big)\!\cdots\!\Big)\,.
 \end{equation}
 The reversal of order in Equation~\eqref{eq:thetaF}, will be crucial in the proof.
-The idea is to start with $F_{1^r}\in X_n$ since $F_{1^r}=G_{1^r0^{n-r}}$ and then show that the succession of multiplication by $\theta_{n-i+1}^{\beta_{i}}$ in the
-order of Equation~\ref{eq:thetaF} will preserve the property of being in $X_n$. For this let  $u \in \{ 0, 1\}^{k-1}$ and $s>0$, then we
+The idea is to start with $F_{1^r}\in X_n$ since $F_{1^r}=G_{1^r0^{n-r}}$ and then show that
+the succession of multiplications by $\theta_{n-i+1}^{\beta_{i}}$ in the
+order of Equation~\eqref{eq:thetaF} will preserve the property of being in $X_n$.
+
+For this let  $u \in \{ 0, 1\}^{k-1}$ and $s>0$, then we
 note that by rearranging the terms in Equation \eqref{eq:Gdef2}
 when $n-k-s \geq 0$ we have
 \begin{equation}\label{eq:thetaG}
     \theta_k G_{u1^{s-1}0^{n-k-s+2}} = (-1)^{m_1(u)}( G_{u1^{s}0^{n-k-s+1}} - G_{u01^{s}0^{n-k-s}} )\,.
 \end{equation}
-Moreover if $u1^{s-1}0^{n-k-s+2}$ crosses the diagonal then both
-$u1^{s}$ and $u01^{s}$ cross the diagonal. This ensure  that every times we can use Equation~\eqref{eq:thetaG} on an element of $X_n$, we remain in $X_n$.
-Let us emphasis the requirement we need that allows us to use Equation~\eqref{eq:thetaG}. Given $\theta_k$ and $G_\gamma$ where $\gamma$ crosses the diagonal; if
+Moreover, if $u1^{s-1}0^{n-k-s+2}$ crosses the diagonal then both
+$u1^{s}$ and $u01^{s}$ cross the diagonal.
+This ensures that every times we can use Equation~\eqref{eq:thetaG} on an element of $X_n$,
+that the terms on the right hand side will also be in $X_n$.
+Let us emphasize the requirement we need that allows us to use Equation~\eqref{eq:thetaG}. Given $\theta_k$ and $G_\gamma$ where $\gamma$ crosses the diagonal; if
 \begin{enumerate}
 	\item[(a)] $\gamma_{k}\gamma_{k+1}\cdots\gamma_n = 1^{s}0^{n-k-s+1}$ for some $s\ge 0$,
-	\item[(b)] $k+s+1\le n$, (the position of the rightmost 1),
+	\item[(b)] the position of the rightmost $1$ is at $k+s+1\le n$,
 \end{enumerate}
-then $\theta_kG_\gamma\in X_n$. Note that we have substituted $s\leftarrow s+1$ in Equation~\eqref{eq:thetaG} to get the two conditions (a) and (b).
-The order we use in Equation~\eqref{eq:thetaF} will insure that (a) is satisfied as long as (b) is satisfied. We thus need to show that (b) is satisfied throughout.
-For this, we need to keep track of $k+s+1$ in the sequence of multiplications. 
+then $\theta_kG_\gamma\in X_n$. Note that we have made the substitution $s\rightarrow s+1$
+in Equation~\eqref{eq:thetaG} to get the two conditions (a) and (b).
+The order we use in Equation~\eqref{eq:thetaF} will ensure that (a) is satisfied as long as (b) is satisfied. We thus need to show that (b) is satisfied throughout.
+For this, we need to keep track of $k+s+1$ in the sequence of multiplications.
+
 Let $\theta^\beta=\theta_{j_1} \theta_{j_2}\cdots \theta_{j_m}$ where $m=m_1(\beta)$ and 
-$1<j_1< j_2\cdots <j_m\le n$. Recall that $\beta$ stays above the diagonal if $\sum_{i=1}^h \beta_i\le \lfloor\frac{h}{2}\rfloor$. For $h=j_\ell$, we have
- $\ell=\sum_{i=1}^{j_\ell} \beta_i\le \lfloor\frac{j_\ell}{2}\rfloor\le \frac{j_\ell}{2}$. 
+$1<j_1< j_2\cdots <j_m\le n$. Recall that $\beta$ stays above the diagonal
+if $\sum_{i=1}^h \beta_i\le \frac{h}{2}$.  For $h=j_\ell$, we have
+ $\ell=\sum_{i=1}^{j_\ell} \beta_i \le \frac{j_\ell}{2}$.
 For $\phi(\theta^\beta)=\theta_{n-j_1+1} \theta_{n-j_2+1}\cdots \theta_{n-j_m+1}=\theta_{k_m} \theta_{k_{m-1}}\cdots \theta_{k_1}$, we have
  $$  k_i = n-j_{m-i+1}+1 \le n-2(m-i+1)+1 = n-2m+2i-1.
  $$
 We start with $\gamma^{(0)}=1^r0^{n-r}$ and assume $m\ge 1$.
- If $k_1\le r$, then $r+2\le 2(r+m)\le 2\lfloor\frac{n}{2}\rfloor\le n$ and the indexes we obtain in Equation~\eqref{eq:thetaG} are either
-$1^{r+1}0^{n-r-1}$ or $1^{k_1-1}01^{r-k_1+1}0^{n-r-2}$. If $k_1>r$ then $k_1+1\le (n-2m+2-1)+1\le  (n-1)+1=n$ and the index we obtain are $1^{r}0^{k_1-r-1}10^{n-k_1}$ or $1^{r}0^{k_1-r-1}010^{n-k_1-1}$. In all case we have that the entries in positions $k_1+1,k_1+2,\ldots, n$ are of  the form $1^a0^{n-k_1-a}$ for some $a> 0$ and the position of the last $1$ is at most $\max(r+2,k_1+1)\le n$. 
+If $k_1\le r$, then $r+2\le 2(r+m)\le 2\lfloor\frac{n}{2}\rfloor\le n$
+and the indices we obtain in Equation~\eqref{eq:thetaG} are either
+$1^{r+1}0^{n-r-1}$ or $1^{k_1-1}01^{r-k_1+1}0^{n-r-2}$.
+If $k_1>r$, then $k_1+1\le (n-2m+2-1)+1\le (n-1)+1=n$
+and the indices we obtain are $1^{r}0^{k_1-r-1}10^{n-k_1}$ or $1^{r}0^{k_1-r-1}010^{n-k_1-1}$.
+In all cases we have that the entries in positions $k_1+1,k_1+2,\ldots, n$ are of the form
+$1^a0^{n-k_1-a}$ for some $a> 0$ and the position of the last $1$ is at most $\max(r+2,k_1+1)\le n$.
 
 For $m\ge 2$, either ($k_2< r+2$) or ($k_1+1<k_2=r+2$) or ($r+1<k_1+1=k_2$) or ($r+1<k_1+1<k_2$). In all cases, we can use Equation~\eqref{eq:thetaG},  the entries of all results in positions $k_2+1,k_2+2,\ldots, n$ are of  the form $1^a0^{n-k_2-a}$ for some $a> 0$ and the position of the last $1$ is at most $\max(r+4,k_1+3, k_2+1)\le n$. 
 To see this last inequality, for all $1\le i<j\le m$, we have
@@ -645,7 +666,8 @@ To see this last inequality, for all $1\le i<j\le m$, we have
  k_i+2(j-i)+1&\le (n-2m+2i-1)+2j-2i+1=n-2m+2j\le n\,. \label{eq:kplus}
  \end{align}
 So we get $r+4\le n$ for $j=2$ in \eqref{eq:rplus}; $k_1+3\le n$ with $i=1,j=2$ and $k_2+1\le n$ with $i=j=2$ in \eqref{eq:kplus}. As we continue up to $j=m$
-the position of the rightmost 1 will be at most $\max\big( r+2m, k_i+2(m-i)+1\big)_{1\le i\le m}\le n$. This conclude our proof.
+the position of the rightmost 1 will be at most $\max\big( r+2m, k_i+2(m-i)+1\big)_{1\le i\le m}\le n$.
+This concludes our proof.
 \hfill$\square$
 
 \vskip 1in
