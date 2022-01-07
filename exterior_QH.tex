@@ -585,7 +585,7 @@ $$\phi(\theta_A) =  \theta_{n-a_1+1}\theta_{n-a_2+1}\cdots \theta_{n-a_s+1}
 where $A'=\big\{ n-a_s+1< n-a_{2}+1<n-a_1+1\big\}$.
 The bijection $A\leftrightarrow A'$ induces a bijection on all sets of cardinality $s$, thus
 $$\phi(F_{1^s})= \sum_{|A|=s} \phi(\theta_A) =  (-1)^{s \choose 2} \sum_{|A'|=s} \theta_{A'}=(-1)^{s \choose 2} F_{1^s}\,.$$
-\end{proof}
+\vskip-18pt \end{proof}
 
 \begin{lemma}\label{lem:idealpres}
 For $B_n$ given in Lemma~\ref{lem:spanofquotient}, $I_n$ is the ${\mathbb Q}$-span of the set
@@ -602,6 +602,22 @@ For $B_n$ given in Lemma~\ref{lem:spanofquotient}, $I_n$ is the ${\mathbb Q}$-sp
 We have $\phi\big(\theta^\beta F_{1^r}\big)=\phi(\theta^\beta) \phi\big(F_{1^r}\big) = \pm \phi(\theta^\beta) F_{1^r}$, and the lemma holds.
 \end{proof}
 
+\begin{lemma}\label{lem:phiB}
+For $\theta^\beta\in B_n$ as given in Lemma~\ref{lem:spanofquotient}, we have that $\phi(\theta^\beta)=\theta_{k_m} \theta_{k_{m-1}}\cdots \theta_{k_1}$
+for $k_m>k_{m_1}>\cdots >k_1$ and
+\begin{equation}\label{eq:phiB}
+k_i  \le  n-2m+2i-1\,.
+\end{equation}
+\end{lemma}
+
+\begin{proof} Let $\theta^\beta=\theta_{j_1} \theta_{j_2}\cdots \theta_{j_m}$ where $m=m_1(\beta)$ and 
+$1<j_1< j_2\cdots <j_m\le n$. Recall that $\beta$ stays above the diagonal
+if $\sum_{i=1}^h \beta_i\le \frac{h}{2}$.  For $h=j_\ell$, we have
+ $\ell=\sum_{i=1}^{j_\ell} \beta_i \le \frac{j_\ell}{2}$.
+For $\phi(\theta^\beta)=\theta_{n-j_1+1} \theta_{n-j_2+1}\cdots \theta_{n-j_m+1}=\theta_{k_m} \theta_{k_{m-1}}\cdots \theta_{k_1}$, we have
+ $$  k_i = n-j_{m-i+1}+1 \le n-2(m-i+1)+1 = n-2m+2i-1.
+ $$
+\vskip-18pt \end{proof}
 
 
 %%%%%%%%%%%%%%%%% 
