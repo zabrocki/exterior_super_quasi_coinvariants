@@ -106,13 +106,13 @@ then the set $\{ \theta_A \}_{A \subseteq [n]}$ is a basis of $R_n$.
 We define an action on monomials of $R_n$ and extend this action linearly.
 For each integer $1 \leq i < n$, let $\pi_i$ be an operator on $R_n$
 that is defined by
-\[
+\begin{equation}\label{eq:pi}
 \pi_i(\theta_A) = \begin{cases}
 \theta_{A} & \hbox{ if } i, i+1 \in A\hbox{ or }i, i+1 \notin A\\
 \theta_{A \cup \{i+1\} \backslash \{i\}} & \hbox{ if } i\in A\hbox{ and }i+1 \notin A\\
 \theta_{A \cup \{i\} \backslash \{i+1\}} & \hbox{ if } i+1\in A\hbox{ and }i \notin A
 \end{cases}~.
-\]
+\end{equation}
 These operators instead of exchanging an $i$ for an $i+1$ like the symmetric group
 action, have the effect of shifting the indices of the variables (if possible).  They
 are therefore known as quasisymmetric operators.  They were studied in depth by
@@ -298,11 +298,11 @@ inner product.
 
 Define the orthogonal complement to $I_n$ with respect to the inner product as
 the set
-\begin{align*}
-EQH_n :&= \left\{ q \in R_n : \left< p, q \right> = 0 \hbox{ for all } p \in I_n \right\}\\
+\begin{align}
+EQH_n :&= \left\{ q \in R_n : \left< p, q \right> = 0 \hbox{ for all } p \in I_n \right\}\notag\\
   &=\left\{ q \in R_n :\overline{p(\partial_{\theta_1}, \partial_{\theta_2}, \ldots, \partial_{\theta_n})}
-q= 0 \hbox{ for all } p \in I_n \right\}~.
-\end{align*}
+q= 0 \hbox{ for all } p \in I_n \right\}~.\label{eq:diffeqs}
+\end{align}
 The second equality follows from the fact that $I_n$ is an ideal and show that $EQH_n$ is also the solution space of
 a system of differential equations. We refer to this space as the \emph{exterior quasisymmetric harmonics}.\footnote{
 The harmonics and diagonal harmonics borrows the name from the physics literature
@@ -321,7 +321,73 @@ start writting and hopefully it is all right...if I am, it will simplify the pro
 
 We will conclude this section  by constructing a set of linearly independent elements inside $EQH_n$, which will
 give us a lower  bound on the dimension of $EQC_n$. In Section~\ref{sec:path} we will see that this is also an upper bound,
-thus concluding that our  set is in fact a basis. 
+thus concluding that our  set is in fact a basis. To compute $EQH_n$ we need to solve the differential equations in Equation~\eqref{eq:diffeqs}.
+Remark first  that since $I_n$ is an ideal, we do not need to take all $p\in I_n$, but it is enough to solve for the generators $p=F_{1^r}$ for  $1\le r\le n$.
+We can reduce that further using Proposition~\ref{prop:comm} as noted in the following lemma.
+\begin{lemma}\label{lem:idealgen}
+For $n\ge 2$ we have
+$$ I_n=\langle F_1, F_{1^2}  \rangle$$
+\end{lemma}
+
+\begin{proof} Clearly we have $ \langle F_1, F_{1^2}  \rangle \subseteq I_n$. For the  converse, consider first $2\le r=2k\le n$. Using Proposition~\ref{prop:comm}, we have that
+$aF_{1^r} = \big(F_{1^2}\big)^k$ for some $a\ne 0$. Therefor $F_{1^r} \in \langle F_1, F_{1^2}  \rangle$. For $2\le r=2k+1\le n$, we have $aF_{1^r} = \big(F_{1^2}\big)^kF_1$, which again show $F_{1^r} \in \langle F_1, F_{1^2}  \rangle$. We conclude that $I_n\subseteq  \langle F_1, F_{1^2}  \rangle$. 
+\end{proof}
+
+From this we conclude that 
+\begin{equation}\label{eq:defEQH}
+EQH_n =  \Big\{ q \in R_n :  \quad\sum_{1\le i\le n} \partial_{\theta_i}q= 0 \quad\hbox{ and  }\quad \sum_{1\le i<j\le n} \partial_{\theta_j}\partial_{\theta_i}q= 0 \Big\}~.
+\end{equation}
+
+Let $\lambda=(\lambda_1,\lambda_2)=(n-k,k)$ for some $0\le k\le \lfloor \frac{n}{2}\rfloor$. Such $\lambda$ is a partition of $n$ with at  most two parts.
+Let  $D_\lambda =  \big\{ (i,j) = 1\le i \le 2;\ 1\le j\le \lambda_i\big\}$ be the diagram of $\lambda$. We usually draw  the diagram in the trasposed plane where the first coordinate is the vertical axis and the second coordinate is the horizontal axis. A standard tableau of shape $\lambda$ is a bijection $T\colon D_\lambda\to \{1,2,\ldots n\}$ such that
+\begin{align*}
+ &T(i,j)< T(i,j+1) \text{ for } 1\le i\le 2; \ 1\le j\le \lambda_i\,,\\
+ &T(1,j)< T(2,j) \text{ for } 1\le j\le \lambda_2\,.
+ \end{align*}
+This is the usual notion of standard tableaux in the representation theory of symmetric group in the case of a partition $\lambda$ with at most two rows.
+For $T$ a standard tableau of shape $\lambda$ with at most two rows, let
+  $$\Delta_T = \big(\theta_{T(1,1)}-\theta_{T(2,1)}\big)\big(\theta_{T(1,2)}-\theta_{T(2,2)}\big)\cdots \big(\theta_{T(1,\lambda_2)}-\theta_{T(2,\lambda_2)}\big)\,.
+  $$
+Here $\Delta_T=1$ if $\lambda=(n,0)$. We now have the following proposition.
+
+\begin{prop}\label{harmbasis}
+The set
+$${\mathcal D} =\big\{ \Delta_T: \text{ $T$  standard tableau of shape $\lambda=(n-k,k)$ and $0\le k\le \lfloor \frac{n}{2}\rfloor$}\big\},
+$$
+is contained in $EQH_n $ and is  linearly independent.
+\end{prop}
+
+\begin{proof}
+
+  \textcolor{red}{Nantel shall write a proof}
+  
+\end{proof}
+
+\begin{remark} The polynomial $\Delta_T$ for $T$ of shape $\lambda$ with at most two rows, is very close to a Specht polynomial $\Delta'_T$.
+For a fix shape $\lambda$, the set $\{\Delta'_T: \text{ $T$ of shape $\lambda$}\}$ is the standard construction of a basis of the irreducible representation indexed by $\lambda$. Here, we want this for the Hivert action in \cite{H} as this would be irreducible representations for the Temperley-Lieb algebra, a quotient of the symmetric group algebra. Briefly, the Specht polynomial $\Delta'_T$ is obtained by applying the Young idempotent of $T$ to a well chosen monomial. For example, if
+$$ T=
+\begin{tikzpicture}[scale=0.5,baseline=12pt] 
+	\draw[help lines] (0,0) grid (2,2);
+	\node at (.5,.5){$\scriptstyle 1$};
+	\node at (.5,1.5){$\scriptstyle 3$};
+	\node at (1.5,.5){$\scriptstyle 2$};
+	\node at (1.5,1.5){$\scriptstyle 4$};
+\end{tikzpicture}\,
+$$
+then the  row symmetrizer $P_T$ and column antisymmetrizer $N_T$ in the symmetric group algbera of $S_4$, are given by
+$$
+P_T= \big( Id + (1\, 2)\big)\big( Id + (3\, 4)\big)\quad\text{ and }\quad N_T= \big( Id - (1\, 3)\big)\big( Id - (2\, 4)\big).
+$$
+The Young idempotent for $T$ is up to a scalar the product $N_TP_T$. We want to apply this to the monomial 
+$$\theta_T=\theta_{T(1,1)}^0\theta_{T(1,2)}^0\theta_{T(2,1)}^1\theta_{T(2,2)}^1= \theta_3\theta_4,
+$$
+with the Hivert actions. That is, replacing the permutation in $N_TP_T$ with the corresponding composition of $\pi$ operators as defined in Equation~\eqref{eq:pi}.
+We get
+ $$ \Delta'_T=N_TP_T\theta_T = N_T \theta_T =  \theta_3\theta_4 -  \theta_1\theta_4 -  \theta_2\theta_3 +  \theta_1\theta_2
+ $$
+ In commutative variable, this would be the same as $\Delta_T$, but here, $ \Delta'_T$ does not factor in linear polynomials and we have $ \Delta'_T\ne \Delta_T$.
+ AT first glance we may think that $\{\Delta_T: \text{ $T$ of shape $\lambda$}\}$ span an irreducible subspace under Hivert action, but in fact it does not.
+\end{remark}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
