@@ -357,9 +357,45 @@ $$
 is contained in $EQH_n $ and is  linearly independent.
 \end{prop}
 
-\begin{proof}
+\begin{proof} Let us first show that ${\mathcal D}$ is linearly independent. Recall that for any standard tableau $T$ we have  
+$T(1,j)<T(2,j)$ for all $1\le j\le \lambda_2$. Using lexicographic order on monomials, the leading term of 
+  $$\Delta_T=\theta_{T(1,1)}\theta_{T(1,2)}\cdots \theta_{T(1,\lambda_2)}\,.$$
+  The entries $T(1,1), T(1,2),\ldots,T(1,\lambda_2)$ completely characterize $T$, therefor the leading terms of the $\Delta_T$ are distinct.
+  This shows the linear  independence.
 
-  \textcolor{red}{Nantel shall write a proof}
+To show that it  is  contained in $EQH_n $, we fix $T$. We need to show that $\Delta_T$ satisfies the Equations~\eqref{eq:defEQH}.
+Let us write 
+ $$\Delta_T=(\theta_{i_1}-\theta_{j_1})(\theta_{i_2}-\theta_{j_2})\ldots (\theta_{i_s}-\theta_{j_s}),$$
+ for $s=\lambda_2$, $i_r=T(1,r)$ and $j_r=T(2,r)$. Let  $C_r=\{i_r,j_r\}$ and $C=\bigcup_{r=1}^s C_i$ (this union is disjoint).
+For the first  defining equation of $EQH_n $, we have
+\begin{align*}
+ \sum_{1\le i\le n} \partial_{\theta_i}\Delta_T&=\sum_{1\le r\le s}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_T + \sum_{i\notin C}  \partial_{\theta_i}\Delta_T\\
+ &=\sum_{1\le r\le s}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_T =0\,.
+  \end{align*}
+For the first equality we simply reorganize the terms. For the second equality, we remark that if $i\notin C$ then the variable $\theta_i$ does not appear in $\Delta_T$, so 
+$ \partial_{\theta_i}\Delta_T=0$. For the last equality, fix $1\le r\le s$. We bring the term $(\theta_{i_r}-\theta_{j_r})$  in front  of $\Delta_T$ performing $r-1$ anticommutation. That is $\Delta_T =(-1)^{r-1}(\theta_{i_r}-\theta_{j_r}) q$ for some  polynomial $q$. Therefor
+$$(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_T=(-1)^{r-1}
+\textcolor{red}{(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})(\theta_{i_r}-\theta_{j_r})}q =0.
+$$
+
+For the second defining equation of $EQH_n $, we decompose the sum over pairs $1\le i<j\le n$ according to $|\{i,\}j\cap C|<2$, or $\{i,j\}=C_r$ for some $r$, or $i,j$ appear in two different $C_{r_1},C_{r_2}$. In the first case, if  $|\{i,\}j\cap C|<2$, then one of $\theta_i$ or $\theta_j$ does not appear in $\Delta_T$ and we have $ \partial_{\theta_j} \partial_{\theta_i}\Delta_T=0$. In the second case we have that the product $\theta_{i_r}\theta_{j_r}$ does not appear in $\Delta_T$ and we also have $ \partial_{\theta_{j_r}} \partial_{\theta_{i_r}}\Delta_T=0$.
+We can thus write
+\begin{align*}
+ \sum_{1\le i<j\le n} \partial_{\theta_j}\partial_{\theta_i}\Delta_T&= \sum_{1\le r_1<r_2\le s} \sum_{i\in C_{r_1} \atop j\in C_{r_2}} \pm  \partial_{\theta_j}\partial_{\theta_i}\Delta_T
+\end{align*}
+In the second sum on the right hand side, we have to be careful as when we pick $i\in C_{r_1}$ and $ j\in C_{r_2}$ we are not guarantied that $i<j$ so a sign may be needed 
+in  order to keep the equality. We will make a careful study of all possibilities for fixed $1\le r_1<r_2\le s$. First we rearrange the terms of $\Delta_T$ to  bring the terms 
+$(\theta_{i_{r_1}}-\theta_{j_{r_1}})(\theta_{i_{r_2}}-\theta_{j_{r_2}})$ in front  performing $(r_1-1)+(r_2-2)$ commutations, we have 
+  $$\Delta_T  =(-1)^{r_1+r_2-1}(\theta_{i_{r_1}}-\theta_{j_{r_1}})(\theta_{i_{r_2}}-\theta_{j_{r_2}})q$$
+  for some polynomial $q$. Remark that $C_{r_1}=\{i_{r_1},j_{r_1}\}$ and $C_{r_2}=\{i_{r_2},j_{r_2}\}$ and they satisfy the inequalities
+  $$  i_{r_1} < j_{r_1} < j_{r_2} \text{ and  }  i_{r_1} < i_{r_2} < j_{r_2}.$$
+  The only comparison we do not know is  $ j_{r_1}$ versus  $i_{r_2}$. If $ j_{r_1}<i_{r_2}$ we have 
+  $$\sum_{i\in C_{r_1} \atop j\in C_{r_2}} \pm  \partial_{\theta_j}\partial_{\theta_i}\Delta_T 
+  = (-1)^{r_1+r_2-1}\big(    \big)
+  (\theta_{i_{r_1}}-\theta_{j_{r_1}})(\theta_{i_{r_2}}-\theta_{j_{r_2}})q
+  $$
+
+  \textcolor{red}{Nantel shall write more of the  proof later}
   
 \end{proof}
 
