@@ -389,13 +389,35 @@ $(\theta_{i_{r_1}}-\theta_{j_{r_1}})(\theta_{i_{r_2}}-\theta_{j_{r_2}})$ in fron
   $$\Delta_T  =(-1)^{r_1+r_2-1}(\theta_{i_{r_1}}-\theta_{j_{r_1}})(\theta_{i_{r_2}}-\theta_{j_{r_2}})q$$
   for some polynomial $q$. Remark that $C_{r_1}=\{i_{r_1},j_{r_1}\}$ and $C_{r_2}=\{i_{r_2},j_{r_2}\}$ and they satisfy the inequalities
   $$  i_{r_1} < j_{r_1} < j_{r_2} \text{ and  }  i_{r_1} < i_{r_2} < j_{r_2}.$$
-  The only comparison we do not know is  $ j_{r_1}$ versus  $i_{r_2}$. If $ j_{r_1}<i_{r_2}$ we have 
-  $$\sum_{i\in C_{r_1} \atop j\in C_{r_2}} \pm  \partial_{\theta_j}\partial_{\theta_i}\Delta_T 
-  = (-1)^{r_1+r_2-1}\big(    \big)
-  (\theta_{i_{r_1}}-\theta_{j_{r_1}})(\theta_{i_{r_2}}-\theta_{j_{r_2}})q
+  The only comparison we do not know is  $ j_{r_1}$ versus  $i_{r_2}$. The only concern is their relative comparison, we can thus assume that we have the number 1,2,3,4.
+  There are two possibility:
   $$
+\begin{tikzpicture}[scale=0.5,baseline=12pt] 
+	\draw[help lines] (0,0) grid (2,2);
+	\node at (.5,.5){$\scriptstyle 1$};
+	\node at (.5,1.5){$\scriptstyle 2$};
+	\node at (1.5,.5){$\scriptstyle 3$};
+	\node at (1.5,1.5){$\scriptstyle 4$};
+\end{tikzpicture}
+\qquad\text{or} \qquad
+  \begin{tikzpicture}[scale=0.5,baseline=12pt] 
+	\draw[help lines] (0,0) grid (2,2);
+	\node at (.5,.5){$\scriptstyle 1$};
+	\node at (.5,1.5){$\scriptstyle 3$};
+	\node at (1.5,.5){$\scriptstyle 2$};
+	\node at (1.5,1.5){$\scriptstyle 4$};
+\end{tikzpicture}\,.
+$$
+In the first case we have
+$$ \big( \partial_{\theta_3}\partial_{\theta_1} +  \partial_{\theta_3}\partial_{\theta_2} +  \partial_{\theta_4}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_2}\big)
+     (\theta_{1}-\theta_{2})(\theta_{3}-\theta_{4}) =0,
+$$  
+ and in the second case we get 
+$$ \big( \partial_{\theta_2}\partial_{\theta_1} +  \partial_{\theta_3}\partial_{\theta_2} +  \partial_{\theta_4}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_3}\big)
+     (\theta_{1}-\theta_{3})(\theta_{2}-\theta_{4}) =2 \ne 0,
+$$  
 
-  \textcolor{red}{Nantel shall write more of the  proof later}
+  \textcolor{red}{Grrrr, so close, yet so frustrating !!!!! We must be able to solve these two differntial equations!!!}
   
 \end{proof}
 
