@@ -332,72 +332,120 @@ $$ I_n=\langle F_1, F_{1^2}  \rangle$$
 \begin{proof} Clearly we have $ \langle F_1, F_{1^2}  \rangle \subseteq I_n$. For the  converse, consider first $2\le r=2k\le n$. Using Proposition~\ref{prop:comm}, we have that
 $aF_{1^r} = \big(F_{1^2}\big)^k$ for some $a\ne 0$. Therefor $F_{1^r} \in \langle F_1, F_{1^2}  \rangle$. For $2\le r=2k+1\le n$, we have $aF_{1^r} = \big(F_{1^2}\big)^kF_1$, which again show $F_{1^r} \in \langle F_1, F_{1^2}  \rangle$. We conclude that $I_n\subseteq  \langle F_1, F_{1^2}  \rangle$. 
 \end{proof}
+
 From this we conclude that 
 \begin{equation}\label{eq:defEQH}
 EQH_n =  \Big\{ q \in R_n :  \quad\sum_{1\le i\le n} \partial_{\theta_i}q= 0 \quad\hbox{ and  }\quad \sum_{1\le i<j\le n} \partial_{\theta_j}\partial_{\theta_i}q= 0 \Big\}~.
 \end{equation}
 
-Given $0\le k\le \lfloor \frac{n}{2}\rfloor$, we say that a pairing $C=(C_1,C_2,\ldots C_k)$ is nested if
+Let $\lambda=(\lambda_1,\lambda_2)=(n-k,k)$ for some $0\le k\le \lfloor \frac{n}{2}\rfloor$. Such $\lambda$ is a partition of $n$ with at  most two parts.
+Let  $D_\lambda =  \big\{ (i,j) = 1\le i \le 2;\ 1\le j\le \lambda_i\big\}$ be the diagram of $\lambda$. We usually draw  the diagram in the trasposed plane where the first coordinate is the vertical axis and the second coordinate is the horizontal axis. A standard tableau of shape $\lambda$ is a bijection $T\colon D_\lambda\to \{1,2,\ldots n\}$ such that
 \begin{align*}
- &C_r=(i_r,j_r) \text{ for $1\le i_r<j_r\le n$,}\text{ and for any $1\le r<s\le k$, either}\\	
- &\qquad i_r<j_r<i_s<j_s \qquad \text{ or }\qquad  i_r<i_s<j_s<j_r\,. 
-\end{align*}
-Given a nested pairing $C=(C_1,C_2,\ldots C_k)$, we define
-  $$\Delta_C = \big(\theta_{i_1}-\theta_{j_1}\big)\big(\theta_{i_2}-\theta_{j_2}\big)\cdots \big(\theta_{i_k}-\theta_{j_k}\big)\,.
+ &T(i,j)< T(i,j+1) \text{ for } 1\le i\le 2; \ 1\le j\le \lambda_i\,,\\
+ &T(1,j)< T(2,j) \text{ for } 1\le j\le \lambda_2\,.
+ \end{align*}
+This is the usual notion of standard tableaux in the representation theory of symmetric group in the case of a partition $\lambda$ with at most two rows.
+For $T$ a standard tableau of shape $\lambda$ with at most two rows, let
+  $$\Delta_T = \big(\theta_{T(1,1)}-\theta_{T(2,1)}\big)\big(\theta_{T(1,2)}-\theta_{T(2,2)}\big)\cdots \big(\theta_{T(1,\lambda_2)}-\theta_{T(2,\lambda_2)}\big)\,.
   $$
-Here $\Delta_C=1$ if $k=0$. We now have the following proposition.
+Here $\Delta_T=1$ if $\lambda=(n,0)$. We now have the following proposition.
 
 \begin{prop}\label{harmbasis}
 The set
-$${\mathcal D}_n =\big\{ \Delta_C: \text{ $C=(C_1,C_2,\ldots C_k)$  nested and $0\le k\le \lfloor \frac{n}{2}\rfloor$}\big\},
+$${\mathcal D} =\big\{ \Delta_T: \text{ $T$  standard tableau of shape $\lambda=(n-k,k)$ and $0\le k\le \lfloor \frac{n}{2}\rfloor$}\big\},
 $$
-is contained in $EQH_n $.
+is contained in $EQH_n $ and is  linearly independent.
 \end{prop}
 
-\begin{proof}
-To show that  $\Delta_C$ is  contained in $EQH_n $, we fix $C$. We need to show that $\Delta_C$ satisfies the Equations~\eqref{eq:defEQH}.
-Let 
- $$\Delta_C=(\theta_{i_1}-\theta_{j_1})(\theta_{i_2}-\theta_{j_2})\ldots (\theta_{i_k}-\theta_{j_k}).$$
+\begin{proof} Let us first show that ${\mathcal D}$ is linearly independent. Recall that for any standard tableau $T$ we have  
+$T(1,j)<T(2,j)$ for all $1\le j\le \lambda_2$. Using lexicographic order on monomials, the leading term of 
+  $$\Delta_T=\theta_{T(1,1)}\theta_{T(1,2)}\cdots \theta_{T(1,\lambda_2)}\,.$$
+  The entries $T(1,1), T(1,2),\ldots,T(1,\lambda_2)$ completely characterize $T$, therefor the leading terms of the $\Delta_T$ are distinct.
+  This shows the linear  independence.
+
+To show that it  is  contained in $EQH_n $, we fix $T$. We need to show that $\Delta_T$ satisfies the Equations~\eqref{eq:defEQH}.
+Let us write 
+ $$\Delta_T=(\theta_{i_1}-\theta_{j_1})(\theta_{i_2}-\theta_{j_2})\ldots (\theta_{i_s}-\theta_{j_s}),$$
+ for $s=\lambda_2$, $i_r=T(1,r)$ and $j_r=T(2,r)$. Let  $C_r=\{i_r,j_r\}$ and $C=\bigcup_{r=1}^s C_i$ (this union is disjoint).
 For the first  defining equation of $EQH_n $, we have
 \begin{align*}
- \sum_{1\le i\le n} \partial_{\theta_i}\Delta_C&=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C + \sum_{i\notin \bigcup C_r}  \partial_{\theta_i}\Delta_C\\
- &=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C =0\,.
+ \sum_{1\le i\le n} \partial_{\theta_i}\Delta_T&=\sum_{1\le r\le s}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_T + \sum_{i\notin C}  \partial_{\theta_i}\Delta_T\\
+ &=\sum_{1\le r\le s}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_T =0\,.
   \end{align*}
-For the first equality we simply reorganize the terms. For the second equality, we remark that if $i\notin \bigcup C$ then the variable $\theta_i$ does not appear in $\Delta_C$, so 
-$ \partial_{\theta_i}\Delta_C=0$. For the last equality, fix $1\le r\le k$. We bring the term $(\theta_{i_r}-\theta_{j_r})$  in front  of $\Delta_C$ performing $r-1$ anticommutation. That is $\Delta_C =(-1)^{r-1}(\theta_{i_r}-\theta_{j_r}) q$ for some  polynomial $q$. Therefor
-$$(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C=(-1)^{r-1}
+For the first equality we simply reorganize the terms. For the second equality, we remark that if $i\notin C$ then the variable $\theta_i$ does not appear in $\Delta_T$, so 
+$ \partial_{\theta_i}\Delta_T=0$. For the last equality, fix $1\le r\le s$. We bring the term $(\theta_{i_r}-\theta_{j_r})$  in front  of $\Delta_T$ performing $r-1$ anticommutation. That is $\Delta_T =(-1)^{r-1}(\theta_{i_r}-\theta_{j_r}) q$ for some  polynomial $q$. Therefor
+$$(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_T=(-1)^{r-1}
 \textcolor{red}{(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})(\theta_{i_r}-\theta_{j_r})}q =0.
 $$
 
-For the second defining equation of $EQH_n $, we decompose the sum over pairs $1\le i<j\le n$ according to $|\{i,j\}\cap \bigcup C|<2$, or $\{i,j\}=C_r$ for some $r$, or $i,j$ appear in two different $C_{r},C_{s}$. In the first case, if  $|\{i,j\}\cap \bigcup C|<2$, then one of $\theta_i$ or $\theta_j$ does not appear in $\Delta_C$ and we have $ \partial_{\theta_j} \partial_{\theta_i}\Delta_C=0$. In the second case we have that the product $\theta_{i_r}\theta_{j_r}$ does not appear in $\Delta_C$ and we also have $ \partial_{\theta_{j_r}} \partial_{\theta_{i_r}}\Delta_C=0$.
+For the second defining equation of $EQH_n $, we decompose the sum over pairs $1\le i<j\le n$ according to $|\{i,\}j\cap C|<2$, or $\{i,j\}=C_r$ for some $r$, or $i,j$ appear in two different $C_{r_1},C_{r_2}$. In the first case, if  $|\{i,\}j\cap C|<2$, then one of $\theta_i$ or $\theta_j$ does not appear in $\Delta_T$ and we have $ \partial_{\theta_j} \partial_{\theta_i}\Delta_T=0$. In the second case we have that the product $\theta_{i_r}\theta_{j_r}$ does not appear in $\Delta_T$ and we also have $ \partial_{\theta_{j_r}} \partial_{\theta_{i_r}}\Delta_T=0$.
 We can thus write
 \begin{align*}
- \sum_{1\le i<j\le n} \partial_{\theta_j}\partial_{\theta_i}\Delta_C&= \sum_{1\le r<s\le k} \sum_{i\in C_{r} \atop j\in C_{s}} \pm  \partial_{\theta_j}\partial_{\theta_i}\Delta_C
+ \sum_{1\le i<j\le n} \partial_{\theta_j}\partial_{\theta_i}\Delta_T&= \sum_{1\le r_1<r_2\le s} \sum_{i\in C_{r_1} \atop j\in C_{r_2}} \pm  \partial_{\theta_j}\partial_{\theta_i}\Delta_T
 \end{align*}
-In the second sum on the right hand side, we have to be careful as when we pick $i\in C_{r}$ and $ j\in C_{s}$ we are not guarantied that $i<j$ so a sign may be needed 
-in  order to keep the equality. We will make a careful study of all possibilities for fixed $1\le r<s\le s$. First we rearrange the terms of $\Delta_C$ to  bring the terms 
-$(\theta_{i_{r}}-\theta_{j_{r}})(\theta_{i_{s}}-\theta_{j_{s}})$ in front  performing $(r-1)+(s-2)$ anti-commutations, we have 
-  $$\Delta_C  =(-1)^{r+s-1}(\theta_{i_{r}}-\theta_{j_{r}})(\theta_{i_{s}}-\theta_{j_{s}})q$$
-  for some polynomial $q$. Remark that $i_{r},j_{r},i_{s},j_{s}$ satisfy either the inequalities
-  $$  i_r<j_r<i_s<j_s \qquad \text{ or }\qquad  i_r<i_s<j_s<j_r.$$
- The only concern is their relative order, we can thus assume that we have the numbers $1,2,3,4$.
-  There are two possibilities, $(1,2),(3,4)$ or $(1,4),(2,3)$.
-  In the first case we have
+In the second sum on the right hand side, we have to be careful as when we pick $i\in C_{r_1}$ and $ j\in C_{r_2}$ we are not guarantied that $i<j$ so a sign may be needed 
+in  order to keep the equality. We will make a careful study of all possibilities for fixed $1\le r_1<r_2\le s$. First we rearrange the terms of $\Delta_T$ to  bring the terms 
+$(\theta_{i_{r_1}}-\theta_{j_{r_1}})(\theta_{i_{r_2}}-\theta_{j_{r_2}})$ in front  performing $(r_1-1)+(r_2-2)$ commutations, we have 
+  $$\Delta_T  =(-1)^{r_1+r_2-1}(\theta_{i_{r_1}}-\theta_{j_{r_1}})(\theta_{i_{r_2}}-\theta_{j_{r_2}})q$$
+  for some polynomial $q$. Remark that $C_{r_1}=\{i_{r_1},j_{r_1}\}$ and $C_{r_2}=\{i_{r_2},j_{r_2}\}$ and they satisfy the inequalities
+  $$  i_{r_1} < j_{r_1} < j_{r_2} \text{ and  }  i_{r_1} < i_{r_2} < j_{r_2}.$$
+  The only comparison we do not know is  $ j_{r_1}$ versus  $i_{r_2}$. The only concern is their relative comparison, we can thus assume that we have the number 1,2,3,4.
+  There are two possibility:
+  $$
+\begin{tikzpicture}[scale=0.5,baseline=12pt] 
+	\draw[help lines] (0,0) grid (2,2);
+	\node at (.5,.5){$\scriptstyle 1$};
+	\node at (.5,1.5){$\scriptstyle 2$};
+	\node at (1.5,.5){$\scriptstyle 3$};
+	\node at (1.5,1.5){$\scriptstyle 4$};
+\end{tikzpicture}
+\qquad\text{or} \qquad
+  \begin{tikzpicture}[scale=0.5,baseline=12pt] 
+	\draw[help lines] (0,0) grid (2,2);
+	\node at (.5,.5){$\scriptstyle 1$};
+	\node at (.5,1.5){$\scriptstyle 3$};
+	\node at (1.5,.5){$\scriptstyle 2$};
+	\node at (1.5,1.5){$\scriptstyle 4$};
+\end{tikzpicture}\,.
+$$
+In the first case we have
 $$ \big( \partial_{\theta_3}\partial_{\theta_1} +  \partial_{\theta_3}\partial_{\theta_2} +  \partial_{\theta_4}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_2}\big)
      (\theta_{1}-\theta_{2})(\theta_{3}-\theta_{4}) =0,
 $$  
  and in the second case we get 
-$$ \big( \partial_{\theta_2}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_2} +  \partial_{\theta_3}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_3}\big)
-     (\theta_{1}-\theta_{4})(\theta_{2}-\theta_{3}) =0.
+$$ \big( \partial_{\theta_2}\partial_{\theta_1} +  \partial_{\theta_3}\partial_{\theta_2} +  \partial_{\theta_4}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_3}\big)
+     (\theta_{1}-\theta_{3})(\theta_{2}-\theta_{4}) =2 \ne 0,
 $$  
-And this shows that $\Delta_C\in EQH_n $ for all nested $C$.
+
+  \textcolor{red}{Grrrr, so close, yet so frustrating !!!!! We must be able to solve these two differntial equations!!!}
+  
 \end{proof}
 
-\textcolor{red}{OK, I have shown that ${\mathcal D}_n$ is in $EQH_n $ (YEAH!) but I still have to show that it is linearly independent.
-This is now as straightforward as for tableaux or Garnir polynomials as I don't see readily that the leading monomials are distinct.
-I am not as familiar with these object to understand their linear independence... I need to think more. But I am quite happy to have found 
-a potential basis. More later. 
- }
+\begin{remark} The polynomial $\Delta_T$ for $T$ of shape $\lambda$ with at most two rows, is very close to a Specht polynomial $\Delta'_T$.
+For a fix shape $\lambda$, the set $\{\Delta'_T: \text{ $T$ of shape $\lambda$}\}$ is the standard construction of a basis of the irreducible representation indexed by $\lambda$. Here, we want this for the Hivert action in \cite{H} as this would be irreducible representations for the Temperley-Lieb algebra, a quotient of the symmetric group algebra. Briefly, the Specht polynomial $\Delta'_T$ is obtained by applying the Young idempotent of $T$ to a well chosen monomial. For example, if
+$$ T=
+\begin{tikzpicture}[scale=0.5,baseline=12pt] 
+	\draw[help lines] (0,0) grid (2,2);
+	\node at (.5,.5){$\scriptstyle 1$};
+	\node at (.5,1.5){$\scriptstyle 3$};
+	\node at (1.5,.5){$\scriptstyle 2$};
+	\node at (1.5,1.5){$\scriptstyle 4$};
+\end{tikzpicture}\,
+$$
+then the  row symmetrizer $P_T$ and column antisymmetrizer $N_T$ in the symmetric group algbera of $S_4$, are given by
+$$
+P_T= \big( Id + (1\, 2)\big)\big( Id + (3\, 4)\big)\quad\text{ and }\quad N_T= \big( Id - (1\, 3)\big)\big( Id - (2\, 4)\big).
+$$
+The Young idempotent for $T$ is up to a scalar the product $N_TP_T$. We want to apply this to the monomial 
+$$\theta_T=\theta_{T(1,1)}^0\theta_{T(1,2)}^0\theta_{T(2,1)}^1\theta_{T(2,2)}^1= \theta_3\theta_4,
+$$
+with the Hivert actions. That is, replacing the permutation in $N_TP_T$ with the corresponding composition of $\pi$ operators as defined in Equation~\eqref{eq:pi}.
+We get
+ $$ \Delta'_T=N_TP_T\theta_T = N_T \theta_T =  \theta_3\theta_4 -  \theta_1\theta_4 -  \theta_2\theta_3 +  \theta_1\theta_2
+ $$
+ In commutative variable, this would be the same as $\Delta_T$, but here, $ \Delta'_T$ does not factor in linear polynomials and we have $ \Delta'_T\ne \Delta_T$.
+ AT first glance we may think that $\{\Delta_T: \text{ $T$ of shape $\lambda$}\}$ span an irreducible subspace under Hivert action, but in fact it does not.
+\end{remark}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
