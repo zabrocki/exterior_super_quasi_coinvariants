@@ -337,19 +337,19 @@ From this we conclude that
 EQH_n =  \Big\{ q \in R_n :  \quad\sum_{1\le i\le n} \partial_{\theta_i}q= 0 \quad\hbox{ and  }\quad \sum_{1\le i<j\le n} \partial_{\theta_j}\partial_{\theta_i}q= 0 \Big\}~.
 \end{equation}
 
-Given $0\le k\le \lfloor \frac{n}{2}\rfloor$, we say that a pairing $C=(C_1,C_2,\ldots C_k)$ is nested if
+Given $0\le k\le \lfloor \frac{n}{2}\rfloor$, we say that a pairing $C=(C_1,C_2,\ldots C_k)$ is non-crossing if
 \begin{align*}
  &C_r=(i_r,j_r) \text{ for $1\le i_r<j_r\le n$,}\text{ and for any $1\le r<s\le k$, either}\\	
  &\qquad i_r<j_r<i_s<j_s \qquad \text{ or }\qquad  i_r<i_s<j_s<j_r\,. 
 \end{align*}
-Given a nested pairing $C=(C_1,C_2,\ldots C_k)$, we define
+Given a non-crossing pairing $C=(C_1,C_2,\ldots C_k)$, we define
   $$\Delta_C = \big(\theta_{i_1}-\theta_{j_1}\big)\big(\theta_{i_2}-\theta_{j_2}\big)\cdots \big(\theta_{i_k}-\theta_{j_k}\big)\,.
   $$
 Here $\Delta_C=1$ if $k=0$. We now have the following proposition.
 
 \begin{prop}\label{harmbasis}
 The set
-$${\mathcal D}_n =\big\{ \Delta_C: \text{ $C=(C_1,C_2,\ldots C_k)$  nested and $0\le k\le \lfloor \frac{n}{2}\rfloor$}\big\},
+$${\mathcal D}_n =\big\{ \Delta_C: \text{ $C=(C_1,C_2,\ldots C_k)$  non-crossing and $0\le k\le \lfloor \frac{n}{2}\rfloor$}\big\},
 $$
 is contained in $EQH_n $.
 \end{prop}
@@ -390,7 +390,7 @@ $$
 $$ \big( \partial_{\theta_2}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_2} +  \partial_{\theta_3}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_3}\big)
      (\theta_{1}-\theta_{4})(\theta_{2}-\theta_{3}) =0.
 $$  
-And this shows that $\Delta_C\in EQH_n $ for all nested $C$.
+And this shows that $\Delta_C\in EQH_n $ for all non-crossing $C$.
 \end{proof}
 
 \textcolor{red}{OK, I have shown that ${\mathcal D}_n$ is in $EQH_n $ (YEAH!) but I still have to show that it is linearly independent.
