@@ -211,13 +211,12 @@ and all others equal to $00$ in order to get $\Phi(A)=A$.
 \mike{add a mention of what that leftover guy is equal to if $r$ is even/odd}
 \end{proof}
 \end{prop}
-\kelvin{I feel we should include an explicit description of the graph encoding of the monomials and its associated recurrence, even if we don't include a proof. It's just kind of nice.}\mike{What graph encoding
-are you referring to here?}
 
 The generating series for the coefficients $F(x,y) = \sum_{r,s \ge 0} a_{r,s} x^{r}y^{s}$ is
 equal to $\frac{1 + x + y}{1 - x^{2} - y^{2}}$
 and the OEIS \cite{OEIS} sequence number is \href{https://oeis.org/A051159}{A051159}.
-This can be derived from Proposition \ref{prop:comm} using standard techniques of generating functions. \kelvin{I always think a family of coefficients should come with a GF for the sake of easy comparison. We should also add this to OEIS at some point.  MZ: has this comment been addressed?}
+This can be derived from Proposition \ref{prop:comm} using standard techniques of generating functions.
+\mike{TODO: add comment to OEIS sequence}
 
 One consequence of Proposition~\ref{prop:comm} is that $a_{r,s}=a_{s,r}$ for all $r,s\ge 0$. Remark that this does not contradict the fermionic law stating that $a_{r,s}=(-1)^{rs}a_{s,r}$ since $a_{r,s}=0$ when both $r,s$ are odd. Therefore we have shown the following corollary.
 
@@ -312,6 +311,9 @@ q= 0 \hbox{ for all } p \in I_n \right\}~.\label{eq:diffeqs}
 The second equality follows from the fact that $I_n$ is an ideal
 and shows that $EQH_n$ is also the solution space of
 a system of differential equations.
+\mike{Nantel notes that the second equality follows from an exterior algebra
+`Taylors Theorem'  Containment one way is easy, the other way is the Taylor theorem,
+make sure that make this detail clear.}
 We refer to this space as the \emph{exterior quasisymmetric harmonics}.\footnote{
 The harmonics and diagonal harmonics borrows the name from the physics literature
 because the harmonic operator $\partial_1^2 + \partial_2^2 + \cdots + \partial_n^2$
