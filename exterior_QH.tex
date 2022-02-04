@@ -202,16 +202,22 @@ For $A\in  {C\choose r}$, let $\gamma(A)=\gamma_1\gamma_2\cdots\gamma_{r+s}\in\{
 As long as $(t,\ell)\ne(2j-1,2j)$ there is a bijection between $(t,\ell)\in Inv(A)$ and $(t',\ell)\in Inv(A')$ interchanging the 1 and 0 in posisions $2j-1$ and $2j$.
 The pair $(2j-1,2j)$ is in only one of $Inv(A)$ or $Inv(A')$ but not the other. Therefore
 $$(-1)^{|\{1\le b<a\le r+s\,|\,a\in A, b\not\in A\}|} = -(-1)^{|\{1\le b<a\le r+s\,|\,a\in A', b\not\in A'\}|}\,.$$
-If $\Phi(A)=A$, we have that $|Inv(A)|$ is even (we can match the pair two by two. Therefore $\Phi$ is a sign reversing involution and all fixed points contribute in Equation~\eqref{eq:signa} with a $+1$. Therefore
+If $\Phi(A)=A$, we have that $|Inv(A)|$ is even since we can match the pairs two-by-two.
+Therefore $\Phi$ is a sign reversing involution and all fixed points contribute in Equation~\eqref{eq:signa} with a $+1$. Therefore
 $$a_{r,s}=\Big|\big\{ A\in {C\choose r}\big| \Phi(A)=A\big\}\Big|=\left({\lfloor \frac{r+s}{2} \rfloor \atop \lfloor \frac{r}{2} \rfloor}\right)\,,$$
-since there is a total of $\lfloor \frac{r+s}{2} \rfloor$ pair $2j-1,2j$ in a sequence of length $r+s$ and we must have $\lfloor \frac{r}{2} \rfloor$ of them equal to $11$ all others equal to $00$ in order to get $\Phi(A)=A$.
+since there is a total of $\lfloor \frac{r+s}{2} \rfloor$ pairs $2j-1,2j$
+in a sequence of length $r+s$ and we must have $\lfloor \frac{r}{2} \rfloor$ of them equal to $11$
+and all others equal to $00$ in order to get $\Phi(A)=A$.
+\mike{add a mention of what that leftover guy is equal to if $r$ is even/odd}
 \end{proof}
 \end{prop}
-\kelvin{I feel we should include an explicit description of the graph encoding of the monomials and its associated recurrence, even if we don't include a proof. It's just kind of nice.}
+\kelvin{I feel we should include an explicit description of the graph encoding of the monomials and its associated recurrence, even if we don't include a proof. It's just kind of nice.}\mike{What graph encoding
+are you referring to here?}
 
 The generating series for the coefficients $F(x,y) = \sum_{r,s \ge 0} a_{r,s} x^{r}y^{s}$ is
-equal to $\frac{1 + x + y}{1 - x^{2} - y^{2}}$.
-This can be derived using standard techniques of generating functions. \kelvin{I always think a family of coefficients should come with a GF for the sake of easy comparison. We should also add this to OEIS at some point.}
+equal to $\frac{1 + x + y}{1 - x^{2} - y^{2}}$
+and the OEIS \cite{OEIS} sequence number is \href{https://oeis.org/A051159}{A051159}.
+This can be derived from Proposition \ref{prop:comm} using standard techniques of generating functions. \kelvin{I always think a family of coefficients should come with a GF for the sake of easy comparison. We should also add this to OEIS at some point.  MZ: has this comment been addressed?}
 
 One consequence of Proposition~\ref{prop:comm} is that $a_{r,s}=a_{s,r}$ for all $r,s\ge 0$. Remark that this does not contradict the fermionic law stating that $a_{r,s}=(-1)^{rs}a_{s,r}$ since $a_{r,s}=0$ when both $r,s$ are odd. Therefore we have shown the following corollary.
 
@@ -318,10 +324,10 @@ analogous spaces of commuting variables.
 
 \begin{prop} For all $n \geq 1$, as graded vector spaces
 \[
-EQC_n \simeq EQH_n~.\]
+EQC_n \simeq EQH_n~.
+\]
+\mike{We state this without proof or comment.  Do we need to add proof or a reference?}
 \end{prop}
-\nantel{I think I found the solution to $EQH_n$ and its (non)-relation to temperley-Lieb  representation. I will 
-start writting and hopefully it is all right...if I am, it will simplify the proof of Section 4 by a lot!!! }
 
 We will conclude this section  by constructing a set of linearly independent elements inside $EQH_n$, which will
 give us a lower  bound on the dimension of $EQC_n$. In Section~\ref{sec:path} we will see that this is also an upper bound,
@@ -330,11 +336,20 @@ Remark first  that since $I_n$ is an ideal, we do not need to take all $p\in I_n
 We can reduce that further using Proposition~\ref{prop:comm} as noted in the following lemma.
 \begin{lemma}\label{lem:idealgen}
 For $n\ge 2$ we have
-$$ I_n=\langle F_1, F_{1^2}  \rangle$$
+\[
+I_n=\langle F_1, F_{1^2}  \rangle~.
+\]
 \end{lemma}
 
-\begin{proof} Clearly we have $ \langle F_1, F_{1^2}  \rangle \subseteq I_n$. For the  converse, consider first $2\le r=2k\le n$. Using Proposition~\ref{prop:comm}, we have that
-$aF_{1^r} = \big(F_{1^2}\big)^k$ for some $a\ne 0$. Therefor $F_{1^r} \in \langle F_1, F_{1^2}  \rangle$. For $2\le r=2k+1\le n$, we have $aF_{1^r} = \big(F_{1^2}\big)^kF_1$, which again show $F_{1^r} \in \langle F_1, F_{1^2}  \rangle$. We conclude that $I_n\subseteq  \langle F_1, F_{1^2}  \rangle$. 
+\begin{proof} Clearly we have $ \langle F_1, F_{1^2}  \rangle \subseteq I_n$. 
+For the converse we note that for each $k\geq 1$
+there are non-zero coefficients $a$ and $a'$ such that
+\[
+a F_{1^{2k}} = (F_{1^2})^k \hskip .2in\hbox{   and   }\hskip .2in a' F_{1^{2k+1}} = (F_{1^2})^k F_1
+\]
+hence all of the generators of $I_n$ are contained in $\langle F_1, F_{1^2}  \rangle$.
+%For the  converse, consider first $2\le r=2k\le n$. Using Proposition~\ref{prop:comm}, we have that
+%$aF_{1^r} = \big(F_{1^2}\big)^k$ for some $a\ne 0$. Therefor $F_{1^r} \in \langle F_1, F_{1^2}  \rangle$. For $2\le r=2k+1\le n$, we have $aF_{1^r} = \big(F_{1^2}\big)^kF_1$, which again show $F_{1^r} \in \langle F_1, F_{1^2}  \rangle$. We conclude that $I_n\subseteq  \langle F_1, F_{1^2}  \rangle$. 
 \end{proof}
 From this we conclude that 
 \begin{equation}\label{eq:defEQH}
@@ -342,16 +357,18 @@ EQH_n =  \Big\{ q \in R_n :  \quad\sum_{1\le i\le n} \partial_{\theta_i}q= 0 \qu
 \end{equation}
 
 Given $0\le k\le \lfloor \frac{n}{2}\rfloor$, a non-crossing pairing of length $k$ is a
-list $(C_1, C_2, \ldots, C_k)$ with $C_r = (i_r, j_r) \in [n] \times [n]$
+list $(C_1, C_2, \ldots, C_k)$ with
 \begin{align*}
- &C_r=(i_r,j_r) \text{ for $1\le i_r<j_r\le n$,}\text{ and for any $1\le r<s\le k$, either}\\
- &\qquad i_r<j_r<i_s<j_s \qquad \text{ or }\qquad  i_s<i_r<j_r<j_s\,. 
+ &C_r=(i_r,j_r) \text{ for $1\le i_r<j_r\le n$ for each $1 \leq r \leq k$ and,}\\
+ &\qquad \text{either } i_r<j_r<i_s<j_s  \text{ or }  i_s<i_r<j_r<j_s\,\text{ for any $1\le r<s\le k$}. 
 \end{align*}
 Given a non-crossing pairing $C=(C_1,C_2,\ldots C_k)$, we define
 \begin{equation}\label{eq:Deltadef}
 \Delta_C = \big(\theta_{j_1}-\theta_{i_1}\big)\big(\theta_{j_2}-\theta_{i_2}\big)\cdots \big(\theta_{j_k}-\theta_{i_k}\big)\,.
 \end{equation}
-Here $\Delta_C=1$ if $k=0$. Remark that $j_1<j_2<\cdots< j_k$. We now have the following proposition.
+Here $\Delta_C=1$ if $k=0$. Remark that $j_1<j_2<\cdots< j_k$.
+The following proposition shows that there is a relationship between the non-crossing
+partition condition and the differential equations from Equation \eqref{eq:defEQH}.
 
 \begin{prop}\label{prop:harmelem}
 The set
@@ -361,18 +378,21 @@ is contained in $EQH_n $.
 \end{prop}
 
 \begin{proof}
-To show that  $\Delta_C$ is  contained in $EQH_n $, we fix $C$. We need to show that $\Delta_C$ satisfies the Equations~\eqref{eq:defEQH}.
-Let 
- $$\Delta_C=(\theta_{j_1}-\theta_{i_1})(\theta_{j_2}-\theta_{i_2})\ldots (\theta_{j_k}-\theta_{i_k}).$$
-For the first  defining equation of $EQH_n $, we have
+To show that  $\Delta_C$ is  contained in $EQH_n $, we fix $C$. We need to show that $\Delta_C$ satisfies the differential equation conditions in Equation~\eqref{eq:defEQH}.
+
+For the first  defining equation of $EQH_n$, we have
 \begin{align*}
  \sum_{1\le i\le n} \partial_{\theta_i}\Delta_C&=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C + \sum_{i\notin \bigcup C_r}  \partial_{\theta_i}\Delta_C\\
  &=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C =0\,.
   \end{align*}
-For the first equality we simply reorganize the terms. For the second equality, we remark that if $i\notin \bigcup C$ then the variable $\theta_i$ does not appear in $\Delta_C$, so 
-$ \partial_{\theta_i}\Delta_C=0$. For the last equality, fix $1\le r\le k$. We bring the term $(\theta_{j_r}-\theta_{i_r})$  in front  of $\Delta_C$ performing $r-1$ anticommutation. That is $\Delta_C =(-1)^{r-1}(\theta_{j_r}-\theta_{i_r}) q$ for some  polynomial $q$. Therefor
+%For the first equality we simply reorganize the terms. For the second equality, we remark that if $i\notin \bigcup C$ then the variable $\theta_i$ does not appear in $\Delta_C$, so 
+%$ \partial_{\theta_i}\Delta_C=0$.
+%%MZ: I'm taking that sentence out because I think it is clearer without stating it.
+For the last equality, fix $1\le r\le k$. We bring the term $(\theta_{j_r}-\theta_{i_r})$  in front  of $\Delta_C$ performing $r-1$ anti-commutation relations.
+That is $\Delta_C =(-1)^{r-1}(\theta_{j_r}-\theta_{i_r}) q$ for some  polynomial $q$
+and so for each $r$,
 $$(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C=(-1)^{r-1}
-\textcolor{red}{(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})(\theta_{j_r}-\theta_{i_r})}q =0.
+\textcolor{red}{(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})(\theta_{j_r}-\theta_{i_r})}q =0~.
 $$
 
 For the second defining equation of $EQH_n $, we decompose the sum over pairs $1\le i<j\le n$ according to $|\{i,j\}\cap \bigcup C|<2$, or $\{i,j\}=C_r$ for some $r$, or $i,j$ appear in two different $C_{r},C_{s}$. In the first case, if  $|\{i,j\}\cap \bigcup C|<2$, then one of $\theta_i$ or $\theta_j$ does not appear in $\Delta_C$ and we have $ \partial_{\theta_j} \partial_{\theta_i}\Delta_C=0$. In the second case we have that the product $\theta_{j_r}\theta_{i_r}$ does not appear in $\Delta_C$ and we also have $ \partial_{\theta_{j_r}} \partial_{\theta_{i_r}}\Delta_C=0$.
@@ -810,6 +830,10 @@ Adv. in Math., 2000, 155 (2), pp. 181--238.
 \textit{Ideals and quotients of diagonally quasi-symmetric functions}.
 Elec. J. Comb., Vol 24, Issue \#3, P3.3.
 \href{https://doi.org/10.37236/6658}{10.37236/6658}.
+
+\bibitem{OEIS} OEIS Foundation Inc. (2022),
+The On-Line Encyclopedia of Integer Sequences, Published electronically at
+\href{http://oeis.org}{http://oeis.org}.
 \end{thebibliography}
 
 \end{document}
