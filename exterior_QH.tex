@@ -460,19 +460,26 @@ is contained in $EQH_n$ and linearly independent.
   The first statement follows from Proposition~\ref{prop:harmelem} since ${\mathcal D}_n \subseteq {\mathcal D}'_n \subseteq EQH_n$.
 To show the linear independence, fix $\alpha$ a ballot sequence and let $C(\alpha)=((i_1,j_1),\ldots,(i_k,j_k))$ be its non-crossing pairing.  We remark that the sequence of numbers
 $j_1<j_2<\cdots<j_k$ correspond to the position of the $1$ in $\alpha$.
-The term $\theta_{j_1}\theta_{j_2}\cdots\theta_{j_k}$ is the  smallest lexicographic
+The term $\theta_{j_1}\theta_{j_2}\cdots\theta_{j_k}$ is the smallest lexicographic
 monomial in $\Delta_{C(\alpha)}$ (by inspection of the product in Equation~\eqref{eq:Deltadef}).
 For different ballot sequences $\alpha$ we get different positions of the $1$ in
 $\alpha$ and thus different smallest lexicographic monomials,
 which shows the independence of ${\mathcal D}_n$.
 \end{proof}
 
-\begin{remark} For a fix $0\le k\le \lfloor \frac{n}{2}\rfloor$, the set 
+\begin{remark} For a fixed $0\le k\le \lfloor \frac{n}{2}\rfloor$, the set
 $${\mathcal D}^{(k)}_n =\big\{ \Delta_{C(\alpha)}:  \alpha \in \{0, 1\}^n \text{ a ballot sequence with $k$  1s}\big\}$$
-span a space a degree $k$. It is know that the ballot sequence with $k$ 1s are in bijection with standard tableaux of shape $(n-k,k)$.
+spans a subspace of $R_n$ of degree $k$.
+It is known that the ballot sequence with $k$ 1s are in bijection with standard tableaux of shape $(n-k,k)$.
 If  the variables $\theta$  were  commutative, the space spanned by ${\mathcal D}^{(k)}_n$ would be the same as the space spanned
-by the Specht polynomials index by standard tableaux and therefor an irreducible symmetric group module. But here the situation appear to be related but in fact is quite different.
-A small example is informative. Consider $n=4$ and $k=2$. There are two ballot sequences $0101$ and $0011$. The associated two non-crossing pairings are
+by the Specht polynomials indexed by standard tableaux and therefore
+would be an irreducible symmetric group module.
+Here the situation appears to be related, but is in fact is quite different.
+
+A small example is informative.
+Consider $n=4$ and $k=2$.
+There are two ballot sequences $0101$ and $0011$.
+The associated two non-crossing pairings are
 $((1,2),(3,4))$ and $((2,3),(1,4))$ and we have 
 $$\Delta_{C(0101)}=  (\theta_{2}-\theta_{1})(\theta_{4}-\theta_{3}) \quad\text{ and }\quad \Delta_{C(0011)}=(\theta_{3}-\theta_{2})(\theta_{4}-\theta_{1}).
 $$  
@@ -494,9 +501,13 @@ T_2=\begin{tikzpicture}[scale=0.5,baseline=12pt]
 	\node at (1.5,1.5){$\scriptstyle 4$};
 \end{tikzpicture}\,.
 $$
-A standard construction of the irreducible of shape  $(2,2)$ form those tableaux $T_i$ is to apply the Young idempotent (associated to $T_i$)  to the monomial associated to $T_i$.
-That is $\Delta'_{T_i}=N_{T_i}P_{T_i} \theta_{T_i}=N_{T_i}\theta_{T_i}$ using the action of the symmetric group that we have (namely Hivert action in \cite{H} ).
-For $T_1$ and $T_2$ we get
+A standard construction of the irreducible of shape  $(2,2)$ from those tableaux $T_1$ and $T_2$
+is to apply the Young idempotent associated to $T_i$ to the monomial associated to $T_i$.
+That is, $\Delta'_{T_i}=N_{T_i}P_{T_i} \theta_{T_i}=N_{T_i}\theta_{T_i}$
+using the action of the symmetric group that we have (namely Hivert action in \cite{H} ).
+
+
+For $T_1$ and $T_2$ we compute
 \begin{align*}
 \Delta'_{T_1}&= N_{T_1}\theta_2\theta_4=  \big( Id - (1\, 2)\big)\big( Id - (3\, 4)\big) \theta_2\theta_4 
 = \theta_2\theta_4 -  \theta_1\theta_4 -  \theta_2\theta_3 +  \theta_1\theta_3
@@ -506,12 +517,21 @@ For $T_1$ and $T_2$ we get
 and
 \begin{align*}
 \Delta'_{T_2}&= N_{T_2}\theta_3\theta_4=  \big( Id - (1\, 3)\big)\big( Id - (2\, 4)\big) \theta_3\theta_4 
-=  \theta_3\theta_4 -  \theta_1\theta_4 -  \theta_2\theta_3 +  \theta_1\theta_2
+=  \theta_3\theta_4 -  \theta_1\theta_4 -  \theta_2\theta_3 +  \theta_1\theta_2~.
 \end{align*}
-Remark that for $T_2$, the polynomials $\Delta'_{T_2}$ does not factor into $(\theta_{3}-\theta_{1})(\theta_{4}-\theta_{2})$.
+Remark that for $T_2$, the polynomial $\Delta'_{T_2}$
+does not factor into $(\theta_{3}-\theta_{1})(\theta_{4}-\theta_{2})$.
 Moreover $\Delta'_{T_2}\notin EQH_n$ and $(\theta_{3}-\theta_{1})(\theta_{4}-\theta_{2})\notin EQH_n$.
  In commutative variable, $\Delta'_{T_2}$ would factor and the  span of the $\{\Delta'_{T_1},\Delta'_{T_2}\}$ (an irreducible module) would  be the same as 
  the span of $\{\Delta_{C(0101)},\Delta_{C(0011)}\}$. But  for anticommutative variables, it is a  different story.
+\mike{I think that this whole last paragraph is a good point of discussion for us,
+but that it is not a good idea to leave it in the paper.  It seems that it provides
+a calculation that doesn't have properties that we would hope to see, but when it doesn't
+have those properties it only shows that we didn't make good choices.
+Also, there are many actions in
+the Hivert paper, which one are you using here (I am guessing the one where we
+used the notation $(12) = \pi_1$ and $(34) = \pi_3$, but that wouldn't make it a symmetric
+group module.}
 \end{remark}
 
 
@@ -593,7 +613,7 @@ the set $\{ G_\alpha \}_{\alpha \in \{0,1\}^n}$ is a basis
 for $R_n$.
 
 The argument for the proposition is elementary (chasing the largest lexicographic
-term in \eqref{eq:0start} and \eqref{eq:0start})
+term in \eqref{eq:0start} and \eqref{eq:1start})
 and so we do not include it, however the proof of the
 following result comes from careful analysis of the
 terms arising the recursive definition of the $G_\alpha$.
@@ -773,7 +793,9 @@ is a $\mathbb Q$--linear basis of the ideal $I_n$.
 The proof of this theorem uses our understanding of the harmonic space $EQH_n\cong EQC_n$.
 In Proposition~\ref{prop:harmbasis} we found that $\dim(EQH_n)=\dim(EQC_n)$ is at least the number of ballot sequences.
 We first establish a small lemma about a spanning set for the quotient $EQC_n$ showing that  the dimension is at most  the number of ballot sequences.
-Therefor we have equality and the set ${\mathcal D}_n$ in Proposition~\ref{prop:harmbasis}  is in fact a basis.
+Therefore we have equality
+and the set ${\mathcal D}_n$ in Proposition~\ref{prop:harmbasis} is in fact a basis
+of $EQH_n$.
 
 
 \begin{lemma}\label{lem:spanofquotient}
@@ -782,7 +804,7 @@ $\mathbb Q$--spans the quotient $R_n\big/I_n$.
 \end{lemma}
 
 \begin{proof}
-Order the monomial lexicographically. Let  $\theta^\gamma$ be the smallest monomial that is not in the $\mathbb Q$--span of $B_n$
+Order the monomials lexicographically. Let  $\theta^\gamma$ be the smallest monomial that is not in the $\mathbb Q$--span of $B_n$
 (modulo  $I_n$). We must have  that $\gamma$ crosses the  diagonal, since otherwise $\theta^\gamma\in  B_n$. Therefore, Proposition~\ref{prop:crossimpliescontains}
 tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:largest} say that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence, modulo $I_n$, we have
 $$ \theta^\gamma \equiv \theta^\gamma - G_\gamma = - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
