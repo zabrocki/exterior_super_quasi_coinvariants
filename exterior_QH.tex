@@ -617,13 +617,21 @@ G_{001100} &= G_{011000} - \theta_2 G_{010000} = (G_{110000} - \theta_1 G_{10000
 \end{align*}
 \end{example}
 
-Order the monomials of $R_n$ so that we say $\theta_A < \theta_B$ if
-$\alpha(A)$ is smaller than $\alpha(B)$ in lexicographic order.
-An important property of these elements is the following statement.
+We follow \cite{CLO} on the convention of lexicographical ordering on monomials.
+Given vectors $u,v$ with non-negative integer entries, we say $u < v$ lexicographically if
+there exists an index $j \ge 1$ such that $u_{i} = v_{i}$ for all $1 \le i < j$ but
+$u_{j} < v_{j}$.  Monomials of $R_{n}$ are ordered by their exponent vectors.  More
+precisely, $\theta_{A} < \theta_{B}$ if $\alpha(A) < \alpha(B)$ lexicographically.  For examples, we have
+$\theta_{1} > \cdots > \theta_{n}$ and the lexicographically largest monomial in the above example
+$G_{001100}$ is $\theta_{3}\theta_{4}$.  The latter demonstrates an important property of these
+elements stated in the following proposition.  
 \mike{todo: define clearly the order and wherever we use the term `lexicographic',
 make sure it is used properly.  Definition 3 in Chapter 1 of Cox, Little, O'Shea
 \cite{CLO}
 $x^\alpha <_{LEX} x^\beta$ if and only if $\alpha <_{LEX} \beta$.}
+\kelvin{Done. As far as I can tell, we are using the above definition for comparison for
+  the rest of the paper. We always explicitly mention lexicographical in subsequent
+  use of the order. So I feel putting a subscript in the definition is a little redundant.}
 \begin{prop}\label{prop:largest}
 The largest lexicographic term in $G_\alpha$ is $\theta^\alpha$.
 \end{prop}
@@ -834,7 +842,7 @@ $\mathbb Q$--spans the quotient $R_n\big/I_n$.
 \begin{proof}
 Order the monomials lexicographically. Let  $\theta^\gamma$ be the smallest monomial that is not in the $\mathbb Q$--span of $B_n$
 (modulo  $I_n$). We must have  that $\gamma$ crosses the  diagonal, since otherwise $\theta^\gamma\in  B_n$. Therefore, Proposition~\ref{prop:crossimpliescontains}
-tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:largest} say that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence, modulo $I_n$, we have
+tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:largest} says that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence, modulo $I_n$, we have
 $$ \theta^\gamma \equiv \theta^\gamma - G_\gamma = - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
 The right hand side is a linear combination of monomials strictly smaller than $\theta^\gamma$.
 By the choice of $\theta^\gamma$, all such monomials are in the $\mathbb Q$--span of $B_n$.
