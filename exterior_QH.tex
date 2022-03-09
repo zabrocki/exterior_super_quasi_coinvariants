@@ -437,8 +437,11 @@ We want to select a linearly independent subset of ${\mathcal D}'_n$. We proceed
 consider a sequence
 $\alpha \in \{0, 1\}^n$ such that $\sum_{i=1}^r a_i \leq r/2$ for all $1 \leq r \leq n$. 
 Such sequences are known as \defn{ballot sequences}.
-In Section~\ref{sec:path} we will develop a more visual interpretation of
-ballot sequences and interpret them as paths that stay above the diagonal.
+If ever it is the case that $\sum_{i=1}^r a_i > r/2$ then we say that
+$\alpha$ \defn{breaks the ballot condition} at position $r$.
+
+%In Section~\ref{sec:path} we will develop a more visual interpretation of
+%ballot sequences and interpret them as paths that stay above the diagonal.
 Given a ballot sequence $\alpha$ we build a non-crossing pairing $C(\alpha)$ by first replacing all $0$s
 by open parentheses $0\mapsto$`(',
 and all $1$s by close parentheses $1\mapsto$`)',
@@ -625,13 +628,6 @@ precisely, $\theta_{A} < \theta_{B}$ if $\alpha(A) < \alpha(B)$ lexicographicall
 $\theta_{1} > \cdots > \theta_{n}$ and the lexicographically largest monomial in the above example
 $G_{001100}$ is $\theta_{3}\theta_{4}$.  The latter demonstrates an important property of these
 elements stated in the following proposition.  
-\mike{todo: define clearly the order and wherever we use the term `lexicographic',
-make sure it is used properly.  Definition 3 in Chapter 1 of Cox, Little, O'Shea
-\cite{CLO}
-$x^\alpha <_{LEX} x^\beta$ if and only if $\alpha <_{LEX} \beta$.}
-\kelvin{Done. As far as I can tell, we are using the above definition for comparison for
-  the rest of the paper. We always explicitly mention lexicographical in subsequent
-  use of the order. So I feel putting a subscript in the definition is a little redundant.}
 \begin{prop}\label{prop:largest}
 The largest lexicographic term in $G_\alpha$ is $\theta^\alpha$.
 \end{prop}
@@ -745,44 +741,44 @@ holds in all cases and concludes the  proof of the lemma.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{A path model for the quotient}\label{sec:path}
+\section{A basis for the quotient}\label{sec:ballotbasis}
 
-To each sequence $\alpha \in \{0, 1\}^n$, we associate a path starting at the origin
-and extending into the first quadrant of the $x,y$-plane.  The $i^{th}$ step of this
-path will be a unit in the $(1,0)$-direction if $a_i =1$ and it will be a unit in the $(0,1)$-direction
-if $a_i = 0$.  We say that the sequence $\alpha$ \defn{crosses the diagonal} if
-there is a point on the path which lies at $(a,a)$ and the next step is in the $(1,0)$
-direction.  Otherwise we say that $\alpha$ \defn{stays above the diagonal}.  Note that
-$\alpha$ stays above the diagonal if $\sum_{i=1}^r a_i \leq r/2$
-for all $1 \leq r \leq n$
-and it crosses the diagonal otherwise. The ballot sequences we encountered earlier are the one that  stay above the diagonal.
-\mike{I think that we should state everything in terms of ballot sequences
-or paths, but not both.  I see no obvious reason to switch between the two models
-and we should make the presentation as simple as possible.}
-
-\begin{example} Let $n=6$ and $\alpha = 010110$ and $\beta = 001100$, then the corresponding
-paths are
-\begin{center}
-\begin{tikzpicture}[scale=.75]
-  \draw[dotted] (0, 0) grid (4, 4);
-  \draw[rounded corners=1, color=black, line width=2] (0, 0) -- (0, 1) -- (1, 1) -- (1, 2) -- (2, 2) -- (3, 2) -- (3, 3);
-\end{tikzpicture}
-\hskip .5in
-\begin{tikzpicture}[scale=.75]
-  \draw[dotted] (0, 0) grid (4, 4);
-  \draw[rounded corners=1, color=black, line width=2] (0, 0) -- (0, 1) -- (0, 2) -- (1, 2) -- (2, 2) -- (2, 3) -- (2, 4);
-\end{tikzpicture}
-\end{center}
-\end{example}
+%To each sequence $\alpha \in \{0, 1\}^n$, we associate a path starting at the origin
+%and extending into the first quadrant of the $x,y$-plane.  The $i^{th}$ step of this
+%path will be a unit in the $(1,0)$-direction if $a_i =1$ and it will be a unit in the $(0,1)$-direction
+%if $a_i = 0$.  We say that the sequence $\alpha$ \defn{crosses the diagonal} if
+%there is a point on the path which lies at $(a,a)$ and the next step is in the $(1,0)$
+%direction.  Otherwise we say that $\alpha$ \defn{stays above the diagonal}.  Note that
+%$\alpha$ stays above the diagonal if $\sum_{i=1}^r a_i \leq r/2$
+%for all $1 \leq r \leq n$
+%and it crosses the diagonal otherwise. The ballot sequences we encountered earlier are the one that  stay above the diagonal.
+%\mike{I think that we should state everything in terms of ballot sequences
+%or paths, but not both.  I see no obvious reason to switch between the two models
+%and we should make the presentation as simple as possible.}
+%
+%\begin{example} Let $n=6$ and $\alpha = 010110$ and $\beta = 001100$, then the corresponding
+%paths are
+%\begin{center}
+%\begin{tikzpicture}[scale=.75]
+%  \draw[dotted] (0, 0) grid (4, 4);
+%  \draw[rounded corners=1, color=black, line width=2] (0, 0) -- (0, 1) -- (1, 1) -- (1, 2) -- (2, 2) -- (3, 2) -- (3, 3);
+%\end{tikzpicture}
+%\hskip .5in
+%\begin{tikzpicture}[scale=.75]
+%  \draw[dotted] (0, 0) grid (4, 4);
+%  \draw[rounded corners=1, color=black, line width=2] (0, 0) -- (0, 1) -- (0, 2) -- (1, 2) -- (2, 2) -- (2, 3) -- (2, 4);
+%\end{tikzpicture}
+%\end{center}
+%\end{example}
 
 The elements $G_\alpha$ are defined so that we could use them to
 identify a nice basis of the ideal $I_n$.  Our first result establishes
-that the $G_\alpha$ such that $\alpha$ crosses the diagonal
+that the $G_\alpha$ such that $\alpha$ is not a ballot sequence
 are in the ideal.  The slightly more difficult step is to show
 that these elements also span the ideal.
 
-\begin{prop}\label{prop:crossimpliescontains}
-If $\alpha$ crosses the diagonal, then $G_\alpha \in I_n$.
+\begin{prop}\label{prop:notballotimpliescontains}
+If $\alpha \in \{0,1\}^n$ is not a ballot sequence, then $G_\alpha \in I_n$.
 \end{prop}
 
 \begin{proof}
@@ -790,8 +786,8 @@ A sequence $\alpha \in \{ 0, 1\}^n$ is either of the form
 $\alpha = 1^s0^{n-s}$ for some $s > 0$ or
 $\alpha = u01^s0^{n-s-k}$ for some $s>0$ and some $u \in \{0,1\}^{k-1}$.
 
-In the first case, $\alpha$ crosses the diagonal on the first step and
-by Equation \eqref{eq:Gdef1}, $G_{1^s0^{n-s}} = F_{1^s}$
+In the first case, $\alpha$ breaks the ballot condition in position $1$
+and by Equation \eqref{eq:Gdef1}, $G_{1^s0^{n-s}} = F_{1^s}$
 is in the ideal $I_n$.
 
 Now the other case is established by
@@ -803,26 +799,26 @@ $G_{u1^s0^{n-k-s+1}}$ and $G_{u1^{s-1}0^{n-k-s+2}}$
 are elements of $I_n$.
 
 Assume that $u01^s0^{n-s-k}$
-crosses the diagonal for the first time at position $r$.
+breaks the ballot condition for the first time at position $r$.
 If $r<k$, then
 $u1^s0^{n-k-s+1}$ and $u1^{s-1}0^{n-k-s+2}$
-both cross the diagonal also at position $r$.
-Since $\alpha_k=0$, $\alpha$ does not cross the diagonal for the first
+both break the ballot condition also at position $r$.
+Since $\alpha_k=0$, $\alpha$ does not break the ballot condition for the first
 time at $r=k$, so the other possibility is that is $r>k$.
-In this case $u01^{r-k}$ with $r-k \leq s$ crosses the diagonal for the first time
+In this case $u01^{r-k}$ with $r-k \leq s$ breaks the ballot condition for the first time
 and therefore so does $u1^{r-k-1}$ and so do both
 $u1^s0^{n-k-s+1}$ and $u1^{s-1}0^{n-k-s+2}$.
 By our inductive hypothesis this implies $G_\alpha \in I_n$.
 
-Therefore by induction, $\alpha$ crosses the diagonal implies $G_\alpha \in I_n$
+Therefore by induction, $\alpha$ breaks the ballot condition implies $G_\alpha \in I_n$
 for all $\alpha \in \{0,1\}^n$.
 \end{proof}
 
 We will  show that the ideal lies in the span of the $G_\alpha$ such
-that $\alpha$ crosses the diagonal therefore establishing our main theorem.
+that $\alpha$ breaks the ballot condition therefore establishing our main theorem.
 
 \begin{theorem}\label{thm:basisofideal}
-The set $A_n:=\big\{ G_\alpha : \alpha \in \{0,1\}^n \text{ \it crosses the diagonal}\big\}$
+The set $A_n:=\big\{ G_\alpha : \alpha \in \{0,1\}^n \text{ \it breaks the ballot condition}\big\}$
 is a $\mathbb Q$--linear basis of the ideal $I_n$.
 \end{theorem}
 
@@ -835,13 +831,14 @@ of $EQH_n$.
 
 
 \begin{lemma}\label{lem:spanofquotient}
-The set $B_n=\big\{ \theta^\beta : \beta \in \{0,1\}^n \text{ \it stays above the diagonal}\big\}$
+The set $B_n=\big\{ \theta^\beta : \beta \in \{0,1\}^n \text{ \it is a ballot sequence}\big\}$
 $\mathbb Q$--spans the quotient $R_n\big/I_n$.
 \end{lemma}
 
 \begin{proof}
 Order the monomials lexicographically. Let  $\theta^\gamma$ be the smallest monomial that is not in the $\mathbb Q$--span of $B_n$
-(modulo  $I_n$). We must have  that $\gamma$ crosses the  diagonal, since otherwise $\theta^\gamma\in  B_n$. Therefore, Proposition~\ref{prop:crossimpliescontains}
+(modulo  $I_n$). We must have  that $\gamma$ breaks the ballot condition,
+since otherwise $\theta^\gamma\in  B_n$. Therefore, Proposition~\ref{prop:crossimpliescontains}
 tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:largest} says that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence, modulo $I_n$, we have
 $$ \theta^\gamma \equiv \theta^\gamma - G_\gamma = - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
 The right hand side is a linear combination of monomials strictly smaller than $\theta^\gamma$.
@@ -850,12 +847,12 @@ By the choice of $\theta^\gamma$, all such monomials are in the $\mathbb Q$--spa
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:basisofideal}]
-Let $d_n$ be the number of ballot sequences of size $n$. We also have that this is exactly the set of sequence $\alpha\in\{0,1\}^n$ that stays above the  diagonal.
+Let $d_n$ be the number of ballot sequences of size $n$. We also have that this is exactly the set of sequence $\alpha\in\{0,1\}^n$ that are ballot sequences.
 We have
 $$ d_n\le \dim EQH_n = \dim EQC_n \le d_n,$$
 where the first inequality is using Proposition~\ref{prop:harmbasis} and second follow from Lemma~\ref{lem:spanofquotient}.
 Let ${\mathbb Q}A_n$ be the ${\mathbb Q}\text{-span}$ of the elements of $A_n$.
-Similarly, let ${\mathbb Q}B'_n$ be the ${\mathbb Q}\text{-span}$ of the set $\big\{ G_\beta : \beta \in \{0,1\}^n \text{ \it stays above the diagonal}\big\}$.
+Similarly, let ${\mathbb Q}B'_n$ be the ${\mathbb Q}\text{-span}$ of the set $\big\{ G_\beta : \beta \in \{0,1\}^n \text{ \it is a ballot sequence}\big\}$.
 Using Proposition~\ref{prop:largest} we have that
 $$R_n ={\mathbb Q}B'_n \oplus  {\mathbb Q}A_n 
 $$
@@ -868,7 +865,8 @@ There are several straightforward consequence of this theorem which we state her
 \end{cor}
 
 \begin{cor} The set $A_n$ is a (non-reduce, non minimal) Gr\"obner basis of $I_n$. A minimal Gr\"obner basis for $I_n$ is given by
-$$ I_n =\big\{ G_\alpha : \alpha \in \{0,1\}^n \text{ \it crosses the diagonal only  at the rightmost  1 of }  \alpha\big\}\,.
+$$ I_n =\big\{ G_\alpha : \alpha \in \{0,1\}^n \text{ \it breaks the ballot condition only
+at the rightmost  1 of }  \alpha\big\}\,.
 $$
 \end{cor}
 
