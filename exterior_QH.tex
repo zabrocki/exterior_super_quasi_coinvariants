@@ -191,24 +191,30 @@ This does not depend on the value of the element of $C$, but only on how $A$ is 
 a_{r,s}=\sum_{\substack{A\subseteq \{1,2,\ldots, r+s\}\\ |A|=r}}
 (-1)^{|\{1\le b<a\le r+s\,|\,a\in A, b\not\in A\}|}
 \end{equation}
-by choosing $C=\{1,2,\ldots,r+s\}$. Let ${C\choose r}=\{A\subseteq C, |A|=r\}$. We define a sign-reversing involution $\Phi\colon {C\choose r}\to{C\choose r}$ as follow.
+by choosing $C=\{1,2,\ldots,r+s\}$.
+
+Let ${C\choose r}=\{A\subseteq C, |A|=r\}$. We define a sign-reversing involution $\Phi\colon {C\choose r}\to{C\choose r}$ as follows.
 For $A\in  {C\choose r}$, let $\gamma(A)=\gamma_1\gamma_2\cdots\gamma_{r+s}\in\{0,1\}^{r+s}$, be the sequence such that
  $\gamma_i=1$ if $i\in A$, and $\gamma_i=0$ otherwise.
  We look at the  entries of  $\gamma(A)$ two by two and find the smallest $j$ (if it exists) such that the  pair
- $\gamma_{2j-1}\gamma_{2j}$ is not $00$ or $11$. If there is no such pair, we let $\Phi(A)=A$. If we find such pair we define the involution $\Phi(A)=A'$ where $A'$ is such that $\gamma(A')$ is obtained from $\gamma(A)$ by interchanging $01\leftrightarrow 10$ in position $2j-1,2j$. In the case when  $A'=\Phi(A)\ne A$,
- we let
+ $\gamma_{2j-1}\gamma_{2j}$ is not $00$ or $11$. If there is no such pair, we let $\Phi(A)=A$.   If we find such pair we define the involution $\Phi(A)=A'$ where $A'$ is such that $\gamma(A')$ is obtained from $\gamma(A)$ by interchanging $01\leftrightarrow 10$ in position $2j-1,2j$. If $r$ and $s$ are both odd, then there must be at least one occurrence of $01$ or $10$ and there are no fixed points of this involution.
+
+We let
  $$Inv(A)=\{1\le b<a\le r+s\,|\,a\in A, b\not\in A\}=\{1\le \ell<t\le r+s\,|\,\gamma_\ell=0,\gamma_t=1 \}\,$$
  where $\gamma(A)=\gamma_1\gamma_2\cdots\gamma_{r+s}$.
-As long as $(t,\ell)\ne(2j-1,2j)$ there is a bijection between $(t,\ell)\in Inv(A)$ and $(t',\ell)\in Inv(A')$ interchanging the 1 and 0 in posisions $2j-1$ and $2j$.
+As long as $(t,\ell)\ne(2j-1,2j)$ there is a bijection between $(t,\ell)\in Inv(A)$ and
+$(t',\ell)\in Inv(A')$ interchanging the 1 and 0 in positions $2j-1$ and $2j$.
 The pair $(2j-1,2j)$ is in only one of $Inv(A)$ or $Inv(A')$ but not the other. Therefore
 $$(-1)^{|\{1\le b<a\le r+s\,|\,a\in A, b\not\in A\}|} = -(-1)^{|\{1\le b<a\le r+s\,|\,a\in A', b\not\in A'\}|}\,.$$
 If $\Phi(A)=A$, we have that $|Inv(A)|$ is even since we can match the pairs two-by-two.
-Therefore $\Phi$ is a sign reversing involution and all fixed points contribute in Equation~\eqref{eq:signa} with a $+1$. Therefore
+If $r$ is odd and $s$ is even, then the only $A \in \binom{C}{r}$ have
+$r+s \in A$ and $|Inv(A)| = |Inv(A \backslash \{ r+s \})| + s$.
+Therefore $\Phi$ is a sign reversing involution and all fixed points contribute
+in Equation~\eqref{eq:signa} with a $+1$. Therefore
 $$a_{r,s}=\Big|\big\{ A\in {C\choose r}\big| \Phi(A)=A\big\}\Big|=\left({\lfloor \frac{r+s}{2} \rfloor \atop \lfloor \frac{r}{2} \rfloor}\right)\,,$$
-since there is a total of $\lfloor \frac{r+s}{2} \rfloor$ pairs $2j-1,2j$
+since there are a total of $\lfloor \frac{r+s}{2} \rfloor$ pairs $2j-1,2j$
 in a sequence of length $r+s$ and we must have $\lfloor \frac{r}{2} \rfloor$ of them equal to $11$
 and all others equal to $00$ in order to get $\Phi(A)=A$.
-\mike{add a mention of what that leftover guy is equal to if $r$ is even/odd}
 \end{proof}
 \end{prop}
 
