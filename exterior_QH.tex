@@ -337,7 +337,7 @@ this holds true}
 \end{prop}
 
 We will conclude this section  by constructing a set of linearly independent elements inside $EQH_n$, which will
-give us a lower  bound on the dimension of $EQC_n$. In Section~\ref{sec:path} we will see that this is also an upper bound,
+give us a lower  bound on the dimension of $EQC_n$. In Section~\ref{sec:ballotbasis} we will see that this is also an upper bound,
 thus concluding that our  set is in fact a basis. To compute $EQH_n$ we need to solve the differential equations in Equation~\eqref{eq:diffeqs}.
 Remark first  that since $I_n$ is an ideal, we do not need to take all $p\in I_n$, but it is enough to solve for the generators $p=F_{1^r}$ for  $1\le r\le n$.
 We can reduce that further using Proposition~\ref{prop:comm} as noted in the following lemma.
@@ -389,7 +389,7 @@ To show that  $\Delta_C$ is  contained in $EQH_n $, we fix $C$. We need to show 
 
 For the first  defining equation of $EQH_n$, we have
 \begin{align*}
- \sum_{1\le i\le n} \partial_{\theta_i}\Delta_C&=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C + \sum_{i\notin \bigcup C_r}  \partial_{\theta_i}\Delta_C\\
+ \sum_{1\le i\le n} \partial_{\theta_i}\Delta_C&=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C + \sum_{i\notin \bigcup_{r=1}^k C_r}  \partial_{\theta_i}\Delta_C\\
  &=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C =0\,.
   \end{align*}
 %For the first equality we simply reorganize the terms. For the second equality, we remark that if $i\notin \bigcup C$ then the variable $\theta_i$ does not appear in $\Delta_C$, so 
@@ -403,7 +403,7 @@ $$(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C=(-1)^{r-1}
 $$
 
 For the second defining equation of $EQH_n $, we decompose the sum over pairs $1\le i<j\le n$ according to
-whether (a) $|\{i,j\}\cap \bigcup C|<2$, (b) $C_r = (i,j)$ for some $r$, or
+whether (a) $|\{i,j\}\cap \bigcup_{r=1}^k C_r|<2$, (b) $C_r = (i,j)$ for some $r$, or
 (c) $i,j$ appears in two different $C_{r},C_{s}$.
 
 In case (a), if  $|\{i,j\}\cap \bigcup C|<2$, then one of $\theta_i$ or $\theta_j$ does not appear in $\Delta_C$ and we have $ \partial_{\theta_j} \partial_{\theta_i}\Delta_C=0$.
@@ -844,7 +844,7 @@ $\mathbb Q$--spans the quotient $R_n\big/I_n$.
 \begin{proof}
 Order the monomials lexicographically. Let  $\theta^\gamma$ be the smallest monomial that is not in the $\mathbb Q$--span of $B_n$
 (modulo  $I_n$). We must have  that $\gamma$ breaks the ballot condition,
-since otherwise $\theta^\gamma\in  B_n$. Therefore, Proposition~\ref{prop:crossimpliescontains}
+since otherwise $\theta^\gamma\in  B_n$. Therefore, Proposition~\ref{prop:notballotimpliescontains}
 tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:largest} says that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence, modulo $I_n$, we have
 $$ \theta^\gamma \equiv \theta^\gamma - G_\gamma = - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
 The right hand side is a linear combination of monomials strictly smaller than $\theta^\gamma$.
