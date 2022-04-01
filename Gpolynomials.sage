@@ -12,6 +12,11 @@ def BR(n):
     P = pring(n)
     return ExteriorAlgebra(P, ['t'+ascii(i) for i in range(1,n+1)])
 
+def fix(epoly):
+    ptuple = sage.rings.polynomial.polydict.ETuple
+    d = dict([(ptuple(a),b) for (a,b) in epoly.monomial_coefficients().items()])
+    return epoly.parent()._from_dict(d)
+
 def inject_variables(n):
     BR(n).inject_variables()
     BR(n).base_ring().inject_variables()
@@ -86,27 +91,25 @@ def F(A):
     n = len(A[0])
     np = len(A[0])-num_trailing_zeros(A)
     if all(not a for a in A[0]+A[1]):
-        ptuple = sage.rings.polynomial.polydict.ETuple
-        return BR(n)._from_dict({ptuple(()) : pring(n).one()})
+        return fix(BR(n).one())
     vrs = gens(n)
     if A[0][0]>1 or (A[0][0]==1 and A[1][0]==1):
         if n==np:
-            return vrs[0]*F([[A[0][0]-1]+A[0][1:],A[1]])
+            return fix(vrs[0]*F([[A[0][0]-1]+A[0][1:],A[1]]))
         else:
-            return vrs[0]*F([[A[0][0]-1]+A[0][1:],A[1]]) +\
-                upvars(F([A[0][:n-1],A[1][:n-1]]))
+            return fix(vrs[0]*F([[A[0][0]-1]+A[0][1:],A[1]])) +\
+                fix(upvars(F([A[0][:n-1],A[1][:n-1]])))
     elif A[0][0]==1 and A[1][0]==0:
         if n==np:
-            return vrs[0]*upvars(F([A[0][1:],A[1][1:]]))
+            return fix(vrs[0]*upvars(F([A[0][1:],A[1][1:]])))
         else:
-            return vrs[0]*upvars(F([A[0][1:],A[1][1:]])) +\
-                upvars(F([A[0][:n-1],A[1][:n-1]]))
+            return fix(vrs[0]*upvars(F([A[0][1:],A[1][1:]]))) +\
+                fix(upvars(F([A[0][:n-1],A[1][:n-1]])))
     elif A[0][0]==0 and A[1][0]==1:
         if n==np:
-            return vrs[n]*upvars(F([A[0][1:],A[1][1:]]))
+            return fix(vrs[n]*upvars(F([A[0][1:],A[1][1:]])))
         else:
-            return vrs[n]*upvars(F([A[0][1:],A[1][1:]])) +\
-                upvars(F([A[0][:n-1],A[1][:n-1]]))
+            return  fix(vrs[n]*upvars(F([A[0][1:],A[1][1:]])))+fix(upvars(F([A[0][:n-1],A[1][:n-1]])))
 
 def last_zz(A):
     if is_bicomp(A):
