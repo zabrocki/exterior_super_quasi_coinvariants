@@ -327,17 +327,25 @@ inner product.
 Define the orthogonal complement to $I_n$ with respect to the inner product as
 the set
 \begin{align}
-EQH_n :&= \left\{ q \in R_n : \left< p, q \right> = 0 \hbox{ for all } p \in I_n \right\}\notag\\
-  &=\left\{ q \in R_n :\overline{p(\partial_{\theta_1}, \partial_{\theta_2}, \ldots, \partial_{\theta_n})}
+EQH_n :&= \left\{ q \in R_n : \left< p, q \right> = 0 \hbox{ for all } p \in I_n \right\}
+\label{eq:set1}\\
+  &=\left\{ q \in R_n : p(\partial_{\theta_1}, \partial_{\theta_2}, \ldots, \partial_{\theta_n})
 q= 0 \hbox{ for all } p \in I_n \right\}~.\label{eq:diffeqs}
 \end{align}
 The second equality follows from the fact that $I_n$ is an ideal
 and shows that $EQH_n$ is also the solution space of
-a system of differential equations.
-\mike{Let $q$ be such that $\left<p,q\right>=0$ for all $p \in I_n$.
-Assume (by contradiction) that $\overline{p(\partial)}q \neq 0$ and
-is instead $c x^\alpha$ + terms of lower degree with $c\neq0$. But then
-$\left< p \overline{x^\alpha}, q \right>=c$ which is a contradiction.}
+a system of differential equations.  The containment of the set
+in Equation \eqref{eq:diffeqs} in the set in Equation \eqref{eq:set1} is clear.
+For the reverse inclusion, take an element which is not in the
+set in Equation \eqref{eq:diffeqs}, we assume
+for some $p \in I_n$ that $p(\partial_\theta) q = c \theta^\alpha$ plus possibly some other terms,
+but then $\overline{p \theta^\alpha} \in I_n$
+and $\left< \overline{p \theta^\alpha}, q \right> = c$ which implies that $q$ is not in the
+the set in Equation \eqref{eq:set1}.
+%\mike{Let $q$ be such that $\left<p,q\right>=0$ for all $p \in I_n$.
+%Assume (by contradiction) that $\overline{p(\partial)}q \neq 0$ and
+%is instead $c x^\alpha$ + terms of lower degree with $c\neq0$. But then
+%$\left< p \overline{x^\alpha}, q \right>=c$ which is a contradiction.}
 We refer to this space as the \emph{exterior quasisymmetric harmonics}.\footnote{
 The harmonics and diagonal harmonics borrows the name from the physics literature
 because the harmonic operator $\partial_1^2 + \partial_2^2 + \cdots + \partial_n^2$
