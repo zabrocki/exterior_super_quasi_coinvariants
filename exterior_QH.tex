@@ -610,8 +610,10 @@ T_2=\begin{tikzpicture}[scale=0.5,baseline=12pt]
 $$
 A standard construction of the symmetric group irreducible of shape  $(2,2)$ from those tableaux $T_1$ and $T_2$
 obtained from those tableaux is to use the Garnir polynomials
-$$\Delta_{T_1}=  (\theta_{2}-\theta_{1})(\theta_{4}-\theta_{3}) =\Delta_{C(0101)}$$
-$$ \Delta_{T_2}= (\theta_{3}-\theta_{1})(\theta_{4}-\theta_{2}).$$
+\begin{align*}
+  \Delta_{T_1} &=  (\theta_{2}-\theta_{1})(\theta_{4}-\theta_{3}) =\Delta_{C(0101)}\\
+  \Delta_{T_2} &= (\theta_{3}-\theta_{1})(\theta_{4}-\theta_{2}).
+\end{align*}
 Unfortunately $ \Delta_{T_2}\notin EQH_n$.  In commutative variable, the  span of the $\{\Delta_{T_1},\Delta_{T_2}\}$ (an irreducible module) would  be the same as 
  the span of $\{\Delta_{C(0101)},\Delta_{C(0011)}\}$. But  for anticommutative variables, it is a  different story.\footnote{A more correct construction would be to apply the Young idempotent associated to $T_2$ to the monomial associated to $T_2$ using Hivert action.
 In this case  we get $\Delta'_{T_2}=  \theta_3\theta_4 -  \theta_1\theta_4 -  \theta_2\theta_3 +  \theta_1\theta_2 \notin EQH_n$. The span $\{\Delta_{T_1},\Delta'_{T_2}\}$ is a symmetric group irreducible module but is not fully contained in $EQH_n$.}
