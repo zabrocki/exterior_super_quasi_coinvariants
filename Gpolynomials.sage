@@ -148,10 +148,11 @@ def list_bicomps_n_k_ell(n,k,ell):
 def list_bicomps_m_ell(m,ell):
     return sum((list_bicomps_n_k_ell(m-r,r,ell) for r in range(m+1)),[])
 def list_bicomps(ell):
+    # these are the pairs of tuples indexing F-polynomials
     return sum((list_bicomps_m_ell(m,ell) for m in range(ell+1)),[])
 def super_ideal(n):
     return BR(n).ideal([F(A) for A in list_bicomps(n) if sum(A[0])+sum(A[1])>0])
-def list_exps_n_k_ell(n,k,ell):
+def list_exps_m_k_ell(n,k,ell):
     return [[list(A),list(B)] for A in IntegerVectors(n,ell) for B in IntegerVectors(k,ell,max_part=1)]
 def M2_ideal(n):
     myR = 'R=QQ['+','.join('x'+str(i) for i in range(n))+','\
@@ -163,7 +164,8 @@ def M2_ideal(n):
     macaulay2(myI)
     myR = BR(n)
     inject_variables(n)
-    return [myR(eval(str(p).replace("^","**"))) for p in macaulay2('gens gb I').sage()[0]]
-    #macaulay2('SC=R/I;')
-    #macaulay2('B = basis SC')
-    #d = macaulay2('numgens source B')
+    #return [myR(eval(str(p).replace("^","**"))) for p in macaulay2('gens gb I').sage()[0]]
+    macaulay2('SC=R/I;')
+    macaulay2('B = basis SC;')
+    d = macaulay2('numgens source B')
+    return d
