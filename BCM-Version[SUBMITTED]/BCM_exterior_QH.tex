@@ -1,33 +1,16 @@
-\documentclass[11pt,oneside]{amsart}
+\documentclass[oupthm]{CUP-JNL-BCM}%
 
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=darkblue]{hyperref}
 
-%\usepackage{addfont}
-%\addfont{OT1}{rsfs10}{\rsfs}
-
-\usepackage{microtype}
-\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
-\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
-%\geometry{landscape}                % Activate for for rotated page geometry
-%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+%%%% Packages
 \usepackage{graphicx}
+\usepackage{multicol,multirow}
+\usepackage{amsmath,amssymb,amsfonts}
 \usepackage{mathrsfs}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{mathrsfs}
-\usepackage{epstopdf}
-\usepackage{lscape}
-\usepackage[utf8]{inputenc}
+%%\usepackage{amsthm}
+%\usepackage{rotating}
+%\usepackage{appendix}
+%\usepackage[numbers]{natbib}
 \usepackage{tikz,caption}
-\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
-\usepackage{enumitem}
-\setlist[itemize]{leftmargin=2em}
-\setlist[enumerate]{leftmargin=2em}
-\usepackage{booktabs}
-\usepackage{multirow}
-\usepackage{mathtools}
-\usepackage[linesnumbered,ruled]{algorithm2e}
 
 \definecolor{darkblue}{rgb}{0.0,0,0.7} % darkblue color
 \definecolor{darkred}{rgb}{0.7,0,0} % darkred color
@@ -37,55 +20,65 @@
 \newcommand{\defncolor}{\color{darkred}}
 \newcommand{\defn}[1]{{\defncolor\emph{#1}}} % emphasis of a definition
 
+
+
+\theoremstyle{oupplain}
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem{cor}[theorem]{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{conj}[theorem]{Conjecture}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{oupdefinition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{oupremark}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{oupproof}
+\newtheorem{proof}{Proof}
+
 \numberwithin{equation}{section}
 
-\usepackage[colorinlistoftodos]{todonotes}
-\newcommand{\idiot}[1]{\vspace{5 mm}\par \noindent
-\marginpar{\textsc{Note}}
-\framebox{\begin{minipage}[c]{0.95 \textwidth}
-#1 \end{minipage}}\vspace{5 mm}\par}
-\newcommand{\mike}[1]{\todo[size=\tiny,color=lime!30]{#1 \\ \hfill --- Mike}}
-\newcommand{\nantel}[1]{\todo[size=\tiny,color=red!30]{#1 \\ \hfill --- Nantel}}
-\newcommand{\farad}[2][]{\todo[size=\tiny,color=ForestGreen!30,#1]{#2 \\ \hfill --- Farad}}
-\newcommand{\kelvin}[1]{\todo[size=\tiny,color=RoyalBlue!30]{#1 \\ \hfill --- Kel}}
 
-%remove the comment from the following line to remove all the
-% extra proofs:
-%\renewcommand{\idiot}[1]{}
+\articletype{RESEARCH ARTICLE}
+\jname{Canadian Mathematical Society}
+%\artid{20}
+\jyear{2022}
+%\jvol{4}
+%\jissue{1}
+%\jdoi{2190-8567}
+%\raggedbottom
 
-\title{Quasisymmetric harmonics of the exterior algebra}
-\author{Nantel Bergeron,
-Kelvin Chan,
-Farhad Soltani,
-Mike Zabrocki}
-\address{Dept. of Math. and Stat.\\ York  University\\ To\-ron\-to, Ontario M3J 1P3\\ CANADA}
-\email{bergeron@yorku.ca}
-\email{ktychan@yorku.ca}
-\email{farhad.soltani91@gmail.com}
-\email{zabrocki@yorku.ca}
-
-\thanks{This work is supported in part by York Research Chair and NSERC.
-This paper originated in a working session at the Algebraic
-Combinatorics Seminar at York University}
-\date{May 28, 2022}
-
-\keywords{Quasisymmetric Polynomials, Fermionic Variables, Exterior Algebra, Ballot Sequences, Polynomial Harmonics} 
-
-\subjclass[2020]{05E05, 16W55}
 
 \begin{document}
 
-\begin{abstract}
-We study the ring of quasisymmetric polynomials in $n$ anticommuting  (fermionic) variables.
+\begin{Frontmatter}
+
+\title[Quasisymmetric harmonics of the exterior algebra]{Quasisymmetric harmonics of the exterior algebra
+\thanks{This work is supported in part by York Research Chair and NSERC.
+This paper originated in a working session at the Algebraic
+Combinatorics Seminar at York University.}}
+
+\author{Nantel Bergeron}
+\author{Kelvin Chan}
+\author{Farhad Soltani}
+\author{Mike Zabrocki}
+
+\authormark{N. Bergeron, K. Chan, F. Soltani and M. Zabrocki}
+
+\address{
+\orgname{Departement of Mathematics and Statistics, York  University},
+\orgaddress{\city{Toronto}, \state{Ontario}, \postcode{ M3J 1P3}, \country{CANADA}},
+\email{bergeron@yorku.ca},
+\email{ktychan@yorku.ca},
+\email{farhad.soltani91@gmail.com},
+\email{zabrocki@yorku.ca}}
+
+
+\keywords{Quasisymmetric Polynomials, Fermionic Variables, Exterior Algebra, Ballot Sequences, Polynomial Harmonics} 
+
+\keywords[2020 Mathematics Subject Classification]{05E05, 16W55}
+
+\abstract{We study the ring of quasisymmetric polynomials in $n$ anticommuting  (fermionic) variables.
 Let $R_n$ denote the polynomials in $n$ anticommuting variables. The main results of this paper show the following interesting facts about  quasisymmetric polynomials in anticommuting variables:
 \begin{enumerate}
 \item The quasisymmetric polynomials in $R_n$ form a commutative sub-algebra of $R_n$.
@@ -96,14 +89,11 @@ The Hilbert series of the quotient is given by
  where $f^{(n-k,k)}$ is the  number  of standard tableaux of shape $(n-k,k)$.
 \item There is a basis of the ideal generated by quasisymmetric polynomials
 that is indexed by sequences that break the ballot condition
-\end{enumerate}
-\end{abstract} 
+\end{enumerate}}
 
-\maketitle
+\end{Frontmatter}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Introduction}
 The study of coinvariants of groups dates back to Shephard-Todd and Chevalley~\cite{ST,Chevalley} and has fruitfully produced many connections between algebra, combinatorics and physics.  Motivated by recent developments in coinvariants of symmetric groups and symmetric functions theory incorporating fermionic variables, we study a coinvariant-like quotient of an exterior algebra obtained by the quotient of the ideal generated by quasisymmetric functions in fermionic variables.  The quotient has a dimension that can be interpreted as the number of ballot sequences (or other interpretations, see for instance the OEIS \cite{OEIS} sequences \href{https://oeis.org/A008315}{A008315} and \href{https://oeis.org/A001405}{A001405}).
 
@@ -134,9 +124,7 @@ that is indexed by sequences that break the ballot condition
 that is a subset of this basis (Corollary \ref{cor:minimalGB}).
 \end{enumerate}
 
-\subsection{Acknowledgement} We are grateful to Yohana Solomon for her participation and discussions during this project.
-
-
+\noindent{\bf Acknowledgement:} We are grateful to Yohana Solomon for her participation and discussions during this project.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -285,7 +273,6 @@ The generating series for the coefficients $F(x,y) = \sum_{r,s \ge 0} a_{r,s} x^
 equal to $\frac{1 + x + y}{1 - x^{2} - y^{2}}$
 and the OEIS \cite{OEIS} sequence number is \href{https://oeis.org/A051159}{A051159}.
 This can be derived from Proposition \ref{prop:comm} using standard techniques of generating functions.
-%\mike{TODO: add comment to OEIS sequence}
 
 One consequence of Proposition~\ref{prop:comm} is that $a_{r,s}=a_{s,r}$ for all $r,s\ge 0$. Remark that this does not contradict the fermionic law stating that $a_{r,s}=(-1)^{rs}a_{s,r}$ since $a_{r,s}=0$ when both $r,s$ are odd. Therefore we have shown the following corollary.
 
@@ -418,10 +405,6 @@ for some $p \in I_n$ that $p(\partial_\theta) q = c \theta^\alpha$ plus possibly
 but then $\overline{p \theta^\alpha} \in I_n$
 and $\left< \overline{p \theta^\alpha}, q \right> = c$ which implies that $q$ is not in the
 the set in Equation \eqref{eq:set1}.
-%\mike{Let $q$ be such that $\left<p,q\right>=0$ for all $p \in I_n$.
-%Assume (by contradiction) that $\overline{p(\partial)}q \neq 0$ and
-%is instead $c x^\alpha$ + terms of lower degree with $c\neq0$. But then
-%$\left< p \overline{x^\alpha}, q \right>=c$ which is a contradiction.}
 We refer to this space as the \emph{exterior quasisymmetric harmonics}.\footnote{
 The harmonics and diagonal harmonics borrows the name from the physics literature
 because the harmonic operator $\partial_1^2 + \partial_2^2 + \cdots + \partial_n^2$
@@ -459,8 +442,6 @@ there are non-zero coefficients $a$ and $a'$ such that
 a F_{1^{2k}} = (F_{1^2})^k \hskip .2in\hbox{   and   }\hskip .2in a' F_{1^{2k+1}} = (F_{1^2})^k F_1
 \]
 hence all of the generators of $I_n$ are contained in $\langle F_1, F_{1^2}  \rangle$.
-%For the  converse, consider first $2\le r=2k\le n$. Using Proposition~\ref{prop:comm}, we have that
-%$aF_{1^r} = \big(F_{1^2}\big)^k$ for some $a\ne 0$. Therefor $F_{1^r} \in \langle F_1, F_{1^2}  \rangle$. For $2\le r=2k+1\le n$, we have $aF_{1^r} = \big(F_{1^2}\big)^kF_1$, which again show $F_{1^r} \in \langle F_1, F_{1^2}  \rangle$. We conclude that $I_n\subseteq  \langle F_1, F_{1^2}  \rangle$.
 \end{proof}
 From this we conclude that
 \begin{equation}\label{eq:defEQH}
@@ -496,9 +477,6 @@ For the first  defining equation of $EQH_n$, we have
  \sum_{1\le i\le n} \partial_{\theta_i}\Delta_C&=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C + \sum_{i\notin \bigcup_{r=1}^k C_r}  \partial_{\theta_i}\Delta_C\\
  &=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C =0\,.
   \end{align*}
-%For the first equality we simply reorganize the terms. For the second equality, we remark that if $i\notin \bigcup C$ then the variable $\theta_i$ does not appear in $\Delta_C$, so
-%$ \partial_{\theta_i}\Delta_C=0$.
-%%MZ: I'm taking that sentence out because I think it is clearer without stating it.
 For the last equality, fix $1\le r\le k$ and note that
 $\Delta_C =(-1)^{r-1}(\theta_{j_r}-\theta_{i_r}) q$ for some  polynomial $q$
 and so for each $r$,
@@ -552,8 +530,6 @@ Such sequences are known as \defn{ballot sequences}.
 If ever it is the case that $\sum_{i=1}^r a_i > r/2$ then we say that
 $\alpha$ \defn{breaks the ballot condition} at position $r$.
 
-%In Section~\ref{sec:path} we will develop a more visual interpretation of
-%ballot sequences and interpret them as paths that stay above the diagonal.
 Given a ballot sequence $\alpha$ we build a non-crossing pairing $C(\alpha)$ by first replacing all $0$s
 by open parentheses $0\mapsto$`(',
 and all $1$s by close parentheses $1\mapsto$`)',
@@ -789,7 +765,7 @@ For $0\alpha=0w01^s0^{n-k-s}$, we have $n-k-s$ trailing zeros.
 Remark that for $0w1^s0^{n-k-s+1}$ and $0w1^{s-1}0^{n-k-s+2}$
 we have more trailing zeros than that of $0\alpha$ and we will use the
 induction hypothesis with~\eqref{eq:0start} in the
-equality~\eqref{eq:IH0} below.%%%%%%%
+equality~\eqref{eq:IH0} below.
 \begin{align}
 	G&_{0w01^s0^{n-k-s}}= G_{0w1^s0^{n-k-s+1}} -  (-1)^{m_1(0w)} \theta_k G_{0w1^{s-1}0^{n-k-s+2}} \nonumber \\
 	 & = G_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n) - (-1)^{m_1(0w)} \theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n) \label{eq:IH0}\\
@@ -823,7 +799,6 @@ of length $k-2$. We have
 	 &\qquad\qquad  - (-1)^{m_1(1w)} \theta_k  \big(\theta_1G_{0w1^{s-1}0^{n-k-s+2}} +P_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n)\big) \nonumber\\
 	 & = \theta_1\big(G_{0w1^s0^{n-k-s+1}}   - (-1)^{m_1(w)}  \theta_k G_{0w1^{s-1}0^{n-k-s+2}}\big)	 \label{eq:detail1}\\
 	 &\qquad\qquad  + \big[P_{w1^s0^{n-k-s+1}}  - (-1)^{m_1(1w)} \theta_{k-1} P_{w1^{s-1}0^{n-k-s+2}}\big] (\theta_2,\theta_3 ,\ldots,\theta_n). \nonumber
-%	 & = \theta_1 G_{0\alpha} + P_\alpha(\theta_2, ,\theta_3 ,\ldots,\theta_n)  \nonumber
 \end{align}
 In \eqref{eq:IH1}, we have used the induction hypothesis of~\eqref{eq:1start} on both terms.
 In  \eqref{eq:detail1}, we group together the terms with $\theta_1$ in front, using the identity
@@ -839,34 +814,6 @@ holds in all cases and concludes the  proof of the lemma.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{A basis for the quotient}\label{sec:ballotbasis}
-
-%To each sequence $\alpha \in \{0, 1\}^n$, we associate a path starting at the origin
-%and extending into the first quadrant of the $x,y$-plane.  The $i^{th}$ step of this
-%path will be a unit in the $(1,0)$-direction if $a_i =1$ and it will be a unit in the $(0,1)$-direction
-%if $a_i = 0$.  We say that the sequence $\alpha$ \defn{crosses the diagonal} if
-%there is a point on the path which lies at $(a,a)$ and the next step is in the $(1,0)$
-%direction.  Otherwise we say that $\alpha$ \defn{stays above the diagonal}.  Note that
-%$\alpha$ stays above the diagonal if $\sum_{i=1}^r a_i \leq r/2$
-%for all $1 \leq r \leq n$
-%and it crosses the diagonal otherwise. The ballot sequences we encountered earlier are the one that  stay above the diagonal.
-%\mike{I think that we should state everything in terms of ballot sequences
-%or paths, but not both.  I see no obvious reason to switch between the two models
-%and we should make the presentation as simple as possible.}
-%
-%\begin{example} Let $n=6$ and $\alpha = 010110$ and $\beta = 001100$, then the corresponding
-%paths are
-%\begin{center}
-%\begin{tikzpicture}[scale=.75]
-%  \draw[dotted] (0, 0) grid (4, 4);
-%  \draw[rounded corners=1, color=black, line width=2] (0, 0) -- (0, 1) -- (1, 1) -- (1, 2) -- (2, 2) -- (3, 2) -- (3, 3);
-%\end{tikzpicture}
-%\hskip .5in
-%\begin{tikzpicture}[scale=.75]
-%  \draw[dotted] (0, 0) grid (4, 4);
-%  \draw[rounded corners=1, color=black, line width=2] (0, 0) -- (0, 1) -- (0, 2) -- (1, 2) -- (2, 2) -- (2, 3) -- (2, 4);
-%\end{tikzpicture}
-%\end{center}
-%\end{example}
 
 The elements $G_\alpha$ are defined so that we could use them to
 identify a nice basis of the ideal $I_n$.  Our first result establishes
@@ -979,10 +926,9 @@ a north step for every $0$ and an east step  for every  $1$ as we read in a $0-1
 the diagonal.
 \end{remark}
 
-\vskip 1in
+\begin{Backmatter}
 
-\begin{thebibliography}{999}
-
+\begin{thebibliography}{9}
 \bibitem{B} F. Bergeron,
 \textit{Algebraic combinatorics and coinvariant spaces}.
 CRC Press, 2009.
@@ -1016,8 +962,6 @@ Advances in Mathematics. 2022 Jun 25;402:108342.
 
 \bibitem{DIW} M. D'Adderio , A. Iraci, and A. V. Wyngaerd.
 \textit{Theta operators, refined Delta conjectures, and coinvariants}.
-%Preprint, 2019.
-%\href{https://arxiv.org/abs/1906.02623}{arXiv:1906.02623}
 Advances in Mathematics, 376, 107447.
 
 \bibitem{DLM} P. Desrosiers, L. Lapointe, and P. Mathieu,
@@ -1106,7 +1050,6 @@ Canad. J. Math., 6 (1954) p. 274--304.
 \bibitem{SW} J. P. Swanson, N. R. Wallach,
 \textit{Harmonic differential forms for pseudo-reflection groups I. Semi-invariants}.
 Journal of Combinatorial Theory, Series A, 182, p.105474.
-%\href{https://arxiv.org/abs/2001.06076}{arXiv:2001.06076} .
 
 \bibitem{SW2} J. P. Swanson, N. R. Wallach,
 \textit{Harmonic differential forms for pseudo-reflection groups II. Bi-degree bounds}.
@@ -1123,5 +1066,8 @@ to the action of $S_n$ on polynomial differential forms}.
 
 \end{thebibliography}
 
+\printaddress
+
+\end{Backmatter}
 
 \end{document}
