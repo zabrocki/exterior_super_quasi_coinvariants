@@ -104,6 +104,7 @@ that is indexed by sequences that break the ballot condition
 \newtheorem{remark}[theorem]{Remark}
 \numberwithin{equation}{section}
 
+\newcommand{\qbinom}[2]{\left[ \begin{smallmatrix}#1\\#2\end{smallmatrix} \right]}
 
 \begin{document}
 \maketitle{}
@@ -244,52 +245,8 @@ $$ a_{r,s}=
     \displaystyle \binom{\lfloor \frac{r+s}{2} \rfloor}{\lfloor \frac{r}{2} \rfloor}&\text{otherwise.}
 \end{cases}
 $$
-
-\begin{proof}
-For completeness, we give a proof not assuming any results of~\cite{FLP}. Using Equation~\eqref{eq:defF} we have
-$$F_{1^r}F_{1^s}= \sum_{\substack{A \subseteq [n]\\|A|=r}}  \sum_{\substack{B \subseteq [n]\\|B|=s}} \theta_A \theta_B
-= \sum_{\substack{C \subseteq [n]\\|C|=r+s}} \Big(\sum_{\substack{A\subseteq C \\|A|=r}} (-1)^{|\{b<a\,|\,a\in A,\, b\in C\setminus A\}|} \Big) \theta_C\,.
-$$
-To see the second equality, we remark that the product $\theta_A\theta_B=0$ if $A\cap B\ne \emptyset$.
-Furthermore, if $A\cap B= \emptyset$, then for $C=A\cup B$
-we have $B=C\setminus A$ and  $\theta_A\theta_B=(-1)^{|\{b<a\,|\,a\in A, b\in C\setminus A\}|} \theta_C$,
-where the sign is the number of interchanges needed to sort $A$ followed by $B$ into $C$.
-This does not depend on the values of the elements of $C$, but only on how $A$ is chosen inside $C$.
-This shows that we get the same coefficient for all $C$ of size $r+s$ and therefore
-$F_{1^r} F_{1^s} = a_{r,s} F_{1^{r+s}}$ with
-\begin{equation}\label{eq:signa}
-a_{r,s}=\sum_{\substack{A\subseteq \{1,2,\ldots, r+s\}\\ |A|=r}}
-(-1)^{|\{1\le b<a\le r+s\,|\,a\in A, b\not\in A\}|}
-\end{equation}
-by choosing $C=\{1,2,\ldots,r+s\}$.
-
-Let ${C\choose r}=\{A\subseteq C, |A|=r\}$. We define a sign-reversing involution $\Phi\colon {C\choose r}\to{C\choose r}$ as follows.
-For $A\in  {C\choose r}$, let $\gamma(A)=\gamma_1\gamma_2\cdots\gamma_{r+s}\in\{0,1\}^{r+s}$, be the sequence such that
- $\gamma_i=1$ if $i\in A$, and $\gamma_i=0$ otherwise.
- We look at the  entries of  $\gamma(A)$ two by two and find the smallest $j$ (if it exists) such that the  pair
- $\gamma_{2j-1}\gamma_{2j}$ is not $00$ or $11$. If there is no such pair, we let $\Phi(A)=A$.   If we find such pair we define the involution $\Phi(A)=A'$ where $A'$ is such that $\gamma(A')$ is obtained from $\gamma(A)$ by interchanging $01\leftrightarrow 10$ in position $2j-1,2j$. If $r$ and $s$ are both odd, then there must be at least one occurrence of $01$ or $10$ and there are no fixed points of this involution.
-
-We let
- $$Inv(A)=\{1\le b<a\le r+s\,|\,a\in A, b\not\in A\}=\{1\le \ell<t\le r+s\,|\,\gamma_\ell=0,\gamma_t=1 \}\,$$
- where $\gamma(A)=\gamma_1\gamma_2\cdots\gamma_{r+s}$.
-As long as $(t,\ell)\ne(2j-1,2j)$ there is a bijection between $(t,\ell)\in Inv(A)$ and
-$(t',\ell)\in Inv(A')$ interchanging the 1 and 0 in positions $2j-1$ and $2j$.
-The pair $(2j-1,2j)$ is in only one of $Inv(A)$ or $Inv(A')$ but not the other. Therefore
-$$(-1)^{|\{1\le b<a\le r+s\,|\,a\in A, b\not\in A\}|} = -(-1)^{|\{1\le b<a\le r+s\,|\,a\in A', b\not\in A'\}|}\,.$$
-If $\Phi(A)=A$, we have that $|Inv(A)|$ is even since we can match the pairs two-by-two.
-If $r$ is odd and $s$ is even, then the only $A \in \binom{C}{r}$ have
-$r+s \in A$ and $|Inv(A)| = |Inv(A \backslash \{ r+s \})| + s$.
-Therefore $\Phi$ is a sign reversing involution and all fixed points contribute
-in Equation~\eqref{eq:signa} with a $+1$. Therefore
-$$a_{r,s}=
-\bigg| \left\{ A \in {C \choose r} \mid \Phi(A) = A \right\} \bigg|
-=
- \binom{\lfloor \frac{r+s}{2} \rfloor}{\lfloor \frac{r}{2} \rfloor} \,,$$
-since there are a total of $\lfloor \frac{r+s}{2} \rfloor$ pairs $2j-1,2j$
-in a sequence of length $r+s$ and we must have $\lfloor \frac{r}{2} \rfloor$ of them equal to $11$
-and all others equal to $00$ in order to get $\Phi(A)=A$.
-\end{proof}
 \end{prop}
+Notice the constants $a_{r,s}$ can also be expressed as $a_{r,s} = \qbinom{r+s}{s}_{-1}$.
 
 The generating series for the coefficients $F(x,y) = \sum_{r,s \ge 0} a_{r,s} x^{r}y^{s}$ is
 equal to $\frac{1 + x + y}{1 - x^{2} - y^{2}}$
@@ -495,57 +452,6 @@ $$
 is contained in $EQH_n $.
 \end{prop}
 
-\begin{proof}
-To show that  $\Delta_C$ is  contained in $EQH_n $, we fix $C$. We need to show that $\Delta_C$ satisfies the differential equation conditions in Equation~\eqref{eq:defEQH}.
-
-For the first  defining equation of $EQH_n$, we have
-\begin{align*}
- \sum_{1\le i\le n} \partial_{\theta_i}\Delta_C&=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C + \sum_{i\notin \bigcup_{r=1}^k C_r}  \partial_{\theta_i}\Delta_C\\
- &=\sum_{1\le r\le k}  (\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C =0\,.
-  \end{align*}
-%For the first equality we simply reorganize the terms. For the second equality, we remark that if $i\notin \bigcup C$ then the variable $\theta_i$ does not appear in $\Delta_C$, so
-%$ \partial_{\theta_i}\Delta_C=0$.
-%%MZ: I'm taking that sentence out because I think it is clearer without stating it.
-For the last equality, fix $1\le r\le k$ and note that
-$\Delta_C =(-1)^{r-1}(\theta_{j_r}-\theta_{i_r}) q$ for some  polynomial $q$
-and so for each $r$,
-$$(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})\Delta_C=(-1)^{r-1}
-(\partial_{\theta_{i_r}}+\partial_{\theta_{j_r}})(\theta_{j_r}-\theta_{i_r})q =0~.
-$$
-
-For the second defining equation of $EQH_n $, we decompose the sum over pairs $1\le i<j\le n$ according to
-whether (a) $|\{i,j\}\cap \bigcup_{r=1}^k C_r|<2$, (b) $C_r = (i,j)$ for some $r$, or
-(c) $i,j$ appears in two different $C_{r},C_{s}$.
-
-In case (a), if  $|\{i,j\}\cap \bigcup C|<2$, then one of $\theta_i$ or $\theta_j$ does not appear in $\Delta_C$ and we have $ \partial_{\theta_j} \partial_{\theta_i}\Delta_C=0$.
-
-In case (b), we have that the product $\theta_{j_r}\theta_{i_r}$ does not appear in $\Delta_C$ and we also have $ \partial_{\theta_{j_r}} \partial_{\theta_{i_r}}\Delta_C=0$.
-
-Thus we know that only case (c) contributes to the sum and we can thus write
-\begin{align*}
- \sum_{1\le i<j\le n} \partial_{\theta_j}\partial_{\theta_i}\Delta_C
- &= \sum_{1\le r<s\le k} \sum_{\substack{i\in C_{r}\\j\in C_{s}}} \pm  \partial_{\theta_j}\partial_{\theta_i}\Delta_C~.
-\end{align*}
-In the second sum on the right hand side, we have to be careful as when we pick
-$i\in C_{r}$ and $ j\in C_{s}$ we are not guaranteed that $i<j$ so a sign may be needed
-in  order to keep the equality. We will make a careful study of all possibilities
-for fixed $1\le r<s\le k$. First, we rearrange the terms of $\Delta_C$ to  bring the terms
-$(\theta_{j_{r}}-\theta_{i_{r}})(\theta_{j_{s}}-\theta_{i_{s}})$ in front  performing $(r-1)+(s-2)$ anticommutations, we have
-  $$\Delta_C  =(-1)^{r+s-1}(\theta_{j_{r}}-\theta_{i_{r}})(\theta_{j_{s}}-\theta_{i_{s}})q$$
-  for some polynomial $q$. Remark that $i_{r},j_{r},i_{s},j_{s}$ satisfy either the inequalities
-  $$  i_r<j_r<i_s<j_s \qquad \text{ or }\qquad  i_s<i_r<j_r<j_s.$$
- The only concern is their relative order, we can thus assume that we have the numbers $1,2,3,4$.
-  There are two possibilities, $((i_r,j_r), (i_s,j_s))$ is equal to $((1,2),(3,4))$ or $((2,3),(1,4))$.
-  In the first case we have
-$$ \big( \partial_{\theta_3}\partial_{\theta_1} +  \partial_{\theta_3}\partial_{\theta_2} +  \partial_{\theta_4}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_2}\big)
-     (\theta_{2}-\theta_{1})(\theta_{4}-\theta_{3}) =0,
-$$
- and in the second case we get
-$$ \big( \partial_{\theta_2}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_2} +  \partial_{\theta_3}\partial_{\theta_1} +  \partial_{\theta_4}\partial_{\theta_3}\big)
-     (\theta_{3}-\theta_{2})(\theta_{4}-\theta_{1}) =0.
-$$
-And this shows that $\Delta_C\in EQH_n $ for all non-crossing pairings $C$.
-\end{proof}
 
 The set ${\mathcal D}'_n$ is not linearly independent, for example for $n=3$ and $k=1$, we have the following three non-crossing pairing:
 $((1,2))$, $((1,3))$ and $((2,3))$, but
@@ -576,28 +482,6 @@ The natural pairing of parenthesis guarantees that the result will be non-crossi
 
 The total number of ballot sequences of size $n$ is equal to $\binom{n}{\lfloor{n/2}\rfloor}$
 (see \cite[\href{https://oeis.org/A001405}{A001405}]{OEIS}).
-The number of ballot sequences graded by the number of $1$'s in the sequence
-(see \cite[\href{https://oeis.org/A008315}{A008315}]{OEIS})
-is given in Figure \ref{table:ballotseq}.
-
-
-\begin{figure}[h]
-\begin{tabular}{c||cccccc}
-$n=1$&1&&&&\\
-$n=2$&1&1&&&\\
-$n=3$&1&2&&&\\
-$n=4$&1&3&2&&\\
-$n=5$&1&4&5&&\\
-$n=6$&1&5&9&5&\\
-$n=7$&1&6&14&14&\\
-$n=8$&1&7&20&28&14\\
-$n=9$&1&8&27&48&42\\
-\end{tabular}
-\caption{The number of ballot sequences of length $n$ with exactly $k$ $1$s
-with $1 \leq n \leq 9$ and $1 \leq k \leq \lfloor \frac{n}{2} \rfloor$.
-These will be shown to be the graded dimensions of $EQH_n \simeq EQC_n$.}
-\label{table:ballotseq}
-\end{figure}
 
 Given this construction we have the following Proposition.
 
@@ -768,80 +652,6 @@ embedded in $R_n$ with the substitution
 $\theta_i:=\theta_{i+1}$. A similar convention will be followed for $P_\alpha$.
 \end{remark}
 
-\begin{proof}[Proof of Lemma~\ref{lem:LT}]
-The proof will proceed by induction on $n-i$ where $i$ is the number of trailing $0$s in $\alpha$.
-The base case $0=n-n$ with $n$ zeros, is $0\alpha = 0^n$ and we have
-\[
-G_{0^n} = F_{1^0}(\theta_1,\theta_2 ,\ldots,\theta_n) = 1
-= G_{0^{n-1}}(\theta_2, \theta_3, \ldots, \theta_n)~.
-\]
-We then consider the case  $0\alpha=01^s0^{n-s-1}$. The polynomials $F_{1^s}$ satisfy the  following identity
-\begin{equation}\label{eq:relF}
-F_{1^s}(\theta_1,\theta_2 ,\ldots,\theta_n)
-= \theta_1 F_{1^{s-1}}(\theta_2 ,\ldots,\theta_n) + F_{1^s}(\theta_2,\theta_3 ,\ldots,\theta_n).
-\end{equation}
-This follows directly from the definition~\eqref{eq:defF} where we split the sum in two parts depending if $1\in A$ or not.
-The definition of $G_{01^s0^{n-s-1}}$  gives us
-\begin{align*}
-	G_{01^s0^{n-s-1}}&= G_{1^s0^{n-s}} - \theta_1 G_{1^{s-1}0^{n-s+1}}
-	  =F_{1^s}(\theta_1,\theta_2 ,\ldots,\theta_n) - \theta_1 F_{1^{s-1}}(\theta_2 ,\ldots,\theta_n) \\
-	  &= F_{1^s}(\theta_2,\theta_3 ,\ldots,\theta_n)= G_{\alpha}(\theta_2,\theta_3 ,\ldots,\theta_n)\,.
-\end{align*}
-
-To finish the  proof of Equation~\eqref{eq:0start} by induction,
-let us assume that $\alpha$ is not of the form
-$01^s0^{n-s-1}$ for some $s>0$.
-Instead we have $0\alpha=0w01^s0^{n-k-s}$ for some $s>0$ and some string $w$
-of length $k-2$.
-For $0\alpha=0w01^s0^{n-k-s}$, we have $n-k-s$ trailing zeros.
-Remark that for $0w1^s0^{n-k-s+1}$ and $0w1^{s-1}0^{n-k-s+2}$
-we have more trailing zeros than that of $0\alpha$ and we will use the
-induction hypothesis with~\eqref{eq:0start} in the
-equality~\eqref{eq:IH0} below.%%%%%%%
-\begin{align}
-	G&_{0w01^s0^{n-k-s}}= G_{0w1^s0^{n-k-s+1}} -  (-1)^{m_1(0w)} \theta_k G_{0w1^{s-1}0^{n-k-s+2}} \nonumber \\
-	 & = G_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n) - (-1)^{m_1(0w)} \theta_k G_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n) \label{eq:IH0}\\
-	 & = \big[G_{w1^s0^{n-k-s+1}} - (-1)^{m_1(w)} \theta_{k-1} G_{w1^{s-1}0^{n-k-s+2}}\big](\theta_2,\theta_3 ,\ldots,\theta_n)\label{eq:detail0}\\
-	 & = G_{w01^s0^{n-k-s}} (\theta_2,\theta_3 ,\ldots,\theta_n)
-	   = G_{\alpha} (\theta_2,\theta_3 ,\ldots,\theta_n).  \label{eq:final0}
-\end{align}
-In~\eqref{eq:detail0} the expression inside the square bracket $[\cdots]$ is treated as a polynomial in the variables $\theta_1,\ldots,\theta_{n-1}$ in $R_{n-1}$ (see Remark~\ref{rem:shift}).
-Hence, the variable $\theta_{k}$ from \eqref{eq:IH0} must
-be replaced by $\theta_{k-1}$ in \eqref{eq:detail0}.
-Also, $m_1(0w)=m_1(w)$. The expression we get is exactly the definition of
-$G_{w01^s0^{n-k-s}} \in R_{n-1}$ and Equation~\eqref{eq:final0} follows.
-This concludes the proof of \eqref{eq:0start}.
-
-We next prove Equation \eqref{eq:1start} by induction.  The base case is if $1\alpha = 1^{s+1}0^{n-s-1}$,
-then using Equation \eqref{eq:relF} we have
-\begin{align}
-G_{1^{s+1}0^{n-s-1}} &= F_{1^{s+1}}(\theta_1,\theta_2 ,\ldots,\theta_n) \nonumber\\
-&= \theta_1 F_{1^s} (\theta_2, \theta_3, \ldots, \theta_n)+ F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)\nonumber \\
-&= \theta_1 G_{01^s0^{n-s-1}} + F_{1^{s+1}}(\theta_2, \theta_3, \ldots, \theta_n)~.\label{eq:base1}
-\end{align}
-In~\eqref{eq:base1}, we use \eqref{eq:0start} with  $G_{01^s0^{n-s-1}}=G_{1^s0^{n-s-1}} (\theta_2,  \ldots, \theta_n)=F_{1^s} (\theta_2, \ldots, \theta_n)$.
-We then let
-$P_{1^{s}0^{n-s-1}} = F_{1^{s+1}}(\theta_1,\ldots,\theta_{n-1})$ and this shows that \eqref{eq:1start} holds in this case.
-
-We now assume that $1\alpha\ne 1^{s+1}0^{n-s-1}$. Therefore $1\alpha=1w01^s0^{n-k-s}$ for some string $w$
-of length $k-2$. We have
-\begin{align}
-	G&_{1w01^s0^{n-k-s}}= G_{1w1^s0^{n-k-s+1}} -  (-1)^{m_1(1w)} \theta_k G_{1w1^{s-1}0^{n-k-s+2}} \nonumber \\
-	 & = \big(\theta_1G_{0w1^s0^{n-k-s+1}} +P_{w1^s0^{n-k-s+1}}(\theta_2,\theta_3 ,\ldots,\theta_n)\big) \label{eq:IH1}\\
-	 &\qquad\qquad  - (-1)^{m_1(1w)} \theta_k  \big(\theta_1G_{0w1^{s-1}0^{n-k-s+2}} +P_{w1^{s-1}0^{n-k-s+2}}(\theta_2,\theta_3 ,\ldots,\theta_n)\big) \nonumber\\
-	 & = \theta_1\big(G_{0w1^s0^{n-k-s+1}}   - (-1)^{m_1(w)}  \theta_k G_{0w1^{s-1}0^{n-k-s+2}}\big)	 \label{eq:detail1}\\
-	 &\qquad\qquad  + \big[P_{w1^s0^{n-k-s+1}}  - (-1)^{m_1(1w)} \theta_{k-1} P_{w1^{s-1}0^{n-k-s+2}}\big] (\theta_2,\theta_3 ,\ldots,\theta_n). \nonumber
-%	 & = \theta_1 G_{0\alpha} + P_\alpha(\theta_2, ,\theta_3 ,\ldots,\theta_n)  \nonumber
-\end{align}
-In \eqref{eq:IH1}, we have used the induction hypothesis of~\eqref{eq:1start} on both terms.
-In  \eqref{eq:detail1}, we group together the terms with $\theta_1$ in front, using the identity
-$(-1)^{m_1(1w)} \theta_k \theta_1 = (-1)^{m_1(1w)+1} \theta_1 \theta_k  = (-1)^{m_1(w)} \theta_1 \theta_k $.
-The term with $\theta_1$ in \eqref{eq:detail1} is the definition of $G_{0\alpha}$.
-The expression inside the square bracket is a polynomial in $R_{n-1}$ that we take as the definition for $P_\alpha$.
-This shows by induction that \eqref{eq:1start}
-holds in all cases and concludes the  proof of the lemma.
-\end{proof}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -939,18 +749,6 @@ of $EQH_n$.
 The set $B_n=\big\{ \theta^\beta : \beta \in \{0,1\}^n \text{ \it is a ballot sequence}\big\}$
 $\mathbb Q$--spans the quotient $R_n\big/I_n$.
 \end{lemma}
-
-\begin{proof}
-Order the monomials lexicographically and let $\theta^\gamma$ be the smallest monomial
-that is not in the $\mathbb Q$--span of $B_n$
-(modulo  $I_n$). We must have  that $\gamma$ breaks the ballot condition,
-since otherwise $\theta^\gamma\in  B_n$. Therefore, Proposition~\ref{prop:notballotimpliescontains}
-tells us  that $G_\gamma \in I_n$. Proposition~\ref{prop:largest} says that $G_\gamma = \theta^\gamma + \sum_{\beta<\gamma}  c_\beta \theta^\beta$. Hence, modulo $I_n$, we have
-$$ \theta^\gamma \equiv \theta^\gamma - G_\gamma = - \sum_{\beta<\gamma} c_\beta \theta^\beta\,.$$
-The right hand side is a linear combination of monomials strictly smaller than $\theta^\gamma$.
-By the choice of $\theta^\gamma$, all such monomials are in the $\mathbb Q$--span of $B_n$.
- Therefore $\theta^\gamma$ is also in the $\mathbb Q$--span of $B_n$, a contradiction. We must conclude there are no such $\theta^\gamma$ and all monomials are in the $\mathbb Q$--span of $B_n$ modulo the ideal $I_n$.
-\end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:basisofideal}]
 Let $d_n$ be the number of ballot sequences of size $n$.
