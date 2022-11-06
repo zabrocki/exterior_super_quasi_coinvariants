@@ -434,7 +434,7 @@ It is clear that the monomials of $R_n$ form an orthonormal basis of the space
 with respect to the inner product, hence the inner product is positive definite.
 It follows that since $EQH_n$ is the orthogonal complement of the ideal $I_n$ in $R_n$,
 then the following result must hold.
-\begin{prop} For all $n \geq 1$, as graded vector spaces
+\begin{prop} \label{prop:EQC_EQH} For all $n \geq 1$, as graded vector spaces
 \[
 EQC_n \simeq EQH_n~.
 \]
@@ -945,8 +945,8 @@ By the choice of $\theta^\gamma$, all such monomials are in the $\mathbb Q$--spa
 \begin{proof}[Proof of Theorem~\ref{thm:basisofideal}]
 Let $d_n$ be the number of ballot sequences of size $n$.
 We have
-$$ d_n\le \dim EQH_n = \dim EQC_n \le d_n,$$
-where the first inequality is using Proposition~\ref{prop:harmbasis} and second follows from Lemma~\ref{lem:spanofquotient}.
+$$ \dim EQH_{n} \le d_n \le \dim EQC_{n},$$
+where the first inequality follows from Proposition~\ref{prop:harmbasis} and second follows from Lemma~\ref{lem:spanofquotient}. By Proposition~\ref{prop:EQC_EQH}, we have $d_{n} = \dim EQC_{n}$.
 Let ${\mathbb Q}A_n$ be the ${\mathbb Q}\text{-span}$ of the elements of $A_n$.
 Similarly, let ${\mathbb Q}B'_n$ be the ${\mathbb Q}\text{-span}$ of the set $\big\{ G_\beta : \beta \in \{0,1\}^n \text{ \it is a ballot sequence}\big\}$.
 Using Proposition~\ref{prop:largest} we have that
