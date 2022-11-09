@@ -471,7 +471,7 @@ G_{u01^s0^{n-k-s}} = G_{u1^s0^{n-k-s+1}} - (-1)^{m_1(u)} \theta_k G_{u1^{s-1}0^{
 We will show below that the recurrence for the
 $G_\alpha$ is defined so that they are $S$-polynomials \cite{CLO}
 for elements of the ideal $I_n$.
-In commutative variables, similar polynomials were defined by Aval-Bergeron-Bergeron~\cite{AB,ABB}
+In commutative variables, similar polynomials were defined by Aval-Bergeron-Bergeron~\cite{ABB,AB}
 as a (complete) subset of $S$-polynomials needed to compute all possible
 $S$-polynomials in the Buchburger algorithm for a Gr\"obner basis.
 It is not given that one can easily describe such a set of $S$-polynomials and here we have adapted
@@ -561,6 +561,7 @@ There are several straightforward consequence of this theorem which we state her
 
 \begin{cor}\label{cor:hilb}  The Hibert series of $EQH_{n}$ is given by
 $$\text{Hilb}_{R_n/I_n}(q) = \sum_{k=0}^{\lfloor{n/2}\rfloor} f^{(n-k,k)} q^k\,.$$
+\end{cor}
 
 \begin{cor} The set ${\mathcal D}_n$ is a basis of $EQH_n$ and of $EQC_n$.
 \end{cor}
@@ -571,6 +572,28 @@ $$ \big\{ G_\alpha : \alpha \in \{0,1\}^n \text{ \it breaks the ballot condition
 at the rightmost  1 of }  \alpha\big\}\,.
 $$
 \end{cor}
+
+These results give a fairly complete description of the ideal $I_n$ and the quotient $R_n/I_n$.
+To demonstrate an example of the results above, we present the following example for a small value of $n$.
+
+\begin{example} Let $n=4$, then $\dim R_4 = 16$.  There are $6$ ballot sequences,
+$\{ 0000,$ $0001,$ $0010,$ $0011,$ $0100,$ $0101 \}$ and so $R_4/I_4$ is spanned by
+$\{ 1, \theta_2, \theta_3, \theta_4,  \theta_3 \theta_4, \theta_2 \theta_4 \}$.
+The ideal $I_4$ is spanned by the $10$ elements,
+$$G_{0110}$$
+$$G_{0111}$$
+$$G_{1000}$$
+$$G_{1001}$$
+$$G_{1010}$$
+$$G_{1011}$$
+$$G_{1100}$$
+$$G_{1101}$$
+$$G_{1110}$$
+$$G_{1111}$$
+\todo{calculate and rearrange nicely}
+A reduced Gr\"obner basis for $I_4$ consists of the elements $\{ G_{0110}, G_{1000} \}$.
+\end{example}
+
 
 \printbibliography 
 \end{document}
