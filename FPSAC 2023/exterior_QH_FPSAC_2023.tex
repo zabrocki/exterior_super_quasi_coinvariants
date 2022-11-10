@@ -468,6 +468,9 @@ of length $k-1$ and we recursively define
 G_{u01^s0^{n-k-s}} = G_{u1^s0^{n-k-s+1}} - (-1)^{m_1(u)} \theta_k G_{u1^{s-1}0^{n-k-s+2}}~.
 \end{equation}
 
+The challenge in arriving at this definition was finding the correct recursion which yields a set of
+polynomials $G_\alpha \in I_n$ whose leading term with respect to some monomial order is $\theta^\alpha$.
+
 We will show below that the recurrence for the
 $G_\alpha$ is defined so that they are $S$-polynomials \cite{CLO}
 for elements of the ideal $I_n$.
@@ -551,7 +554,8 @@ is a $\mathbb Q$--linear basis of the ideal $I_n$.
 \end{theorem}
 
 The proof of this theorem uses our understanding of the harmonic space $EQH_n\cong EQC_n$.
-In Proposition~\ref{prop:harmbasis} we found that $\dim(EQH_n)=\dim(EQC_n)$ is at least the number of ballot sequences.
+The challenge here was to show that $G_\alpha \in I_n$ if and only if $\alpha$ breaks the ballot condition.
+In Proposition~\ref{prop:harmbasis} we found that $\dim(EQH_n)=\dim(EQC_n)$ and is at least the number of ballot sequences.
 We first establish a small lemma about a spanning set for the quotient $EQC_n$ showing that  the dimension is at most  the number of ballot sequences.
 Therefore we have equality
 and the set ${\mathcal D}_n$ in Proposition~\ref{prop:harmbasis} is in fact a basis
@@ -590,7 +594,7 @@ $$G_{1100} = \theta_1 \theta_2 + \theta_1 \theta_3 + \theta_1 \theta_4 + \theta_
 $$G_{1101} = \theta_1 \theta_2 \theta_4 + 2 \theta_1 \theta_3 \theta_4 + 2 \theta_2 \theta_3 \theta_4$$
 $$G_{1110} = \theta_1 \theta_2 \theta_3 + \theta_1 \theta_2 \theta_4 + \theta_1 \theta_3 \theta_4 + \theta_2 \theta_3 \theta_4$$
 $$G_{1111} = \theta_1 \theta_2 \theta_3 \theta_4$$
-\todo{rearrange nicely, explain challenge of finding this basis (in section 3 and here, it looks too easy)}
+\todo{rearrange nicely}
 A reduced Gr\"obner basis for $I_4$ consists of the elements $\{ G_{0110}, G_{1000} \}$.
 \end{example}
 
