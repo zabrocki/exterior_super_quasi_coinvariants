@@ -584,17 +584,19 @@ To demonstrate the results above, we present the following example for a small v
 $\{ 0000,$ $0001,$ $0010,$ $0011,$ $0100,$ $0101 \}$ and so $R_4/I_4$ is spanned by
 $\{ 1, \theta_2, \theta_3, \theta_4,  \theta_3 \theta_4, \theta_2 \theta_4 \}$.
 The ideal $I_4$ is spanned by the $10$ elements,
-$$G_{0110} = \theta_2 \theta_3 + \theta_2 \theta_4 + \theta_3 \theta_4$$
-$$G_{0111} = \theta_2 \theta_3 \theta_4$$
-$$G_{1000} = \theta_1 + \theta_2 + \theta_3 + \theta_4$$
-$$G_{1001} = \theta_1 \theta_4 + \theta_2 \theta_3 +2 \theta_2 \theta_4 + 2 \theta_3 \theta_4$$
-$$G_{1010} = \theta_1 \theta_3+ \theta_1 \theta_4 + 2 \theta_2 \theta_3  + 2 \theta_2 \theta_4 + \theta_3 \theta_4$$
-$$G_{1011} = \theta_1 \theta_3 \theta_4 + \theta_2 \theta_3 \theta_4$$
-$$G_{1100} = \theta_1 \theta_2 + \theta_1 \theta_3 + \theta_1 \theta_4 + \theta_2 \theta_3 + \theta_3 \theta_4$$
-$$G_{1101} = \theta_1 \theta_2 \theta_4 + 2 \theta_1 \theta_3 \theta_4 + 2 \theta_2 \theta_3 \theta_4$$
-$$G_{1110} = \theta_1 \theta_2 \theta_3 + \theta_1 \theta_2 \theta_4 + \theta_1 \theta_3 \theta_4 + \theta_2 \theta_3 \theta_4$$
-$$G_{1111} = \theta_1 \theta_2 \theta_3 \theta_4$$
-\todo{rearrange nicely}
+\begin{align*}
+G_{0110} &= \theta_2 \theta_3 + \theta_2 \theta_4 + \theta_3 \theta_4&&&
+G_{0111} &= \theta_2 \theta_3 \theta_4\\
+G_{1000} &= \theta_1 + \theta_2 + \theta_3 + \theta_4&&&
+G_{1001} &= \theta_1 \theta_4 + \theta_2 \theta_3 +2 \theta_2 \theta_4 + 2 \theta_3 \theta_4\\
+G_{1010} &= \theta_1 \theta_3+ \theta_1 \theta_4 + 2 \theta_2 \theta_3  + 2 \theta_2 \theta_4 + \theta_3 \theta_4&&&
+G_{1011} &= \theta_1 \theta_3 \theta_4 + \theta_2 \theta_3 \theta_4\\
+G_{1100} &= \theta_1 \theta_2 + \theta_1 \theta_3 + \theta_1 \theta_4 + \theta_2 \theta_3 + \theta_3 \theta_4&&&
+G_{1101} &= \theta_1 \theta_2 \theta_4 + 2 \theta_1 \theta_3 \theta_4 + 2 \theta_2 \theta_3 \theta_4\\
+G_{1110} &= \theta_1 \theta_2 \theta_3 + \theta_1 \theta_2 \theta_4 + \theta_1 \theta_3 \theta_4 + \theta_2 \theta_3 \theta_4&&&
+G_{1111} &= \theta_1 \theta_2 \theta_3 \theta_4
+\end{align*}
+
 A reduced Gr\"obner basis for $I_4$ consists of the elements $\{ G_{0110}, G_{1000} \}$.
 \end{example}
 
