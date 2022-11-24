@@ -58,6 +58,8 @@
 \newcommand{\farad}[2][]{\todo[size=\tiny,color=ForestGreen!30,#1]{#2 \\ \hfill --- Farad}}
 \newcommand{\kelvin}[1]{\todo[size=\tiny,color=RoyalBlue!30]{#1 \\ \hfill --- Kel}}
 
+\newcommand{\qbinom}[2]{\left[ \begin{smallmatrix}#1\\#2\end{smallmatrix} \right]}
+
 %remove the comment from the following line to remove all the
 % extra proofs:
 %\renewcommand{\idiot}[1]{}
@@ -237,6 +239,8 @@ $$ a_{r,s}=
 	\left({\lfloor \frac{r+s}{2} \rfloor \atop \lfloor \frac{r}{2} \rfloor}\right)&\text{otherwise.}
 \end{cases}
 $$
+\end{prop}
+A remark brought to our attention by D. Grinberg \cite{DG} shows that $a_{r,s}$ is equal to the $q$-binomial coefficient $\qbinom{r+s}{r}_q$ evaluated at $q \rightarrow -1$.
 
 \begin{proof}
 For completeness, we give a proof not assuming any results of~\cite{FLP}. Using Equation~\eqref{eq:defF} we have
@@ -279,12 +283,11 @@ since there are a total of $\lfloor \frac{r+s}{2} \rfloor$ pairs $2j-1,2j$
 in a sequence of length $r+s$ and we must have $\lfloor \frac{r}{2} \rfloor$ of them equal to $11$
 and all others equal to $00$ in order to get $\Phi(A)=A$.
 \end{proof}
-\end{prop}
 
 The generating series for the coefficients $F(x,y) = \sum_{r,s \ge 0} a_{r,s} x^{r}y^{s}$ is
 equal to $\frac{1 + x + y}{1 - x^{2} - y^{2}}$
 and the OEIS \cite{OEIS} sequence number is \href{https://oeis.org/A051159}{A051159}.
-This can be derived from Proposition \ref{prop:comm} using standard techniques of generating functions.
+This can be derived from Proposition \ref{prop:comm} using standard techniques of generating functions. 
 %\mike{TODO: add comment to OEIS sequence}
 
 One consequence of Proposition~\ref{prop:comm} is that $a_{r,s}=a_{s,r}$ for all $r,s\ge 0$. Remark that this does not contradict the fermionic law stating that $a_{r,s}=(-1)^{rs}a_{s,r}$ since $a_{r,s}=0$ when both $r,s$ are odd. Therefore we have shown the following corollary.
@@ -1044,6 +1047,8 @@ never appeared.
 \bibitem{GW} A. M. Garsia and N. Wallach.
 \textit{Qsym over Sym is free}.
 Journal of Combinatorial Theory, Series A 104, no. 2 (2003): 217--263.
+
+\bibitem{DG} D. Grinberg. private communication. Oct. 3, 2022.
 
 \bibitem{HHLRU} J. Haglund, M. D. Haiman, N. A. Loehr, J. B. Remmel and A. Ulyanov.
 \textit{A combinatorial formula for the character of the diagonal coinvariants}.
