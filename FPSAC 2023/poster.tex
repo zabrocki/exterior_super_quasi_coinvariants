@@ -1,0 +1,81 @@
+\documentclass[20pt, a0paper,landscape]{tikzposter}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[mathcal]{euscript}
+
+\title{Quasisymmetric harmonics of the exterior algebra}
+\author{
+Nantel Bergeron, %\thanks{\href{mailto:bergeron@yorku.ca}{bergeron@yorku.ca}}, 
+Kelvin Chan, %\thanks{\href{mailto:ktychan@yorku.ca}{ktychan@yorku.ca}},
+Farhad Soltani, %\thanks{\href{mailto:farhad.soltani91@gmail.com}{farhad.soltani91@gmail.com}}, \and
+Mike Zabrocki%\thanks{\href{mailto:zabrocki@yorku.ca}{zabrocki@yorku.ca}}
+}
+\institute{York University}
+
+\newcommand{\qbinom}[2]{{\left[\begin{smallmatrix} {#1} \\ {#2} \end{smallmatrix} \right]}}
+
+\begin{document}
+\maketitle{}
+
+% a bunch of clumns
+\begin{columns}
+  \column{0.3}
+  \block{The Setup}{
+    \begin{itemize}
+      \item A polynomial ring with anticommuting variables
+        \[
+          R_{n} = \mathbb{Q}[\theta_{1}, \dots, \theta_{n}].
+        \]
+      \item Monomials are indexed by sets
+        \[
+          \theta_{A} = \theta_{i_{1}} \cdots \theta_{i_{k}} \quad\text{where}\quad A = \{ i_{1} < \cdots < i_{k} \}.
+        \]
+      \item Extend Hivert's $\mathcal{S}_{n}$-action. Act by permutation but ignore signs
+        \[
+          \sigma(\theta_{A}) = \theta_{\sigma(A)}.
+        \]
+      \item Invariant polynomials are called \emph{quasisymmetric}. The fundamental ones are
+        \[
+          \displaystyle F_{1^{k}} = \sum_{A \subseteq \binom{[n]}{k}} \theta_{A}, \quad k = 1,\dots,n.
+        \]
+      \item The quasisymmetric invariant ideal is $I_{n} = \langle F_{1}, \dots, F_{n} \rangle$. 
+    \end{itemize}
+
+    \vspace{1in}
+
+    An example in $R_{3} = \mathbb{Q}[\theta_{1}, \theta_{2}, \theta_{3}]$.
+    \begin{itemize}
+      \item $\theta_{2}\theta_{1} = - \theta_{1}\theta_{2}$
+      \item $(13) \cdot \theta_{2} \theta_{3} = \theta_{(13) \cdot \{2,3\}} = \theta_{\{1,2\}} = \theta_{1} \theta_{2}$ 
+      \item $F_{1} = \theta_{1} + \theta_{2} + \theta_{3},\quad F_{11} = \theta_{1}\theta_{2} + \theta_{1}\theta_{3} + \theta_{2}\theta_{3},\quad F_{111} = \theta_{1}\theta_{2}\theta_{3}$.
+    \end{itemize}
+  }
+  
+  \column{0.3}
+  \block{The Quasisymmetric Polynomials}{
+    The algebra $\text{QSym} = \mathbb{Q}[F_{1}, \dots, F_{n}]$ is commutative and
+    \[
+      F_{1^{r}}F_{1^{s}} = 
+      \begin{cases}
+        \displaystyle
+        \binom{\lfloor\frac{r+s}{2}\rfloor}{\lfloor\frac{r}{2}\rfloor} F_{1^{r+s}} & \text{if } rs \equiv 0 \pmod{2} \\
+        0 & \text{otherwise}
+      \end{cases}.
+    \]
+
+    The ideal $I_{n}$ is actually very simple! 
+    \[
+      I_{n} = \langle F_{1}, F_{11} \rangle.
+    \]
+  }
+
+  \column{0.3}
+  \block{The Symmetric Polynomials}{
+    The ambient ring $R_{n}$ is free over the \emph{symmetric} polynomials. 
+
+    Add example.
+  }
+\end{columns}
+
+\end{document}
+
