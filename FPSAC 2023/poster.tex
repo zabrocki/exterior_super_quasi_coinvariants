@@ -1,81 +1,145 @@
-\documentclass[20pt, a0paper,landscape]{tikzposter}
+% NOTE: Final version should be a 4-column layout with 24 pt font.  Since an A0 paper is a 4x4 tiling of A4 paper in the same orientation, it suffices to use a 2-column layout with 12 pt font during editing. Then the column width will look roughly the same.
 
-\usepackage{amsmath,amssymb,amsthm}
+% uncomment when the contents are ready.
+% \documentclass[a0,landscape]{a0poster}
+
+% use this when writing the content.
+\documentclass[draft, landscape, 12pt, a4paper]{amsart}
+
+\usepackage[margin=1cm]{geometry}
+\usepackage{palatino, parskip, microtype, enumitem}
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
 \usepackage[mathcal]{euscript}
+\usepackage{xcolor, graphicx}
+
+% automatically create multicolumn layout
+\usepackage{multicol}
+\columnsep = .02\textwidth
+
+\usepackage{ifdraft}
 
 \title{Quasisymmetric harmonics of the exterior algebra}
 \author{
-Nantel Bergeron, %\thanks{\href{mailto:bergeron@yorku.ca}{bergeron@yorku.ca}}, 
-Kelvin Chan, %\thanks{\href{mailto:ktychan@yorku.ca}{ktychan@yorku.ca}},
-Farhad Soltani, %\thanks{\href{mailto:farhad.soltani91@gmail.com}{farhad.soltani91@gmail.com}}, \and
-Mike Zabrocki%\thanks{\href{mailto:zabrocki@yorku.ca}{zabrocki@yorku.ca}}
+  Nantel Bergeron, \thanks{\href{mailto:bergeron@yorku.ca}{bergeron@yorku.ca}}, 
+  Kelvin Chan, \thanks{\href{mailto:ktychan@yorku.ca}{ktychan@yorku.ca}},
+  Farhad Soltani, \thanks{\href{mailto:farhad.soltani91@gmail.com}{farhad.soltani91@gmail.com}}, \and
+  Mike Zabrocki \thanks{\href{mailto:zabrocki@yorku.ca}{zabrocki@yorku.ca}}
 }
-\institute{York University}
+\date{2023}
 
+% make editing easiser
+\usepackage{mdframed}
+\newenvironment{postersection}[1][]
+{% before 
+  \begin{mdframed}[hidealllines=true]
+    \IfNoValueTF{#1}{}{
+      \begin{mdframed}[backgroundcolor=teal!0,hidealllines=true]
+        \centering
+        \large #1
+      \end{mdframed}
+    }
+  }
+  {% after
+  \end{mdframed}
+}
+
+% math
 \newcommand{\qbinom}[2]{{\left[\begin{smallmatrix} {#1} \\ {#2} \end{smallmatrix} \right]}}
 
 \begin{document}
-\maketitle{}
 
-% a bunch of clumns
-\begin{columns}
-  \column{0.3}
-  \block{The Setup}{
-    \begin{itemize}
-      \item A polynomial ring with anticommuting variables
-        \[
-          R_{n} = \mathbb{Q}[\theta_{1}, \dots, \theta_{n}].
-        \]
-      \item Monomials are indexed by sets
-        \[
-          \theta_{A} = \theta_{i_{1}} \cdots \theta_{i_{k}} \quad\text{where}\quad A = \{ i_{1} < \cdots < i_{k} \}.
-        \]
-      \item Extend Hivert's $\mathcal{S}_{n}$-action. Act by permutation but ignore signs
-        \[
-          \sigma(\theta_{A}) = \theta_{\sigma(A)}.
-        \]
-      \item Invariant polynomials are called \emph{quasisymmetric}. The fundamental ones are
-        \[
-          \displaystyle F_{1^{k}} = \sum_{A \subseteq \binom{[n]}{k}} \theta_{A}, \quad k = 1,\dots,n.
-        \]
-      \item The quasisymmetric invariant ideal is $I_{n} = \langle F_{1}, \dots, F_{n} \rangle$. 
-    \end{itemize}
+%--------------------------------------------------
+%
+% title block
+%
+%--------------------------------------------------
+% takes up the entire top of the page
+\begin{mdframed}[backgroundcolor=teal!5, hidealllines=true]
+  \centering
+  \begin{minipage}[t]{0.6\linewidth}
+    {\Large \textcolor{black}{Quaisymmetric harmonics of the exterior algebra}}
+    \medskip
 
-    \vspace{1in}
+    {Nantel Bergeron, Kelvin Chan, Farhad Soltani, Mike Zabrocki} 
 
-    An example in $R_{3} = \mathbb{Q}[\theta_{1}, \theta_{2}, \theta_{3}]$.
-    \begin{itemize}
-      \item $\theta_{2}\theta_{1} = - \theta_{1}\theta_{2}$
-      \item $(13) \cdot \theta_{2} \theta_{3} = \theta_{(13) \cdot \{2,3\}} = \theta_{\{1,2\}} = \theta_{1} \theta_{2}$ 
-      \item $F_{1} = \theta_{1} + \theta_{2} + \theta_{3},\quad F_{11} = \theta_{1}\theta_{2} + \theta_{1}\theta_{3} + \theta_{2}\theta_{3},\quad F_{111} = \theta_{1}\theta_{2}\theta_{3}$.
-    \end{itemize}
-  }
-  
-  \column{0.3}
-  \block{The Quasisymmetric Polynomials}{
-    The algebra $\text{QSym} = \mathbb{Q}[F_{1}, \dots, F_{n}]$ is commutative and
-    \[
-      F_{1^{r}}F_{1^{s}} = 
-      \begin{cases}
-        \displaystyle
-        \binom{\lfloor\frac{r+s}{2}\rfloor}{\lfloor\frac{r}{2}\rfloor} F_{1^{r+s}} & \text{if } rs \equiv 0 \pmod{2} \\
-        0 & \text{otherwise}
-      \end{cases}.
-    \]
+    {York University, Toronto, Canada}
+  \end{minipage}
+  \quad
+  \quad
+  \begin{minipage}[t]{0.25\linewidth}
+    Funding logos
+    % NSERC https://www.nserc-crsng.gc.ca/NSERC-CRSNG/acknowledgement_and_logos-mention_et_logos/index_eng.asp
+    % YORK  https://www.yorku.ca/brand/py_community_area/brand-building-blocks/logos/    
+    % Fields https://www.fields.utoronto.ca/generalinfo/Acknowledging-Fields-Institute-Funding
+  \end{minipage}
+\end{mdframed}
 
-    The ideal $I_{n}$ is actually very simple! 
-    \[
-      I_{n} = \langle F_{1}, F_{11} \rangle.
-    \]
-  }
+\medskip
+\hrulefill{}
 
-  \column{0.3}
-  \block{The Symmetric Polynomials}{
-    The ambient ring $R_{n}$ is free over the \emph{symmetric} polynomials. 
+%--------------------------------------------------
+%
+% content
+%
+%--------------------------------------------------
+\begin{multicols}{\ifdraft{2}{4}}
+    \begin{postersection}[The Question]
+      What do the coinvariants look like in the setting of the exterior algebra with a quasisymmetric action of $\mathcal{S}_{n}$?
 
-    Add example.
-  }
-\end{columns}
+      The short answer: Ballot sequences!
+      \[
+        Hilb(R_{n}/I_{n}; q) = \sum_{\pi \in NC(n)} q^{\pi}.
+      \]
+    \end{postersection}
 
-\end{document}
+    \begin{postersection}[The History]
+      
+    \end{postersection}
+    
+    \begin{postersection}[The Setup]
+      Let $R_{n} = \mathbb{Q}[\theta_{1}, \dots, \theta_{n}]$ be a polynomial ring with $\theta_{i} \theta_{j} = - \theta_{j} \theta_{i}$.
+      \begin{itemize}
+        \item Index monomials by sets $\theta_{\{1,3,5\}} = \theta_{1} \theta_{3} \theta_{5}$.
+        \item Extend Hivert's $\mathcal{S}_{n}$-action: Act by permutation but ignore signs
+          \[
+            (2,5) \cdot \theta_{\{1,3,5\}} = \theta_{\{1,2,3\}} = \theta_{1} \theta_{2} \theta_{3}.
+          \]
+        \item Invariant polynomials are called \emph{quasisymmetric}. A basis are 
+          \begin{align*}
+            F_{1^{k}} 
+            &=\sum_{\substack{A \subseteq [n]\\|A|=k}} \theta_{A}, \quad k = 1,\dots,n \\
+            \intertext{In $\mathbb{Q}[\theta_{1}, \theta_{2}, \theta_{3}]$,}
+            F_{1} 
+            &= \theta_{1} + \theta_{2} + \theta_{3},\\
+            F_{11} 
+            &= \theta_{1}\theta_{2} + \theta_{1}\theta_{3} + \theta_{2}\theta_{3},\\
+            F_{111} 
+            &= \theta_{1}\theta_{2}\theta_{3}
+          \end{align*}
+        \item The quasisymmetric invariant ideal is $I_{n} = \langle F_{1}, \dots, F_{n} \rangle$. 
+      \end{itemize}
+    \end{postersection}
+
+    \begin{postersection}[The Structure of $I_{n}$]
+      The algebra $\text{QSym} = \mathbb{Q}[F_{1}, \dots, F_{n}]$ is commutative and
+      \[
+        F_{1^{r}}F_{1^{s}} = 
+        \begin{cases}
+          \displaystyle
+          \binom{\lfloor\frac{r+s}{2}\rfloor}{\lfloor\frac{r}{2}\rfloor} F_{1^{r+s}} & \text{if } rs \equiv 0 \pmod{2} \\
+          0 & \text{otherwise}
+        \end{cases}.
+      \]
+
+      That means the ideal $I_{n}$ is very simple! 
+      \[
+        I_{n} = \langle F_{1}, F_{11} \rangle.
+      \]
+
+      \textbf{Theorem}. The ambient ring $R_{n}$ is free over the \emph{symmetric} polynomials. 
+    \end{postersection}
+
+
+  \end{multicols}
+  \end{document}
 
