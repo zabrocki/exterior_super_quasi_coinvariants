@@ -4,7 +4,8 @@
 \usepackage{palatino, parskip, microtype, enumitem}
 \usepackage{amsfonts, amsmath, amssymb, amsthm}
 \usepackage[mathcal]{euscript}
-\usepackage{xcolor, graphicx, tikz, qrcode, fontawesome5, stackengine}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx, tikz, qrcode, fontawesome5}
 
 % automatically creates a multicolumn layout
 \usepackage{multicol}
@@ -21,21 +22,46 @@
 }
 \date{July 18, 2023}
 
+% colours
+\newcommand{\thetitlecolour}{ForestGreen}
+\newcommand{\thesectioncolour}{ForestGreen!20}
+\newcommand{\thethmcolour}{\thetitlecolour}
+
 % make editing easier
 \usepackage{mdframed}
 \newenvironment{postersection}[1][]
 {% before 
   \begin{mdframed}[hidealllines=true]
     \IfNoValueTF{#1}{}{
-      \begin{mdframed}[backgroundcolor=teal!0,hidealllines=true]
+      \begin{mdframed}[backgroundcolor=\thesectioncolour,hidealllines=true]
         \centering
-        \large #1
+        {\color{black} \Large #1}
       \end{mdframed}
     }
   }
   {% after
   \end{mdframed}
   \vspace{2em}
+}
+
+\newenvironment{thm}{
+  \par\bigskip
+  \begin{mdframed}[
+    hidealllines=false,
+    % linewidth=1pt,
+    linecolor=\thethmcolour,
+    roundcorner=5pt,
+    leftmargin=2em,
+    rightmargin=2em,
+    innerleftmargin=1em,
+    innerrightmargin=1em,
+    innertopmargin=1em,
+    innerbottommargin=1em,
+    ]
+    \textbf{Theorem}. 
+}{
+  \end{mdframed}
+  \bigskip
 }
 
 % shortcuts
@@ -82,19 +108,26 @@
 %
 %--------------------------------------------------
 % takes up the entire top of the page
-\begin{mdframed}[backgroundcolor=teal!5, hidealllines=true]
+\begin{mdframed}[backgroundcolor=white!0, hidealllines=true]
   % \centering
   % \raggedright
   % \hfill{}
   \hspace{.1\textwidth}
-  \begin{minipage}{.7\textwidth}
-    {\veryHuge \textcolor{black}{Quaisymmetric harmonics of the exterior algebra} \quad
-    \qrcode[height=1in]{https://www.mat.univie.ac.at/~slc/wpapers/FPSAC2023/32.pdf} }
+  \begin{minipage}{.6\textwidth}
+    {\veryHuge \textcolor{\thetitlecolour}{Quaisymmetric harmonics of the exterior algebra}}
     \medskip
 
     {Nantel Bergeron \email{bergeron@yorku.ca}, Kelvin Chan \email{\footnotesize ktychan@yorku.ca}, Farhad Soltani \email{farhad.soltani91@gmail.com}, Mike Zabrocki \email{zabrocki@yorku.ca}} 
 
     {York University, Toronto, Canada} 
+  \end{minipage}
+  \quad
+  \begin{minipage}{2in}
+    \centering
+    \qrcode[height=1in]{https://www.mat.univie.ac.at/~slc/wpapers/FPSAC2023/32.pdf}
+    \bigskip
+
+    {\footnotesize extended\\\vspace{-0.5em}abstract}
   \end{minipage}
   \quad
   % \begin{minipage}{.1\textwidth}
@@ -228,13 +261,22 @@
             F_{1^{k}} 
             &=\sum_{\substack{A \subseteq [n]\\|A|=k}} \theta_{A}, \quad k = 1,\dots,n. \\
             \intertext{In $\mathbb{Q}[\theta_{1}, \theta_{2}, \theta_{3}]$,}
-            F_{1} 
-            &= \theta_{1} + \theta_{2} + \theta_{3},\\
+            F_{1} &= \theta_{1} + \theta_{2} + \theta_{3},\\
             F_{11} 
             &= \theta_{1}\theta_{2} + \theta_{1}\theta_{3} + \theta_{2}\theta_{3},\\
             F_{111} 
             &= \theta_{1}\theta_{2}\theta_{3}
           \end{align*}
+          % \begin{align*}
+          %   F_{1^{k}} 
+          %   &=\sum_{\substack{A \subseteq [n]\\|A|=k}} \theta_{A}, \quad k = 1,\dots,n. \\
+          % \end{align*}
+          % In $\mathbb{Q}[\theta_{1}, \theta_{2}, \theta_{3}]$,
+          % \[
+          %   F_{1} = \theta_{1} + \theta_{2} + \theta_{3},\quad
+          %   F_{11} = \theta_{1}\theta_{2} + \theta_{1}\theta_{3} + \theta_{2}\theta_{3},\quad
+          %   F_{111} = \theta_{1}\theta_{2}\theta_{3}
+          % \]
       \item The quasisymmetric invariant ideal is $\langle \mathrm{QSym}_{n}^{+} \rangle = \langle F_{1}, \dots, F_{1^{n}} \rangle$.
       \end{itemize}
     \end{postersection}
@@ -253,13 +295,17 @@
       A parallel to the classic coinvariant story: 
       %We have a parallel statement to that of the classic coinvariant theory that $\mathbb{Q}[x_{1},\dots,x_{n}]$ is free over $Sym_{n}$. 
 
-      \textbf{Theorem}. The exterior algebra $\mathbb{Q}[\theta_{1}, \dots, \theta_{n}]$ is free over its \emph{symmetric} polynomials.
+      \begin{thm}
+      The exterior algebra $\mathbb{Q}[\theta_{1}, \dots, \theta_{n}]$ is free over its \emph{symmetric} polynomials.
+      \end{thm}
+      
     \end{postersection}
     
     \begin{postersection}[The structure of $\langle \mathrm{QSym}_{n}^{+} \rangle$]
       We extend a result of Fishel, Lapointe and Pinto by determining the structural coefficients of $\mathrm{QSym}_{n}$. 
 
-      \textbf{Theorem}. The algebra $\mathrm{QSym}_{n} = \mathbb{Q}[F_{1}, \dots, F_{1^{n}}]$ is commutative and
+      \begin{thm}
+      The algebra $\mathrm{QSym}_{n} = \mathbb{Q}[F_{1}, \dots, F_{1^{n}}]$ is commutative and
       \[
         F_{1^{r}}F_{1^{s}} = 
         \begin{cases}
@@ -268,6 +314,7 @@
           0 & \text{otherwise}
         \end{cases}.
       \]
+      \end{thm}
 
       That means the ideal $\langle \mathrm{QSym}_{n}^{+} \rangle$ is very simple!
       \begin{equation} \label{eq:In-generators}
@@ -401,7 +448,10 @@
         \end{tikzpicture}
       \end{center}
       
-      \textbf{Theorem}. $\{ \Delta_{C(\alpha)} : \alpha \text{ is a ballot sequence } \}$ is linearly independent in $QHC_{n}$.
+      \begin{thm}
+        $\{ \Delta_{C(\alpha)} : \alpha \text{ is a ballot sequence } \}$ is linearly independent in $QHC_{n}$.
+      \end{thm}
+      
     \end{postersection}
     
     \begin{postersection}[A linear basis of $\mathbb{Q} {[} \theta_1, \ldots, \theta_n {]}$ indexed by $0$-$1$-sequences]
@@ -418,7 +468,8 @@
           \begin{align*} 
             G_{01\mathbf{\color{teal}0}110} 
           & = G_{01110\mathbf{\color{teal}0}} - (-1)^{1} \theta_{3} G_{01100\mathbf{\color{teal}0}} \\
-          &= (G_{111000} - \theta_{1} G_{110000}) + \theta_{3}(G_{110000} - \theta_{1}G_{100000})
+          &= (G_{111000} - \theta_{1} G_{110000}) + \theta_{3}(G_{110000} - \theta_{1}G_{100000}) \\
+          &= \theta_{2} \theta_{4} \theta_{5} + \theta_{2} \theta_{4} \theta_{6} + \theta_{2} \theta_{5} \theta_{6} + 2 \theta_{3} \theta_{4} \theta_{5} + 2 \theta_{3} \theta_{4} \theta_{6} + 2 \theta_{3} \theta_{5} \theta_{6} + \theta_{4} \theta_{5} \theta_{6}.
           \end{align*}
         \item Indexed by a ballot sequence:
           \begin{align*}
@@ -429,12 +480,14 @@
           \end{align*}
       \end{itemize}
       
-      \textbf{Theorem}. 
+      \begin{thm}
       \begin{enumerate}
        \item The lexicographical leading term of $G_{\alpha}$ is $\theta^{\alpha}$.
        \item The set $\{ G_{\alpha} : \alpha \text{ is not a ballot sequence }\}$ is a basis for $\langle \mathrm{QSym}^+_n \rangle$.
        \item The set $\{ G_{\alpha} : \alpha \text{ is a ballot sequence }\}$ is a basis for $EQC_{n}$.
       \end{enumerate}
+      \end{thm}
+      
       
     \end{postersection}
     
